@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 class UsuarioRepositoryTests {
 	@Autowired
-	private UsuarioRepository usuarioRepository; // Objeto de la clase repositorio del usuario
+	private UsuarioRepository usuarioRepository; // Instancia de la clase repositorio del usuario
 
 	/**
 	 * Método empleado para probar guardar un usuario

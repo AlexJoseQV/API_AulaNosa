@@ -1,19 +1,13 @@
-package es.aulanosa.api.models;
-
-import jakarta.persistence.*;
+package es.aulanosa.api.dtos;
 
 import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * Clase empleada como entidad para mapear la información correspondiente de la tabla usuarios
+ * Clase DTO para manejar información correspondiente a aspectos de un Usuario
  * @author ALEXJOSE
  */
-@Table(name = "usuarios")
-@Entity
-public class Usuario {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
+public class UsuarioDTO {
     private int id; // Identificador del usuario
     private String usuario; // Nombre de usuario
     private String contrasena; // Contrasena asociada al usuario
@@ -25,10 +19,10 @@ public class Usuario {
     private String estado; // Estado del usuario
     private List<Byte> imagen; // Array de bytes que representan la foto de perfil
 
-    public Usuario() {
+    public UsuarioDTO() {
     }
 
-    public Usuario(int id, String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, Timestamp actualizacion, String estado, List<Byte> imagen) {
+    public UsuarioDTO(int id, String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, Timestamp actualizacion, String estado, List<Byte> imagen) {
         this.id = id;
         this.usuario = usuario;
         this.contrasena = contrasena;
@@ -37,17 +31,6 @@ public class Usuario {
         this.email = email;
         this.telefono = telefono;
         this.actualizacion = actualizacion;
-        this.estado = estado;
-        this.imagen = imagen;
-    }
-
-    public Usuario(String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, String estado, List<Byte> imagen) {
-        this.usuario = usuario;
-        this.contrasena = contrasena;
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.email = email;
-        this.telefono = telefono;
         this.estado = estado;
         this.imagen = imagen;
     }
@@ -68,12 +51,12 @@ public class Usuario {
         return nombre;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
     public String getApellidos() {
         return apellidos;
+    }
+
+    public List<Byte> getImagen() {
+        return imagen;
     }
 
     public String getEmail() {
@@ -88,8 +71,12 @@ public class Usuario {
         return actualizacion;
     }
 
-    public List<Byte> getImagen() {
-        return imagen;
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setImagen(List<Byte> imagen) {
+        this.imagen = imagen;
     }
 
     public void setId(int id) {
@@ -108,10 +95,6 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
@@ -128,13 +111,13 @@ public class Usuario {
         this.actualizacion = actualizacion;
     }
 
-    public void setImagen(List<Byte> imagen) {
-        this.imagen = imagen;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "UsuarioDTO{" +
                 "id=" + id +
                 ", usuario='" + usuario + '\'' +
                 ", contrasena='" + contrasena + '\'' +
