@@ -11,6 +11,11 @@ import java.util.Optional;
  * @author ALEXJOSE
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    /**
+     * Se define un método para buscar un usuario por su email
+     * @param email Email del usuario buscado
+     * @return Se devuelve el modelo del usuario
+     */
     Optional<Usuario> findByEmail(String email);
 
 }
