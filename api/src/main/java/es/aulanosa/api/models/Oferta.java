@@ -40,6 +40,11 @@ public class Oferta {
     private String descripcion;
 
     /**
+     * Descripción detallada de la fecha.
+     */
+    private Timestamp fecha;
+
+    /**
      * Requisitos necesarios para aplicar a la oferta.
      */
     private String requisitos; // Mappear desde ArrayList<EtiquetasDTO>
@@ -58,7 +63,7 @@ public class Oferta {
     /**
      * Constructor de la clase Oferta.
      */
-    public Oferta(int id, int vacantes, String titulo, String estado, String descripcion, String requisitos, ArrayList<Byte> imagen) {
+    public Oferta(int id, int vacantes, String titulo, String estado, String descripcion, Timestamp fecha, String requisitos, ArrayList<Byte> imagen) {
         this.id = id;
         this.vacantes = vacantes;
         this.titulo = titulo;
@@ -90,6 +95,21 @@ public class Oferta {
      */
     public int getVacantes() {
         return vacantes;
+    }
+
+    /**
+     * Obtiene el número la fecha de la oferta.
+     * @return La fecha de la oferta.
+     */
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    /**
+     * Cambia la fecha de la oferta.
+     */
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
     }
 
     /**
@@ -191,6 +211,7 @@ public class Oferta {
                 ", vacantes=" + vacantes +
                 ", titulo='" + titulo + '\'' +
                 ", estado='" + estado + '\'' +
+                ", fecha='" + fecha + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", requisitos='" + requisitos + '\'' +
                 '}';

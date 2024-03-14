@@ -3,6 +3,7 @@ package es.aulanosa.api.models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +22,7 @@ public class Formacion {
     private String requisitos;
     private Date inicio;
     private Date fin;
+    private Timestamp fecha;
     private int coste;
     private String estado;
     private ArrayList<Byte> imagen;
@@ -28,7 +30,7 @@ public class Formacion {
     public Formacion() {
     }
 
-    public Formacion(int id, String titulo, String descripcion, String requisitos, Date inicio, Date fin, int coste, String estado, ArrayList<Byte> imagen) {
+    public Formacion(int id, String titulo, String descripcion, String requisitos, Date inicio, Date fin, Timestamp fecha, int coste, String estado, ArrayList<Byte> imagen) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -92,6 +94,14 @@ public class Formacion {
         return coste;
     }
 
+    public Timestamp getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Timestamp fecha) {
+        this.fecha = fecha;
+    }
+
     public void setCoste(int coste) {
         this.coste = coste;
     }
@@ -121,6 +131,7 @@ public class Formacion {
                 ", requisitos='" + requisitos + '\'' +
                 ", inicio=" + inicio +
                 ", fin=" + fin +
+                ", fecha" + fecha +
                 ", coste=" + coste +
                 ", estado='" + estado + '\'' +
                 ", imagen=" + imagen +
