@@ -55,4 +55,28 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
     }
+
+    @Override
+    public UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO) {
+
+        List<String> errores = new ArrayList<>();
+        UsuarioDTOSalida usuarioDTOSalida = new UsuarioDTOSalida();
+        Optional<Usuario> usuarioREcuperado = usuarioRepository.findByEmail(usuarioDTO.getUsuario());
+        try{
+            if(usuarioREcuperado.isPresent()){
+                Usuario usuario = usuarioREcuperado.get();
+
+                usuario.setUsuario(usuarioDTO.getUsuario());
+                usuario.setNombre(usuarioDTO.getNombre());
+
+            }else{
+                errores.add("Error de acceso");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            errores.add("Error con la base de datos");
+        }
+
+        return null;
+    }
 }

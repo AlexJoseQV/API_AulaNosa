@@ -1,6 +1,7 @@
 package es.aulanosa.api.services;
 
 import es.aulanosa.api.dtos.AccesoDTO;
+import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 
 /**
@@ -14,4 +15,6 @@ public interface UsuarioService {
      * @return Información del usuario si se cumple el acceso
      */
     UsuarioDTOSalida comprobarAcceso(AccesoDTO accesoDTO);
+
+    UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO);
 }
