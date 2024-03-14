@@ -10,11 +10,18 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * Clase empleada para la realización de pruebas con el repositorio de Usuario
+ * @author ALEXJOSE
+ */
 @SpringBootTest
 class UsuarioRepositoryTests {
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioRepository usuarioRepository; // Objeto de la clase repositorio del usuario
 
+	/**
+	 * Método empleado para probar guardar un usuario
+	 */
 	@Test
 	public void testGuardarUsuario() {
 		Usuario usuario = crearUsuario();
@@ -25,6 +32,9 @@ class UsuarioRepositoryTests {
 		usuarioRepository.delete(usuario);
 	}
 
+	/**
+	 * Método empleado para probar a buscar un usuario por su identificador
+	 */
 	@Test
 	public void testBuscarUsuarioPorId() {
 
@@ -37,6 +47,9 @@ class UsuarioRepositoryTests {
 		usuarioRepository.delete(usuario);
 	}
 
+	/**
+	 * Método empleado para probar actualizar un usuario
+	 */
 	@Test
 	public void testActualizarUsuario() {
 
@@ -51,6 +64,9 @@ class UsuarioRepositoryTests {
 		usuarioRepository.delete(usuario);
 	}
 
+	/**
+	 * Método empleado para probar eliminar un usuario
+	 */
 	@Test
 	public void testEliminarUsuario() {
 
@@ -64,6 +80,9 @@ class UsuarioRepositoryTests {
 		assertThat(usuarioEliminado).isEmpty();
 	}
 
+	/**
+	 * Método empleado para probar crear un usuario
+	 */
 	public Usuario crearUsuario(){
 
 		Usuario usuario = new Usuario();

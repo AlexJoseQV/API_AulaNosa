@@ -7,6 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author ALEXJOSE
  */
 
+/**
+ * Clase principal de la API para la aplicación de egresados de AulaNosa
+ * @author ALEXJOSE
+ */
 @SpringBootApplication
 public class ApiApplication {
 
