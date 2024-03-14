@@ -19,6 +19,7 @@ public class OfertaEtiqueta {
         this.ofertaId = ofertaId;
     }
 
+    //Constructor vacío//
     public OfertaEtiqueta() {
     }
 
