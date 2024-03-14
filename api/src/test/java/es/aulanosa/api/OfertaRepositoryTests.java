@@ -75,5 +75,4 @@ class OfertaRepositoryTests {
 		oferta.setRequisitos("");
 		return oferta;
 	}
-
 }
