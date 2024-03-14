@@ -8,6 +8,8 @@ import java.sql.Timestamp;
 @Entity
 public class OfertaEtiqueta {
 
+    @Id
+
     private int usuarioId; //identificador de usuario//
 
     private int ofertaId; //identificador de oferta//
