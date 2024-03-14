@@ -19,6 +19,15 @@ public class OfertaEtiqueta {
      * @Param usuario_id es el identificador de usuario
      * @Param oferta_id es el identificador de las ofertas
      */
+    public OfertaEtiqueta(int usuario_id, int oferta_id) {
+        this.usuario_id = usuario_id;
+        this.oferta_id = oferta_id;
+    }
+
+/*
+constructor vacío
+ */
+
     public OfertaEtiqueta() {
     }
 
@@ -38,6 +47,10 @@ public class OfertaEtiqueta {
         this.oferta_id = oferta_id;
     }
 
+    /**
+     * Método toString
+     * @return cadena con los identificadores de usuario y ofertas
+     */
     @Override
     public String toString() {
         return "OfertaEtiqueta{" +
