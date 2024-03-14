@@ -21,6 +21,9 @@ public class UsuarioEtiqueta {
         this.etiqueta_id = etiqueta_id;
     }
 
+    /**
+     * Constructor vacío
+     */
     public UsuarioEtiqueta() {
     }
 
