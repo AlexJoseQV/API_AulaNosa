@@ -7,17 +7,17 @@ import es.aulanosa.api.models.Etiqueta;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase realiza los cambios entre lista de etiquetas y lista de etiquetasDTO
+ * y de etiqueta a etiquetaDTO
+ */
 public class EtiquetaMapper {
-    public static ListaEtiquetaDTOSalida convertirAListaEtiquetaDTOSalida(List<Etiqueta> etiquetaList){
-        ListaEtiquetaDTOSalida listaEtiquetaDTOSalida = new ListaEtiquetaDTOSalida();
-        List<EtiquetaDTO> etiquetas = new ArrayList<>();
-        for (Etiqueta etiqueta:etiquetaList) {
-            etiquetas.add(convertirADTO(etiqueta));
-        }
-        listaEtiquetaDTOSalida.setEtiquetas(etiquetas);
-        return listaEtiquetaDTOSalida;
-    }
 
+    /**
+     * Este método permite convertir una lista de etiquetas a una lista de etiquetasDTO
+     * @param etiquetaList lista de objetos etiqueta
+     * @return lista de objetos etiquetaDTO
+     */
     public static List<EtiquetaDTO> convertirALista(List<Etiqueta> etiquetaList){
         List<EtiquetaDTO> etiquetas = new ArrayList<>();
         for (Etiqueta etiqueta:etiquetaList) {
@@ -27,6 +27,11 @@ public class EtiquetaMapper {
         return etiquetas;
     }
 
+    /**
+     * Este método permite convertir una etiqueta a una etiquetaDTO
+     * @param etiqueta
+     * @return
+     */
     public static EtiquetaDTO convertirADTO(Etiqueta etiqueta){
         return new EtiquetaDTO(etiqueta.getId(), etiqueta.getNombre());
     }

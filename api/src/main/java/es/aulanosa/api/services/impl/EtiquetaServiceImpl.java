@@ -10,20 +10,27 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase contiene métodos para las etiquetas
+ */
 public class EtiquetaServiceImpl implements EtiquetaService {
     @Autowired
     private EtiquetaRepository etiquetaRepository;
+
+    /**
+     * Este método permite listar las etiquetas
+     * @return objeto listaEtiquetaDTOSalida
+     */
     @Override
     public ListaEtiquetaDTOSalida listarEtiquetas() {
         List<String> errores = new ArrayList<>();
-        
         try {
-            return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findAll()),errores, null);
+            return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findAll()),errores, new Timestamp(System.currentTimeMillis()));
         }catch (Exception e){
             errores.add("Hubo un error");
         }
 
-        return new ListaEtiquetaDTOSalida(null,errores,new Timestamp(System.currentTimeMillis()));
+        return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
 
     }
 }
