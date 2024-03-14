@@ -9,7 +9,6 @@ import java.sql.Timestamp;
 public class OfertaEtiqueta {
 
     @Id
-
     private int etiqueta_id; //identificador de etiqueta//
 
     private int oferta_id; //identificador de oferta//
@@ -25,9 +24,9 @@ public class OfertaEtiqueta {
         this.oferta_id = oferta_id;
     }
 
-/*
-constructor vacío
- */
+    /**
+     * constructor vacío
+     */
 
     public OfertaEtiqueta() {
     }
