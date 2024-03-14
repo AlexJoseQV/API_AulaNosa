@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 @Entity
 public class UsuarioEtiqueta {
 
+    @Id
     private int usuario_id; //identificador de usuario//
 
     private int etiqueta_id; //identificador de etiqueta//

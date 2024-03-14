@@ -2,6 +2,10 @@ package es.aulanosa.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+/**
+ * Clase principal de la API para la aplicación de egresados de AulaNosa
+ * @author ALEXJOSE
+ */
 
 @SpringBootApplication
 public class ApiApplication {
