@@ -5,6 +5,10 @@ import jakarta.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 
+/**
+ *
+ * clase model de Formacion
+ */
 @Entity
 @Table(name = "formaciones")
 public class Formacion {

@@ -16,11 +16,17 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * clase para los test de formacion
+ */
 @SpringBootTest
 class FormacionRepositoryTests {
 	@Autowired
 	private FormacionRepository formacionRepository;
 
+	/**
+	 * test guardar
+	 */
 	@Test
 	public void testGuardarFormacion() {
 
@@ -33,6 +39,9 @@ class FormacionRepositoryTests {
 		formacionRepository.delete(formacion);
 	}
 
+	/**
+	 * test busdar por id
+	 */
 	@Test
 	public void testBuscarFormacionPorId() {
 
@@ -45,6 +54,9 @@ class FormacionRepositoryTests {
 		formacionRepository.delete(formacion);
 	}
 
+	/**
+	 * test actualizar
+	 */
 	@Test
 	public void testActualizarFormacion() {
 
@@ -59,6 +71,9 @@ class FormacionRepositoryTests {
 		formacionRepository.delete(formacion);
 	}
 
+	/**
+	 * test eliminacion
+	 */
 	@Test
 	public void testEliminarFormacion() {
 
@@ -71,6 +86,11 @@ class FormacionRepositoryTests {
 		Optional<Formacion> formacioneliminada = formacionRepository.findById(formacion.getId());
 		assertThat(formacioneliminada).isEmpty();
 	}
+
+	/**
+	 * crear formacion
+	 * @return devuelve objeto creado
+	 */
 
 	public Formacion crearFormacion(){
 

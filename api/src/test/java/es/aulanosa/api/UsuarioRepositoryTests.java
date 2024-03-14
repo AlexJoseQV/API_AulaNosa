@@ -10,11 +10,17 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * clase para los test de usuario
+ */
 @SpringBootTest
 class UsuarioRepositoryTests {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
+	/**
+	 * test guardar
+	 */
 	@Test
 	public void testGuardarUsuario() {
 		Usuario usuario = crearUsuario();
@@ -26,6 +32,7 @@ class UsuarioRepositoryTests {
 	}
 
 	@Test
+
 	public void testBuscarUsuarioPorId() {
 
 		Usuario usuario = crearUsuario();
