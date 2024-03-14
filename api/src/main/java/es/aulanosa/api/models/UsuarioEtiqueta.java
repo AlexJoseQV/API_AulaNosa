@@ -15,6 +15,11 @@ public class UsuarioEtiqueta {
     public int getUsuario_id() {
         return usuario_id;
     }
+    /**
+     * Constructor completo
+     * @param usuario_id identificador del usuario
+     * @param etiqueta_id identificador de la etiqueta
+     */
 
     public UsuarioEtiqueta(int usuario_id, int etiqueta_id) {
         this.usuario_id = usuario_id;
