@@ -4,11 +4,18 @@ import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 
+/**
+ * Clase empleada como entidad para mapear la información correspondiente de la tabla OfertaEtiqueta
+ * @author RubénC
+ */
 @Table(name = "ofertas_etiquetas")
 @Entity
 public class OfertaEtiqueta {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private int id; //identificador de ofertasEtiquetas//
+
     private int etiqueta_id; //identificador de etiqueta//
 
     private int oferta_id; //identificador de oferta//
@@ -19,7 +26,8 @@ public class OfertaEtiqueta {
      * @Param oferta_id es el identificador de las ofertas
      */
 
-    public OfertaEtiqueta(int etiqueta_id, int oferta_id) {
+    public OfertaEtiqueta(int id, int etiqueta_id, int oferta_id) {
+        this.id = id;
         this.etiqueta_id = etiqueta_id;
         this.oferta_id = oferta_id;
     }
@@ -29,6 +37,14 @@ public class OfertaEtiqueta {
      */
 
     public OfertaEtiqueta() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getEtiqueta_id() {
