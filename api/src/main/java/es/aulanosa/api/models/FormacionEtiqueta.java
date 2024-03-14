@@ -2,6 +2,9 @@ package es.aulanosa.api.models;
 
 import jakarta.persistence.*;
 
+/**
+ * clase model de FormacionEtiqueta
+ */
 @Entity
 @Table(name = "formaciones_etiquetas")
 public class FormacionEtiqueta {

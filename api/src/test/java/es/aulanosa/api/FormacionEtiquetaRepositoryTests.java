@@ -12,26 +12,29 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * clase de test para la Formacionetiqueta
+ */
 @SpringBootTest
 class FormacionEtiquetaRepositoryTests {
     @Autowired
     private FormacionEtiquetaRepository formacionEtiquetaRepository;
 
     /**
-     * Test para guardar una etiqueta
+     * Test para guardar una Formacionetiqueta
      */
     @Test
     public void testGuardarFormacionEtiqueta(){
         FormacionEtiqueta fe = crearFormacionEtiqueta();
 
-        Etiqueta etiquetaGuardada = etiquetaRepository.save(etiqueta);
+        FormacionEtiqueta etiquetaGuardada = formacionEtiquetaRepository.save(fe);
         assertThat(etiquetaGuardada).isNotNull();
         assertThat(etiquetaGuardada.getId()).isNotNull();
-        etiquetaRepository.delete(etiqueta);
+        formacionEtiquetaRepository.delete(fe);
     }
 
     /**
-     * Test para buscar una etiqueta por el id
+     * Test para buscar una Formacionetiqueta por el id
      */
     @Test
     public void testBuscarEtiquetaPorId() {
@@ -39,14 +42,14 @@ class FormacionEtiquetaRepositoryTests {
         FormacionEtiqueta fe = crearFormacionEtiqueta();
         fe = formacionEtiquetaRepository.save(fe);
 
-        Optional<Etiqueta> encontrado = etiquetaRepository.findById(etiqueta.getId());
+        Optional<FormacionEtiqueta> encontrado = formacionEtiquetaRepository.findById(fe.getId());
         assertThat(encontrado).isNotEmpty();
-        assertThat(encontrado.get().getNombre()).isEqualTo("etiqueta1");
-        etiquetaRepository.delete(etiqueta);
+        assertThat(encontrado.get().getFormacion_id()).isEqualTo(1);
+        formacionEtiquetaRepository.delete(fe);
     }
 
     /**
-     * Test para actualizar una etiqueta
+     * Test para actualizar una FormacionEtiqueta
      */
     @Test
     public void testActualizarEtiqueta() {
@@ -63,7 +66,7 @@ class FormacionEtiquetaRepositoryTests {
     }
 
     /**
-     * Test para eliminar una etiqueta
+     * Test para eliminar una FormacionEtiqueta
      */
     @Test
     public void testEliminarEtiqueta() {
@@ -79,8 +82,8 @@ class FormacionEtiquetaRepositoryTests {
     }
 
     /**
-     * Método para crear una etiqueta
-     * @return objeto etiqueta
+     * Método para crear una FormacionEtiqueta
+     * @return objeto FormacionEtiqueta
      */
     public FormacionEtiqueta crearFormacionEtiqueta(){
         FormacionEtiqueta formacionEtiqueta = new FormacionEtiqueta();
