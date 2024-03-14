@@ -4,21 +4,24 @@ import jakarta.persistence.*;
 
 import java.sql.Timestamp;
 
-@Table(name = "Usuarios")
+/**
+ * Clase empleada como entidad para mapear la información correspondiente de la tabla usuarios
+ * @author ALEXJOSE
+ */
+@Table(name = "usuarios")
 @Entity
 public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private int id;
-    private String usuario;
-    private String contrasena;
-    private String nombre;
-    private String apellidos;
-    private String email;
-    private String telefono;
-    private Timestamp actualizacion;
-
-    private String estado;
+    private int id; // Identificador del usuario
+    private String usuario; // Nombre de usuario
+    private String contrasena; // Contrasena asociada al usuario
+    private String nombre; // Nombre real del usuario
+    private String apellidos; // Apellidos del usuario
+    private String email; // Email del usuario
+    private String telefono; // Teléfono de contacto del usuario
+    private Timestamp actualizacion; // Momento de actualización
+    private String estado; // Estado del usuario
 
     public Usuario() {
     }
