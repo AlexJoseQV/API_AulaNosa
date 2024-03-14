@@ -44,6 +44,10 @@ public class UsuarioEtiqueta {
         this.etiqueta_id = etiqueta_id;
     }
 
+    /**
+     * Método toString
+     * @return cadena con los identificadores de usuario y etiquetas
+     */
     @Override
     public String toString() {
         return "UsuarioEtiqueta{" +
