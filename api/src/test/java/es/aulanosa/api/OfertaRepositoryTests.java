@@ -5,16 +5,21 @@ import es.aulanosa.api.repositories.OfertaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.Optional;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+/**
+ * Esta clase contiene pruebas unitarias para la clase OfertaRepository.
+ */
 @SpringBootTest
 class OfertaRepositoryTests {
+
 	@Autowired
 	private OfertaRepository ofertaRepository;
 
+	/**
+	 * Prueba guardar una oferta en el repositorio.
+	 */
 	@Test
 	public void testGuardarOferta() {
 		Oferta oferta = crearOferta();
@@ -25,9 +30,11 @@ class OfertaRepositoryTests {
 		ofertaRepository.delete(oferta);
 	}
 
+	/**
+	 * Prueba buscar una oferta por su identificador en el repositorio.
+	 */
 	@Test
 	public void testBuscarOfertaPorId() {
-
 		Oferta oferta = crearOferta();
 		oferta = ofertaRepository.save(oferta);
 
@@ -37,12 +44,13 @@ class OfertaRepositoryTests {
 		ofertaRepository.delete(oferta);
 	}
 
+	/**
+	 * Prueba actualizar una oferta en el repositorio.
+	 */
 	@Test
 	public void testActualizarOferta() {
-
 		Oferta oferta = crearOferta();
 		oferta = ofertaRepository.save(oferta);
-
 
 		oferta.setTitulo("Mateo2 Actualizado");
 		Oferta ofertaActualizado = ofertaRepository.save(oferta);
@@ -51,12 +59,13 @@ class OfertaRepositoryTests {
 		ofertaRepository.delete(oferta);
 	}
 
+	/**
+	 * Prueba eliminar una oferta del repositorio.
+	 */
 	@Test
 	public void testEliminarOferta() {
-
 		Oferta oferta = crearOferta();
 		oferta = ofertaRepository.save(oferta);
-
 
 		ofertaRepository.delete(oferta);
 
@@ -64,8 +73,11 @@ class OfertaRepositoryTests {
 		assertThat(ofertaEliminado).isEmpty();
 	}
 
-	public Oferta crearOferta(){
-
+	/**
+	 * Crea una oferta de prueba.
+	 * @return La oferta de prueba creada.
+	 */
+	public Oferta crearOferta() {
 		Oferta oferta = new Oferta();
 		oferta.setTitulo("Titulo");
 		oferta.setEstado("ABIERTA");
