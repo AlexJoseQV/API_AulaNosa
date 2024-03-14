@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 @Table(name = "usuarios_etiquetas")
 @Entity
 public class UsuarioEtiqueta {
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int usuario_id; //identificador de usuario//
 
