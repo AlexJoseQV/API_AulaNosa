@@ -1,5 +1,11 @@
 package es.aulanosa.api.models;
 
+import jakarta.persistence.*;
+
+import java.sql.Timestamp;
+
+@Table(name = "ofertas_etiquetas")
+@Entity
 public class OfertaEtiqueta {
 
     private int usuarioId; //identificador de usuario//
