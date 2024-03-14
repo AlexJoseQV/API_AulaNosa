@@ -10,17 +10,18 @@ public class OfertaEtiqueta {
 
     @Id
 
-    private int usuario_id; //identificador de usuario//
+    private int etiqueta_id; //identificador de etiqueta//
 
     private int oferta_id; //identificador de oferta//
 
     /**
      * constructor completo
-     * @Param usuario_id es el identificador de usuario
+     * @Param usuario_id es el identificador de etiquetas
      * @Param oferta_id es el identificador de las ofertas
      */
-    public OfertaEtiqueta(int usuario_id, int oferta_id) {
-        this.usuario_id = usuario_id;
+
+    public OfertaEtiqueta(int etiqueta_id, int oferta_id) {
+        this.etiqueta_id = etiqueta_id;
         this.oferta_id = oferta_id;
     }
 
@@ -31,12 +32,12 @@ constructor vacío
     public OfertaEtiqueta() {
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    public int getEtiqueta_id() {
+        return etiqueta_id;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setEtiqueta_id(int etiqueta_id) {
+        this.etiqueta_id = etiqueta_id;
     }
 
     public int getOferta_id() {
@@ -51,10 +52,11 @@ constructor vacío
      * Método toString
      * @return cadena con los identificadores de usuario y ofertas
      */
+
     @Override
     public String toString() {
         return "OfertaEtiqueta{" +
-                "usuario_id=" + usuario_id +
+                "etiqueta_id=" + etiqueta_id +
                 ", oferta_id=" + oferta_id +
                 '}';
     }
