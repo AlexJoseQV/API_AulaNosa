@@ -56,6 +56,19 @@ public class Oferta {
     }
 
     /**
+     * Constructor de la clase Oferta.
+     */
+    public Oferta(int id, int vacantes, String titulo, String estado, String descripcion, String requisitos, ArrayList<Byte> imagen) {
+        this.id = id;
+        this.vacantes = vacantes;
+        this.titulo = titulo;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.requisitos = requisitos;
+        this.imagen = imagen;
+    }
+
+    /**
      * Obtiene el identificador de la oferta.
      * @return El identificador de la oferta.
      */
