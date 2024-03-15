@@ -1,17 +1,25 @@
 package es.aulanosa.api.repositories;
 
 import es.aulanosa.api.models.Etiqueta;
-import es.aulanosa.api.models.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+
 
 /**
  * Interfaz para el respositorio de Etiqueta
  * Esta interfaz extiende JpaRepository, proporcionando métodos CRUD para la entidad Etiqueta
  * @author MATHIAS
  */
+@Repository
 public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
-    List<Etiqueta> findById(int id);
+    @Query("SELECT e\n" +
+            "FROM UsuarioEtiqueta ue INNER JOIN Usuario u\n" +
+            "on ue.usuario_id = u.id INNER JOIN Etiqueta e\n" +
+            "on ue.etiqueta_id = e.id\n" +
+            "WHERE u.id = :id")
+    List<Etiqueta>findById(@Param("id")int id);
 }

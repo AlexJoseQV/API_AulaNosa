@@ -4,6 +4,7 @@ import es.aulanosa.api.services.EtiquetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,5 +23,10 @@ public class EtiquetaController {
     @GetMapping("api/etiquetas")
     ResponseEntity<?> listarEtiquetas(){
         return ResponseEntity.ok(etiquetaService.listarEtiquetas());
+    }
+
+    @GetMapping("/api/usuarios/{id}/intereses")
+    ResponseEntity<?> listarInteresesUsuario(@PathVariable int id){
+        return ResponseEntity.ok(etiquetaService.listarInteresesUsuario(id));
     }
 }

@@ -12,5 +12,5 @@ public interface EtiquetaService {
      * @return Objeto de la clase ListaEtiquetaDTOSalida con la lista de etiquetas y lista de errores
      */
     ListaEtiquetaDTOSalida listarEtiquetas();
-    ListaEtiquetaDTOSalida listarInteresesUsuario(int usuario_id);
+    ListaEtiquetaDTOSalida listarInteresesUsuario(int id);
 }

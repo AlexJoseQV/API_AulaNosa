@@ -38,10 +38,10 @@ public class EtiquetaServiceImpl implements EtiquetaService {
     }
 
     @Override
-    public ListaEtiquetaDTOSalida listarInteresesUsuario(int usuario_id) {
+    public ListaEtiquetaDTOSalida listarInteresesUsuario(int id) {
         List<String> errores = new ArrayList<>();
         try {
-            return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findById(usuario_id)),errores, new Timestamp(System.currentTimeMillis()));
+            return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findById(id)),errores, new Timestamp(System.currentTimeMillis()));
         }catch (Exception e){
             errores.add("Hubo un error");
         }
