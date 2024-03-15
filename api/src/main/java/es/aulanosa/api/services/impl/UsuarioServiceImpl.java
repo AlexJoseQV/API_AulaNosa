@@ -57,4 +57,28 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
     }
+
+    /**
+     * Método que permite obtener la información de un usuario a partir de su identificador
+     * @param idUsuario Identificador del usuario
+     * @return Información del usuario a devolver
+     */
+    @Override
+    public UsuarioDTOSalida devolverUsuario(int idUsuario){
+        List<String> errores = new ArrayList<>();
+        UsuarioDTO usuarioDTO = null;
+
+        try {
+            Optional<Usuario> usuarioOpt = usuarioRepository.findById(idUsuario);
+            if(usuarioOpt.isPresent()){
+                usuarioDTO = UsuarioMapper.convertirADTO(usuarioOpt.get());
+            }else{
+                errores.add("Error el usuario no existe");
+            }
+        }catch (Exception e){
+            errores.add("Error con la base de datos");
+        }
+
+        return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
+    }
 }
