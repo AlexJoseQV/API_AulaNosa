@@ -1,24 +1,15 @@
-package es.aulanosa.api.models;
-
-import jakarta.persistence.*;
-
-import java.io.Serializable;
-
+package es.aulanosa.api.dtos;
 /**
  * Esta clase representa una etiqueta
  */
-@Entity
-@Table(name = "etiquetas")
-public class Etiqueta implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EtiquetaDTO {
     private int id;
     private String nombre;
 
     /**
      * Constructor vacío
      */
-    public Etiqueta() {
+    public EtiquetaDTO() {
     }
 
     /**
@@ -26,7 +17,7 @@ public class Etiqueta implements Serializable {
      * @param id identificador de la etiqueta
      * @param nombre nombre de la etiqueta
      */
-    public Etiqueta(int id, String nombre) {
+    public EtiquetaDTO(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
@@ -53,7 +44,7 @@ public class Etiqueta implements Serializable {
      */
     @Override
     public String toString() {
-        return "Etiqueta{" +
+        return "EtiquetaDTO{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 '}';
