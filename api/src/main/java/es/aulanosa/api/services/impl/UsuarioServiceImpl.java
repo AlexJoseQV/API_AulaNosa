@@ -44,9 +44,11 @@ public class UsuarioServiceImpl implements UsuarioService {
                 if (usuario.getContrasena().equals(accesoDTO.getContrasena())) {
                     // Contraseña correcta, convertir Usuario a UsuarioDTOSalida
                     usuarioDTO = UsuarioMapper.convertirADTO(usuario);
+                }else{
+                    errores.add("Error de contrasena");
                 }
             }else{
-                errores.add("Error de acceso");
+                errores.add("Error email no existe");
             }
         }catch (Exception e){
             e.printStackTrace();
