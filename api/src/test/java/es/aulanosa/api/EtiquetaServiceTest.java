@@ -3,7 +3,6 @@ import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.models.Etiqueta;
 import es.aulanosa.api.repositories.EtiquetaRepository;
 import es.aulanosa.api.services.EtiquetaService;
-import es.aulanosa.api.services.impl.EtiquetaServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @SpringBootTest
 public class EtiquetaServiceTest {
-
+    @Autowired
     private EtiquetaService etiquetaService;
     @Autowired
     private EtiquetaRepository etiquetaRepository;
@@ -28,7 +27,6 @@ public class EtiquetaServiceTest {
      */
     @Test
     public void testListarEtiquetas(){
-        etiquetaService = new EtiquetaServiceImpl();
         List<Etiqueta> etiquetas = new ArrayList<>();
         etiquetas.add(new Etiqueta(1,"Etiqueta1"));
         etiquetas.add(new Etiqueta(2,"Etiqueta2"));

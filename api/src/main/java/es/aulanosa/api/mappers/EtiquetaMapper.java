@@ -10,6 +10,7 @@ import java.util.List;
 /**
  * Esta clase realiza los cambios entre lista de etiquetas y lista de etiquetasDTO
  * y de etiqueta a etiquetaDTO
+ * @author MATHIAS
  */
 public class EtiquetaMapper {
 

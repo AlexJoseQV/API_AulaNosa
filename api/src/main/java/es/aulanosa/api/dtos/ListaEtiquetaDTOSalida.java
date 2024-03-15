@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Esta clase representa una etiqueta la cuál se devolverá desde la api
+ * @author MATHIAS
  */
 public class ListaEtiquetaDTOSalida {
     private List<EtiquetaDTO> etiquetas;

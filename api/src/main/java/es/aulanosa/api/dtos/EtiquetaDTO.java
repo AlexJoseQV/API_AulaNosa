@@ -1,6 +1,7 @@
 package es.aulanosa.api.dtos;
 /**
  * Esta clase representa una etiqueta
+ * @author MATHIAS
  */
 public class EtiquetaDTO {
     private int id;

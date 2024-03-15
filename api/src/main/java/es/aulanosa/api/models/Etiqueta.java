@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Esta clase representa una etiqueta
+ * @author MATHIAS
  */
 @Entity
 @Table(name = "etiquetas")
