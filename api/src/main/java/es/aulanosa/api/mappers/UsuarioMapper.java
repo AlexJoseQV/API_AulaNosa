@@ -7,7 +7,7 @@ import es.aulanosa.api.models.Usuario;
  * Clase empleada para el mapeo de objetos correspondientes a la información de un usuario
  * @author ALEXJOSE
  */
-public class UsuarioMapper {
+public class    UsuarioMapper {
 
     /**
      * Método que permite convertir un UsuarioDTO a un modelo Usuario

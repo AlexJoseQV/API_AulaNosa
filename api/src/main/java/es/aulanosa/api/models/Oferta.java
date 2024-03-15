@@ -69,8 +69,12 @@ public class Oferta {
         this.titulo = titulo;
         this.estado = estado;
         this.descripcion = descripcion;
+        this.fecha = fecha;
         this.requisitos = requisitos;
         this.imagen = imagen;
+    }
+
+    public Oferta(int id, String titulo, String descripcion, String requisitos, int vacantes, ArrayList<Byte> imagen, Timestamp fecha) {
     }
 
     /**
