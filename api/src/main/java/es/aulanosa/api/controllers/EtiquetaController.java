@@ -3,6 +3,7 @@ package es.aulanosa.api.controllers;
 import es.aulanosa.api.services.EtiquetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author MATHIAS
  */
 @RestController
+@CrossOrigin
 public class EtiquetaController {
     @Autowired
     private EtiquetaService etiquetaService;
