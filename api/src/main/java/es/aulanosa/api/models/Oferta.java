@@ -47,7 +47,7 @@ public class Oferta {
     /**
      * Requisitos necesarios para aplicar a la oferta.
      */
-    private String requisitos; // Mappear desde ArrayList<EtiquetasDTO>
+    private String requisitos; // Mappear desde ArrayList<EtiquetaDTO>
 
     /**
      * Imagen asociada a la oferta.
@@ -69,6 +69,16 @@ public class Oferta {
         this.titulo = titulo;
         this.estado = estado;
         this.descripcion = descripcion;
+        this.requisitos = requisitos;
+        this.imagen = imagen;
+    }
+
+    public Oferta(int vacantes, String titulo, String estado, String descripcion, Timestamp fecha, String requisitos, ArrayList<Byte> imagen) {
+        this.vacantes = vacantes;
+        this.titulo = titulo;
+        this.estado = estado;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
         this.requisitos = requisitos;
         this.imagen = imagen;
     }
