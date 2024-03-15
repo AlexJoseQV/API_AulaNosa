@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class AccesoDTO {
 
     @NotNull(message = "El nombre no puede ser nulo")
-    @Size(max = 50, message = "El nombre no puede superar los 50 caracteres")
+    @Size(max = 100, message = "El nombre no puede superar los 100 caracteres")
     String nombre; // Nombre con el que se realizará el acceso
     @NotNull(message = "La contrasena no puede ser nula")
     @Size(max = 64, message = "La contrasena no puede superar los 64 caracteres")
