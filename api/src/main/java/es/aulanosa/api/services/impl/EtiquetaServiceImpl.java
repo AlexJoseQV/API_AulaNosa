@@ -36,4 +36,16 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
 
     }
+
+    @Override
+    public ListaEtiquetaDTOSalida listarInteresesUsuario(int usuario_id) {
+        List<String> errores = new ArrayList<>();
+        try {
+            return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findById(usuario_id)),errores, new Timestamp(System.currentTimeMillis()));
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+
+        return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
+    }
 }
