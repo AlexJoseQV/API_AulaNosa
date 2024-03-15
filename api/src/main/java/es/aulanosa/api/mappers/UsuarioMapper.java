@@ -28,4 +28,6 @@ public class UsuarioMapper {
 
         return new UsuarioDTO(usuario.getId(), usuario.getUsuario(), "", usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(), usuario.getTelefono(), usuario.getActualizacion(), usuario.getEstado(), usuario.getImagen());
     }
+
+
 }
