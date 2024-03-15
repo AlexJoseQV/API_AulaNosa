@@ -60,13 +60,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO) {
 
         List<String> errores = new ArrayList<>();
-        UsuarioDTOSalida usuarioDTOSalida = new UsuarioDTOSalida();
-        Optional<Usuario> usuarioREcuperado = usuarioRepository.findByEmail(usuarioDTO.getUsuario());
-        Usuario usuario = usuarioREcuperado.get();
+        Optional <Usuario> usuarioRecuperado = usuarioRepository.findById(usuarioDTO.getId());
+        Usuario usuario= new Usuario();
+        if (usuarioRecuperado.isPresent()){
+            usuario = usuarioRecuperado.get();
+        }
+
         try{
-            if(usuarioREcuperado.isPresent()){
-
-
                 usuario.setUsuario(usuarioDTO.getUsuario());
                 usuario.setNombre(usuarioDTO.getNombre());
                 usuario.setApellidos(usuarioDTO.getApellidos());
@@ -76,9 +76,8 @@ public class UsuarioServiceImpl implements UsuarioService {
                 usuario.setTelefono(usuarioDTO.getTelefono());
                 usuario.setActualizacion(new Timestamp(System.currentTimeMillis()));
 
-            }else{
-                errores.add("Error de acceso");
-            }
+                usuarioRepository.save(usuario);
+
         }catch (Exception e){
             e.printStackTrace();
             errores.add("Error con la base de datos");
