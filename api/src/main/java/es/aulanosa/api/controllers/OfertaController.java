@@ -23,7 +23,7 @@ public class OfertaController {
      * @return Se devuelve un listado con la información de todas las ofertas
      */
     @GetMapping("/api/ofertas")
-    ResponseEntity<?> obtenerUsuario() {
+    ResponseEntity<?> obtenerOfertas() {
 
         return ResponseEntity.ok(ofertaService.listarOfertas());
     }
