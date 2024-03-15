@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Clase DTO para manejar información correspondiente a las ofertas
  * @author RubénC
  */
-public class OfertaDTO {
+public class OfertasDTO {
 
     private int id; //Identificador de la oferta
 
@@ -25,10 +25,10 @@ public class OfertaDTO {
 
     private Timestamp fecha; // Fecha de la publicación de la oferta
 
-    public OfertaDTO() {
+    public OfertasDTO() {
     }
 
-    public OfertaDTO(int id, String titulo, String descripcion, String requisitos, int vacantes, String estado, ArrayList<Byte> imagen, Timestamp fecha) {
+    public OfertasDTO(int id, String titulo, String descripcion, String requisitos, int vacantes, String estado, ArrayList<Byte> imagen, Timestamp fecha) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;

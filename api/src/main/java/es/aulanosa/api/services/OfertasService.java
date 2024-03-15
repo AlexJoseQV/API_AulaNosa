@@ -1,6 +1,6 @@
 package es.aulanosa.api.services;
 
-import es.aulanosa.api.dtos.OfertaDTO;
+import es.aulanosa.api.dtos.OfertasDTO;
 
 import java.util.List;
 
@@ -9,10 +9,10 @@ import java.util.List;
  * @author RubénC
  */
 
-public interface OfertaService {
-    List<OfertaDTO> obtenerListaOfertas();
+public interface OfertasService {
+    List<OfertasDTO> obtenerListaOfertas();
 
-    void crearOfertaDTO(OfertaDTO ofertaDTO);
+    void crearOfertaDTO(OfertasDTO ofertaDTO);
 
-    void modificarOfertaDTO(OfertaDTO ofertaDTO);
+    void modificarOfertaDTO(OfertasDTO ofertaDTO);
 }
