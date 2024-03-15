@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  * @author ALEXJOSE
  */
 @RestController
+@CrossOrigin
 public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService; // Instancia del servicio del usuario
