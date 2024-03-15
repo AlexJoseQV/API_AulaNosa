@@ -25,6 +25,11 @@ public class EtiquetaController {
         return ResponseEntity.ok(etiquetaService.listarEtiquetas());
     }
 
+    /**
+     * Endpoint que permite listar las etiquetas por el identificador del usuario
+     * @param id identificador del usuario
+     * @return Código de respuesta 200 con la lista de etiquetas filtrada por el identificador del usuario
+     */
     @GetMapping("/api/usuarios/{id}/intereses")
     ResponseEntity<?> listarInteresesUsuario(@PathVariable int id){
         return ResponseEntity.ok(etiquetaService.listarInteresesUsuario(id));

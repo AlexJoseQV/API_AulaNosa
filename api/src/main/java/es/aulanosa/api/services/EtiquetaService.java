@@ -12,5 +12,11 @@ public interface EtiquetaService {
      * @return Objeto de la clase ListaEtiquetaDTOSalida con la lista de etiquetas y lista de errores
      */
     ListaEtiquetaDTOSalida listarEtiquetas();
+
+    /**
+     * Método que permite listar las etiquetas por el identificador de usuario
+     * @param id identificador del usuario
+     * @return Objeto de la clase ListaEtiquetaDTOSalida con la lista de etiquetas y lista de errores
+     */
     ListaEtiquetaDTOSalida listarInteresesUsuario(int id);
 }

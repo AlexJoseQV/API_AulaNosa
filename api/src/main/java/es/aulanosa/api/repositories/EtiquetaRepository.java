@@ -16,6 +16,11 @@ import java.util.List;
  */
 @Repository
 public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
+    /**
+     * Este método permite listar las etiquetas por el identificador del usuario usando la consulta que se encuentra en la anotación Query
+     * @param id identificador del usuario
+     * @return lista de etiquetas
+     */
     @Query("SELECT e\n" +
             "FROM UsuarioEtiqueta ue INNER JOIN Usuario u\n" +
             "on ue.usuario_id = u.id INNER JOIN Etiqueta e\n" +
