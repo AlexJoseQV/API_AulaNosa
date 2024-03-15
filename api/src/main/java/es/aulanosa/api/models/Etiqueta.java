@@ -2,12 +2,14 @@ package es.aulanosa.api.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 /**
  * Esta clase representa una etiqueta
  */
 @Entity
 @Table(name = "etiquetas")
-public class Etiqueta {
+public class Etiqueta implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
