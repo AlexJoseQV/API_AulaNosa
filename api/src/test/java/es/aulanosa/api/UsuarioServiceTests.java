@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author ALEXJOSE
  */
 @SpringBootTest
-public class UsuarioServiceTest {
+public class UsuarioServiceTests {
     @Autowired
     private UsuarioRepository usuarioRepository; // Instancia de la clase repositorio del usuario
     @Autowired
