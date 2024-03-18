@@ -6,6 +6,9 @@ import es.aulanosa.api.models.Formacion;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * clase con los metodos de mapeo de un Formacion
+ */
 public class FormacionMapper {
 
     public static Formacion convertirAModel(FormacionDTO formacionDTO){
@@ -21,7 +24,7 @@ public class FormacionMapper {
     public static FormacionDTO convertiraDTO (Formacion formacion){
 
 
-       List<String> requisitos = List.of(formacion.getRequisitos().split("$$"));
+       List<String> requisitos = List.of(formacion.getRequisitos().split("\\$\\$"));
 
        return new FormacionDTO(formacion.getId(), formacion.getTitulo(), formacion.getDescripcion(), requisitos, formacion.getInicio() , formacion.getFin() , formacion.getCoste() , formacion.getEstado() , formacion.getImagen() , formacion.getFecha());
     }
