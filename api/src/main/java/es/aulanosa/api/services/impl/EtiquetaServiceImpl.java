@@ -36,4 +36,19 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
 
     }
+    /**
+     * Este método permite listar las etiquetas por el identificador de usuario
+     * @return objeto listaEtiquetaDTOSalida
+     */
+    @Override
+    public ListaEtiquetaDTOSalida listarInteresesUsuario(int id) {
+        List<String> errores = new ArrayList<>();
+        try {
+            return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findById(id)),errores, new Timestamp(System.currentTimeMillis()));
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+
+        return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
+    }
 }

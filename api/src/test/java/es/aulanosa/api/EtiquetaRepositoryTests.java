@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -35,10 +36,8 @@ class EtiquetaRepositoryTests {
 
         Etiqueta etiqueta = crearEtiqueta();
         etiqueta = etiquetaRepository.save(etiqueta);
-
-        Optional<Etiqueta> encontrado = etiquetaRepository.findById(etiqueta.getId());
-        assertThat(encontrado).isNotEmpty();
-        assertThat(encontrado.get().getNombre()).isEqualTo("etiqueta1");
+        List<Etiqueta> encontrado = etiquetaRepository.findById(etiqueta.getId());
+        assertThat(encontrado).isEqualTo(false);
         etiquetaRepository.delete(etiqueta);
     }
 
@@ -71,8 +70,8 @@ class EtiquetaRepositoryTests {
 
         etiquetaRepository.delete(etiqueta);
 
-        Optional<Etiqueta> etiquetaEliminado = etiquetaRepository.findById(etiqueta.getId());
-        assertThat(etiquetaEliminado).isEmpty();
+        List<Etiqueta> etiquetaEliminado = etiquetaRepository.findById(etiqueta.getId());
+        assertThat(etiquetaEliminado).isEqualTo("");
     }
 
     /**
