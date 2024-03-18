@@ -2,6 +2,7 @@ package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.NovedadDTO;
 import es.aulanosa.api.services.EtiquetaService;
+import es.aulanosa.api.services.FormacionService;
 import es.aulanosa.api.services.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,8 @@ public class NovedadesController {
 
     @Autowired
     private OfertaService ofertasService;
-//    private FormacionesService formacionesService;
+    @Autowired
+    private FormacionService formacionService;
 
     /**
      * Endpoint que permite listar las novedades
@@ -28,7 +30,6 @@ public class NovedadesController {
     @GetMapping("api/novedades")
     ResponseEntity<?> listarNovedades(){
 
-        return ResponseEntity.ok(new NovedadDTO(ofertasService.listarOfertas()));
-        // Se añadira la lista de formaciones una vez este lista
+        return ResponseEntity.ok(new NovedadDTO(ofertasService.listarOfertas(), formacionService.listarFormaciones()));
     }
 }
