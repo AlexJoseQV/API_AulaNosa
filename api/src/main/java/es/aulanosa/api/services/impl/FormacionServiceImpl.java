@@ -3,14 +3,18 @@ package es.aulanosa.api.services.impl;
  * clase con los metodos para las formaciones
  */
 
-import es.aulanosa.api.dtos.FormacionDTO;
-import es.aulanosa.api.dtos.FormacionDTOSalida;
-import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
-import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
+import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.mappers.EtiquetaMapper;
 import es.aulanosa.api.mappers.FormacionMapper;
+import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Formacion;
+import es.aulanosa.api.models.Usuario;
+import es.aulanosa.api.models.UsuarioEtiqueta;
+import es.aulanosa.api.models.UsuarioFormacion;
 import es.aulanosa.api.repositories.FormacionRepository;
+import es.aulanosa.api.repositories.UsuarioEtiquetaRepository;
+import es.aulanosa.api.repositories.UsuarioFormacionRepository;
+import es.aulanosa.api.repositories.UsuarioRepository;
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +29,10 @@ public class FormacionServiceImpl implements FormacionService {
 
     @Autowired
     private FormacionRepository formacionRepository;
+    @Autowired
+    private UsuarioFormacionRepository usuarioFormacionRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
     @Override
     public ListaFormacionDTOSalida listarFormaciones() {
 
@@ -72,6 +80,39 @@ public class FormacionServiceImpl implements FormacionService {
         return new FormacionDTOSalida(FormacionMapper.convertiraDTO(formacion), new Timestamp(System.currentTimeMillis()) , errores);
 
 
+    }
+
+    @Override
+    public ListaUsuarioDTOSalida obtenerUsuariosOferta(int formacionId) {
+
+        List<String> errores = new ArrayList<>();
+        ListaUsuarioDTOSalida listaUsuarioDTOSalida = new ListaUsuarioDTOSalida();
+        List<UsuarioDTO> usuarios = new ArrayList<>();
+        UsuarioFormacion usuarioFormacion = new UsuarioFormacion();
+        try {
+
+            Optional<UsuarioFormacion> usuarioFormacionRec = usuarioFormacionRepository.findByFormacionId(formacionId);
+            if (usuarioFormacionRec.isPresent()){
+                usuarioFormacion =  usuarioFormacionRec.get();
+            }
+
+            Optional<Usuario> user = usuarioRepository.findById(usuarioFormacion.getUsuario_id());
+
+            if (user.isPresent()){
+
+                usuarios.add(UsuarioMapper.convertirADTO(user.get()));
+            }
+
+
+            return new ListaUsuarioDTOSalida(usuarios, new Timestamp(System.currentTimeMillis()), errores);
+
+
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+
+
+        return new ListaUsuarioDTOSalida(usuarios, new Timestamp(System.currentTimeMillis()), errores);
     }
 
 

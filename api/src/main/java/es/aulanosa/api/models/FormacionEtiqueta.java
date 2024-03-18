@@ -11,15 +11,16 @@ public class FormacionEtiqueta {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id ;
-    private int formacion_id;
+   @Column(name = "formacion_id")
+    private int formacionId;
     private int etiqueta_id;
 
     public FormacionEtiqueta() {
     }
 
-    public FormacionEtiqueta(int id, int formacion_id, int etiqueta_id) {
+    public FormacionEtiqueta(int id, int formacionId, int etiqueta_id) {
         this.id = id;
-        this.formacion_id = formacion_id;
+        this.formacionId = formacionId;
         this.etiqueta_id = etiqueta_id;
     }
 
@@ -31,12 +32,12 @@ public class FormacionEtiqueta {
         this.id = id;
     }
 
-    public int getFormacion_id() {
-        return formacion_id;
+    public int getFormacionId() {
+        return formacionId;
     }
 
-    public void setFormacion_id(int formacion_id) {
-        this.formacion_id = formacion_id;
+    public void setFormacionId(int formacionId) {
+        this.formacionId = formacionId;
     }
 
     public int getEtiqueta_id() {
@@ -51,7 +52,7 @@ public class FormacionEtiqueta {
     public String toString() {
         return "FormacionEtiqueta{" +
                 "id=" + id +
-                ", formacion_id=" + formacion_id +
+                ", formacionId=" + formacionId +
                 ", etiqueta_id=" + etiqueta_id +
                 '}';
     }
