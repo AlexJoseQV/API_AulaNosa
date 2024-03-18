@@ -3,7 +3,11 @@ package es.aulanosa.api.services.impl;
  * clase con los metodos para las formaciones
  */
 
-import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
+import es.aulanosa.api.dtos.FormacionDTO;
+import es.aulanosa.api.dtos.FormacionDTOSalida;
+import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
+import es.aulanosa.api.dtos.ListaFormacionDTOSailda;
+import es.aulanosa.api.mappers.EtiquetaMapper;
 import es.aulanosa.api.mappers.FormacionMapper;
 import es.aulanosa.api.models.Formacion;
 import es.aulanosa.api.repositories.FormacionRepository;
@@ -14,13 +18,15 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FormacionServiceImpl implements FormacionService {
 
     @Autowired
     private FormacionRepository formacionRepository;
     @Override
-    public ListaFormacionDTOSalida listarFormaciones() {
+    public ListaFormacionDTOSailda listarFormaciones() {
 
         List<String> errores = new ArrayList<>();
         List<Formacion> formaciones = new ArrayList<>();
@@ -28,7 +34,7 @@ public class FormacionServiceImpl implements FormacionService {
 
             formaciones = formacionRepository.findAll();
 
-            return new ListaFormacionDTOSalida(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
+            return new ListaFormacionDTOSailda(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
 
 
         }catch (Exception e){
@@ -37,7 +43,35 @@ public class FormacionServiceImpl implements FormacionService {
 
 
 
-        return new ListaFormacionDTOSalida(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
+        return new ListaFormacionDTOSailda(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
+    }
+
+    @Override
+    public FormacionDTOSalida obtenerFormacion(int idFormacion) {
+
+
+        List<String> errores = new ArrayList<>();
+        Formacion formacion = new Formacion();
+        try {
+
+            Optional<Formacion> formacionRec = formacionRepository.findById(idFormacion);
+            if (formacionRec.isPresent()){
+                formacion=formacionRec.get();
+            }
+
+            return new FormacionDTOSalida(FormacionMapper.convertiraDTO(formacion), new Timestamp(System.currentTimeMillis()) , errores);
+
+
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+
+
+
+        
+        return new FormacionDTOSalida(FormacionMapper.convertiraDTO(formacion), new Timestamp(System.currentTimeMillis()) , errores);
+
+
     }
 
 
