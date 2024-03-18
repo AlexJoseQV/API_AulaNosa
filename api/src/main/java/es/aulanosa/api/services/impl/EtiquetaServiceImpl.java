@@ -1,5 +1,6 @@
 package es.aulanosa.api.services.impl;
 
+import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
@@ -69,5 +70,28 @@ public class EtiquetaServiceImpl implements EtiquetaService {
             errores.add("Hubo un error");
         }
         return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
+    }
+
+    /**
+     * Método para crear intereses
+     * @param id identificador del usuario
+     * @param etiqueta identificador de la etiqueta
+     * @return Objeto genérico
+     */
+    @Override
+    public GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiqueta) {
+
+        List<String> errores = new ArrayList<>();
+        try{
+            etiquetaRepository.insertar(id,etiqueta.getId());
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            errores.add("Hubo un error");
+
+        }
+
+        return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
+
     }
 }

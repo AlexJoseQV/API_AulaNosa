@@ -1,5 +1,6 @@
 package es.aulanosa.api.services;
 
+import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 
@@ -27,4 +28,12 @@ public interface EtiquetaService {
      * @return Objeto de la clase GenericoDTOSalida con la información genérica
      */
     GenericoDTOSalida eliminarInteresesUsuario(int id);
+
+    /**
+     * Este método permite registrar una etiqueta a un usuario para saber sus intereses
+     * @param id identificador del usuario
+     * @param etiquetaDTO identificador de la etiqueta
+     * @return Objeto GenericoDTOSalida con la información general
+     */
+    GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiquetaDTO);
 }

@@ -1,6 +1,7 @@
 package es.aulanosa.api.repositories;
 
 import es.aulanosa.api.models.Etiqueta;
+import jakarta.transaction.Transactional;
 import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -37,4 +38,15 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
     @Modifying(clearAutomatically=true, flushAutomatically=true)
     @Query("DELETE FROM UsuarioEtiqueta WHERE usuario_id = :id")
     void deleteById(@Param("id")int id);
+
+    /**
+     * Este método permite registrar una etiqueta a un usuario para saber sus intereses
+     * @param id identificador del usuario
+     * @param idEtiqueta identificador de la etiqueta
+     */
+    @Modifying
+    @Transactional
+    @Query("INSERT INTO UsuarioEtiqueta(usuario_id,etiqueta_id) VALUES(:id,:idEtiqueta) ")
+    void insertar(@Param("id")int id, @Param("idEtiqueta") int idEtiqueta);
+
 }
