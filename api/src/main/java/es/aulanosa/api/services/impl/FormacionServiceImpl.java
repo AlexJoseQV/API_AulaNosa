@@ -6,7 +6,7 @@ package es.aulanosa.api.services.impl;
 import es.aulanosa.api.dtos.FormacionDTO;
 import es.aulanosa.api.dtos.FormacionDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
-import es.aulanosa.api.dtos.ListaFormacionDTOSailda;
+import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
 import es.aulanosa.api.mappers.FormacionMapper;
 import es.aulanosa.api.models.Formacion;
@@ -26,7 +26,7 @@ public class FormacionServiceImpl implements FormacionService {
     @Autowired
     private FormacionRepository formacionRepository;
     @Override
-    public ListaFormacionDTOSailda listarFormaciones() {
+    public ListaFormacionDTOSalida listarFormaciones() {
 
         List<String> errores = new ArrayList<>();
         List<Formacion> formaciones = new ArrayList<>();
@@ -34,7 +34,7 @@ public class FormacionServiceImpl implements FormacionService {
 
             formaciones = formacionRepository.findAll();
 
-            return new ListaFormacionDTOSailda(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
+            return new ListaFormacionDTOSalida(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
 
 
         }catch (Exception e){
@@ -43,7 +43,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 
 
-        return new ListaFormacionDTOSailda(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
+        return new ListaFormacionDTOSalida(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
     }
 
     @Override

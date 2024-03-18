@@ -3,7 +3,7 @@ package es.aulanosa.api.controllers;
 import es.aulanosa.api.dtos.AccesoDTO;
 import es.aulanosa.api.dtos.FormacionDTO;
 import es.aulanosa.api.dtos.FormacionDTOSalida;
-import es.aulanosa.api.dtos.ListaFormacionDTOSailda;
+import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
 import es.aulanosa.api.repositories.FormacionRepository;
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class FormacionController {
      * @return devuelve FormacionDTOSalida (lista de formaciones)
      */
     @GetMapping("/api/formaciones")
-    ListaFormacionDTOSailda listarFormacion() {
+    ListaFormacionDTOSalida listarFormacion() {
 
         return formacionService.listarFormaciones();
     }
