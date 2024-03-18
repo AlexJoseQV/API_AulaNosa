@@ -1,9 +1,5 @@
 package es.aulanosa.api.services.impl;
 
-<<<<<<< HEAD
-=======
-import es.aulanosa.api.dtos.EtiquetaDTO;
->>>>>>> EndpointUsuariosInteresesIns
 import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
@@ -58,7 +54,6 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
     }
 
-<<<<<<< HEAD
     /**
      * Método que permite eliminar las etiquetas de un usuario
      * @param id identificador del usuario
@@ -74,22 +69,5 @@ public class EtiquetaServiceImpl implements EtiquetaService {
             errores.add("Hubo un error");
         }
         return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
-=======
-    @Override
-    public GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiqueta) {
-
-        List<String> errores = new ArrayList<>();
-        try{
-            etiquetaRepository.insertar(id,etiqueta.getId());
-
-        }catch (Exception e) {
-            e.printStackTrace();
-            errores.add("Hubo un error");
-
-        }
-
-        return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
-
->>>>>>> EndpointUsuariosInteresesIns
     }
 }

@@ -38,6 +38,4 @@ public class UsuarioController {
 
         return ResponseEntity.ok(usuarioService.devolverUsuario(idUsuario));
     }
-
-
 }

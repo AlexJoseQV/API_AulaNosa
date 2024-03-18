@@ -1,12 +1,7 @@
 package es.aulanosa.api.repositories;
 
-import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.models.Etiqueta;
-<<<<<<< HEAD
 import org.hibernate.annotations.NamedQuery;
-=======
-import jakarta.transaction.Transactional;
->>>>>>> EndpointUsuariosInteresesIns
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -36,22 +31,10 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
     List<Etiqueta>findById(@Param("id")int id);
 
     /**
-<<<<<<< HEAD
      * Este método permite eliminar los intereses de un usuario en concreto
      * @param id identificador del usuario
      */
     @Modifying(clearAutomatically=true, flushAutomatically=true)
     @Query("DELETE FROM UsuarioEtiqueta WHERE usuario_id = :id")
     void deleteById(@Param("id")int id);
-=======
-     * Este método permite registrar una etiqueta a un usuario para saber sus intereses
-     * @param id identificador del usuario
-     * @param idEtiqueta identificador de la etiqueta
-     */
-    @Modifying
-    @Transactional
-    @Query("INSERT INTO UsuarioEtiqueta(usuario_id,etiqueta_id) VALUES(:id,:idEtiqueta) ")
-    void insertar(@Param("id")int id, @Param("idEtiqueta") int idEtiqueta);
-
->>>>>>> EndpointUsuariosInteresesIns
 }

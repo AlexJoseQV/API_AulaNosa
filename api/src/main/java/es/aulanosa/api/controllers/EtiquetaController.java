@@ -1,6 +1,5 @@
 package es.aulanosa.api.controllers;
 
-import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.services.EtiquetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +35,6 @@ public class EtiquetaController {
     }
 
     /**
-<<<<<<< HEAD
      * Endpoint que permite eliminar las etiquetas de un usuario en específico
      * @param id identificador del usuario
      * @return Código de respuesta 200 con el objeto de la clase GenericoSalidaDTO
@@ -44,15 +42,5 @@ public class EtiquetaController {
     @DeleteMapping("/api/usuarios/{id}/intereses")
     ResponseEntity<?> eliminarInteresesUsuario(@PathVariable int id){
         return ResponseEntity.ok(etiquetaService.eliminarInteresesUsuario(id));
-=======
-     * Endpoint que permite registrar una etiqueta a un usuario para saber sus intereses
-     * @param idUsuario identificador del usuario
-     * @param etiquetaDTO Objeto EtiquetaDTO con la información de la etiqueta
-     * @return Código de respuesta 200 con la información general
-     */
-    @PostMapping("/api/usuarios/{idUsuario}/intereses")
-    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @RequestBody EtiquetaDTO etiquetaDTO){
-        return ResponseEntity.ok(etiquetaService.crearInteres(idUsuario,etiquetaDTO));
->>>>>>> EndpointUsuariosInteresesIns
     }
 }

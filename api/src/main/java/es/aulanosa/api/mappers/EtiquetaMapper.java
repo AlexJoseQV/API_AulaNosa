@@ -36,9 +36,4 @@ public class EtiquetaMapper {
     public static EtiquetaDTO convertirADTO(Etiqueta etiqueta){
         return new EtiquetaDTO(etiqueta.getId(), etiqueta.getNombre());
     }
-
-    public static Etiqueta convertirAModelo(EtiquetaDTO etiquetaDTO){
-
-        return new Etiqueta(etiquetaDTO.getId(), etiquetaDTO.getNombre());
-    }
 }

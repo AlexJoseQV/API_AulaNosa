@@ -1,9 +1,5 @@
 package es.aulanosa.api.services;
 
-<<<<<<< HEAD
-=======
-import es.aulanosa.api.dtos.EtiquetaDTO;
->>>>>>> EndpointUsuariosInteresesIns
 import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 
@@ -26,18 +22,9 @@ public interface EtiquetaService {
     ListaEtiquetaDTOSalida listarInteresesUsuario(int id);
 
     /**
-<<<<<<< HEAD
      * Método que permite eliminar las etiquetas de un usuario
      * @param id identificador del usuario
      * @return Objeto de la clase GenericoDTOSalida con la información genérica
      */
     GenericoDTOSalida eliminarInteresesUsuario(int id);
-=======
-     * Este método permite registrar una etiqueta a un usuario para saber sus intereses
-     * @param id identificador del usuario
-     * @param etiquetaDTO identificador de la etiqueta
-     * @return Objeto GenericoDTOSalida con la información general
-     */
-    GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiquetaDTO);
->>>>>>> EndpointUsuariosInteresesIns
 }
