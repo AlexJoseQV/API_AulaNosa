@@ -54,6 +54,12 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
     }
 
+    /**
+     * Método para crear intereses
+     * @param id identificador del usuario
+     * @param etiqueta identificador de la etiqueta
+     * @return
+     */
     @Override
     public GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiqueta) {
 
