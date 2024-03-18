@@ -1,7 +1,9 @@
 package es.aulanosa.api.repositories;
 
 import es.aulanosa.api.models.Etiqueta;
+import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -32,6 +34,7 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
      * Este método permite eliminar los intereses de un usuario en concreto
      * @param id identificador del usuario
      */
+    @Modifying(clearAutomatically=true, flushAutomatically=true)
     @Query("DELETE FROM UsuarioEtiqueta WHERE usuario_id = :id")
     void deleteById(@Param("id")int id);
 }

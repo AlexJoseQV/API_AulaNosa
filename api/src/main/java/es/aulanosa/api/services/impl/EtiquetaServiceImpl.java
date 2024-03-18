@@ -48,6 +48,7 @@ public class EtiquetaServiceImpl implements EtiquetaService {
             return new ListaEtiquetaDTOSalida(EtiquetaMapper.convertirALista(etiquetaRepository.findById(id)),errores, new Timestamp(System.currentTimeMillis()));
         }catch (Exception e){
             errores.add("Hubo un error");
+            e.printStackTrace();
         }
 
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
@@ -64,6 +65,7 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         try {
             etiquetaRepository.deleteById(id);
         }catch (Exception e){
+            e.printStackTrace();
             errores.add("Hubo un error");
         }
         return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
