@@ -43,4 +43,5 @@ public class EtiquetaController {
     ResponseEntity<?> eliminarInteresesUsuario(@PathVariable int id){
         return ResponseEntity.ok(etiquetaService.eliminarInteresesUsuario(id));
     }
+    
 }
