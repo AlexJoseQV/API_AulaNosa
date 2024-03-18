@@ -36,6 +36,6 @@ public class FormacionMapper {
             formacionDTOS.add(convertiraDTO(f));
         }
 
-
+        return formacionDTOS;
     }
 }

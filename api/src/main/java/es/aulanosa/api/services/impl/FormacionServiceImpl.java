@@ -8,11 +8,12 @@ import es.aulanosa.api.models.Formacion;
 import es.aulanosa.api.repositories.FormacionRepository;
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class FormacionServiceImpl implements FormacionService {
 
     @Autowired
@@ -21,9 +22,10 @@ public class FormacionServiceImpl implements FormacionService {
     public ListaFormacionDTOSailda listarFormaciones() {
 
         List<String> errores = new ArrayList<>();
+        List<Formacion> formaciones = new ArrayList<>();
         try {
 
-            List<Formacion> formaciones = formacionRepository.findAll();
+            formaciones = formacionRepository.findAll();
 
             return new ListaFormacionDTOSailda(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
 
@@ -34,6 +36,8 @@ public class FormacionServiceImpl implements FormacionService {
 
 
 
-        return null;
+        return new ListaFormacionDTOSailda(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
     }
+
+
 }
