@@ -28,8 +28,8 @@ public class NovedadesController {
      * @return Código de respuesta 200 con la lista de novedades
      */
     @GetMapping("api/novedades")
-    ResponseEntity<?> listarNovedades(){
+    NovedadDTO listarNovedades(){
 
-        return ResponseEntity.ok(new NovedadDTO(ofertasService.listarOfertas(), formacionService.listarFormaciones()));
+        return (new NovedadDTO(ofertasService.listarOfertas(), formacionService.listarFormaciones()));
     }
 }
