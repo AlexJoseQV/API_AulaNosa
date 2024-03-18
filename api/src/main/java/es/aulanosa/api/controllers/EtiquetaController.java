@@ -37,6 +37,6 @@ public class EtiquetaController {
     @PostMapping("/api/usuarios/{idUsuario}/intereses")
     ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario){
 
-        return ResponseEntity.ok()
+        return ResponseEntity.ok(etiquetaService.crearInteres(idUsuario));
     }
 }

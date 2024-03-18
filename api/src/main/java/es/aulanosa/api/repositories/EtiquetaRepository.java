@@ -27,4 +27,6 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
             "on ue.etiqueta_id = e.id\n" +
             "WHERE u.id = :id")
     List<Etiqueta>findById(@Param("id")int id);
+
+
 }

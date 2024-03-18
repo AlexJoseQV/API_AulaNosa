@@ -1,5 +1,6 @@
 package es.aulanosa.api.services;
 
+import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 
 /**
@@ -19,4 +20,6 @@ public interface EtiquetaService {
      * @return Objeto de la clase ListaEtiquetaDTOSalida con la lista de etiquetas y lista de errores
      */
     ListaEtiquetaDTOSalida listarInteresesUsuario(int id);
+
+    ListaEtiquetaDTOSalida crearInteres(EtiquetaDTO etiqueta);
 }

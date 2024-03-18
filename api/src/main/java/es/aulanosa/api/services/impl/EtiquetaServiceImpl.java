@@ -1,5 +1,6 @@
 package es.aulanosa.api.services.impl;
 
+import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
 import es.aulanosa.api.repositories.EtiquetaRepository;
@@ -50,5 +51,24 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         }
 
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
+    }
+
+    @Override
+    public ListaEtiquetaDTOSalida crearInteres(EtiquetaDTO etiqueta) {
+
+        List<String> errores = new ArrayList<>();
+        List<EtiquetaDTO> etiquetaDTOList = new ArrayList<>();
+
+        try{
+
+            etiquetaRepository.save(EtiquetaMapper.convertirAModelo(etiqueta));
+            
+        }catch (Exception e) {
+            errores.add("Hubo un error");
+
+        }
+
+        return new ListaEtiquetaDTOSalida(errores, );
+
     }
 }
