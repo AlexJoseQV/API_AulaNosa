@@ -13,11 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * controller con los endpoints realcionados con las Formaciones
+ */
 @RestController
 public class FormacionController {
 
     @Autowired
     private FormacionService formacionService;
+
+    /**
+     * endpoint de listar formaciones
+     * @return devuelve FormacionDTOSalida (lista de formaciones)
+     */
     @GetMapping("/api/formaciones")
     ListaFormacionDTOSailda listarFormacion() {
 

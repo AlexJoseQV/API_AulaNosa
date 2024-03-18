@@ -1,4 +1,7 @@
 package es.aulanosa.api.services.impl;
+/**
+ * clase con los metodos para las formaciones
+ */
 
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.dtos.ListaFormacionDTOSailda;
