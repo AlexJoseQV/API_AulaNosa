@@ -8,20 +8,21 @@ import java.sql.Timestamp;
 public class UsuarioEtiqueta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private int id;
     private int usuario_id; //identificador de usuario//
 
     private int etiqueta_id; //identificador de etiqueta//
 
-    public int getUsuario_id() {
-        return usuario_id;
-    }
+
     /**
      * Constructor completo
+     * @param id identificador
      * @param usuario_id identificador del usuario
      * @param etiqueta_id identificador de la etiqueta
      */
 
-    public UsuarioEtiqueta(int usuario_id, int etiqueta_id) {
+    public UsuarioEtiqueta(int id, int usuario_id, int etiqueta_id) {
+        this.id = id;
         this.usuario_id = usuario_id;
         this.etiqueta_id = etiqueta_id;
     }
@@ -30,6 +31,18 @@ public class UsuarioEtiqueta {
      * Constructor vacío
      */
     public UsuarioEtiqueta() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUsuario_id() {
+        return usuario_id;
     }
 
     public void setUsuario_id(int usuario_id) {
