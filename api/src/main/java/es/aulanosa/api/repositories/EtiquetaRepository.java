@@ -1,7 +1,10 @@
 package es.aulanosa.api.repositories;
 
+import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.models.Etiqueta;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -28,5 +31,14 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
             "WHERE u.id = :id")
     List<Etiqueta>findById(@Param("id")int id);
 
+    /**
+     * Este método permite registrar una etiqueta a un usuario para saber sus intereses
+     * @param id identificador del usuario
+     * @param idEtiqueta identificador de la etiqueta
+     */
+    @Modifying
+    @Transactional
+    @Query("INSERT INTO UsuarioEtiqueta(usuario_id,etiqueta_id) VALUES(:id,:idEtiqueta) ")
+    void insertar(@Param("id")int id, @Param("idEtiqueta") int idEtiqueta);
 
 }
