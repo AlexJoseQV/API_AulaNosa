@@ -1,11 +1,14 @@
 package es.aulanosa.api.services.impl;
 
-import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
-import es.aulanosa.api.dtos.OfertaDTO;
-import es.aulanosa.api.dtos.OfertaDTOSalida;
+import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.mappers.OfertaMapper;
+import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Oferta;
+import es.aulanosa.api.models.Usuario;
+import es.aulanosa.api.models.UsuarioOferta;
 import es.aulanosa.api.repositories.OfertaRepository;
+import es.aulanosa.api.repositories.UsuarioOfertaRepository;
+import es.aulanosa.api.repositories.UsuarioRepository;
 import es.aulanosa.api.services.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,12 @@ import java.util.Optional;
 public class OfertaServiceImpl implements OfertaService {
     @Autowired
     private OfertaRepository ofertaRepository; // Instancia de la clase repositorio de oferta
+
+    @Autowired
+    private UsuarioRepository usuarioRepository; // Instancia de la clase repositorio del usuario
+
+    @Autowired
+    private UsuarioOfertaRepository usuarioOfertaRepository;
 
     /**
      * Método empleado para obtener todas las ofertas disponibles
@@ -67,5 +76,31 @@ public class OfertaServiceImpl implements OfertaService {
         }
 
         return new OfertaDTOSalida(errores, new Timestamp(System.currentTimeMillis()), ofertaDTO != null ? ofertaDTO : new OfertaDTO());
+    }
+
+    /**
+     * Método empleado para obtener un listado con la información de los usuarios que se encuentran inscritos en una oferta indicada
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelve un listado con la información de los usuarios inscritos en la oferta indicada
+     */
+    @Override
+    public ListaUsuarioDTOSalida listarUsuariosOferta(int idOferta){
+        List<String> errores = new ArrayList<>();
+        List<UsuarioDTO> usuariosDTO = new ArrayList<>();
+
+        try {
+            // Buscar todas las inscripciones de la oferta
+            List<UsuarioOferta> inscripciones = usuarioOfertaRepository.findAllByOfertaId(idOferta);
+
+            // Para cada inscripción, obtener el usuario y convertirlo a DTO
+            for (UsuarioOferta inscripcion : inscripciones) {
+                Optional<Usuario> usuarioOpt = usuarioRepository.findById(inscripcion.getUsuarioId());
+                usuarioOpt.ifPresent(usuario -> usuariosDTO.add(UsuarioMapper.convertirADTO(usuario)));
+            }
+        } catch (Exception e) {
+            errores.add("Error con la base de datos");
+        }
+
+        return new ListaUsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuariosDTO);
     }
 }

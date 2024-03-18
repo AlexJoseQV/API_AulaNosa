@@ -1,10 +1,13 @@
 package es.aulanosa.api.services.impl;
 
 import es.aulanosa.api.dtos.AccesoDTO;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Usuario;
+import es.aulanosa.api.models.UsuarioOferta;
+import es.aulanosa.api.repositories.UsuarioOfertaRepository;
 import es.aulanosa.api.repositories.UsuarioRepository;
 import es.aulanosa.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +72,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         UsuarioDTO usuarioDTO = null;
 
         try {
-            Optional<Usuario> usuarioOpt = usuarioRepository.findById(idUsuario);
+            Optional<Usuario> usuarioOpt = usuarioRepository.findById(idUsuario); // Se busca por id un usuario
             if(usuarioOpt.isPresent()){
                 usuarioDTO = UsuarioMapper.convertirADTO(usuarioOpt.get());
             }else{

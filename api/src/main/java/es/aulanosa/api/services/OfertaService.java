@@ -1,6 +1,7 @@
 package es.aulanosa.api.services;
 
 import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.OfertaDTOSalida;
 
 /**
@@ -22,4 +23,6 @@ public interface OfertaService {
      * @return Se devuelve la información de la oferta indicada
      */
     OfertaDTOSalida devolverOferta(int idOferta);
+
+    ListaUsuarioDTOSalida listarUsuariosOferta(int idOferta);
 }
