@@ -45,5 +45,4 @@ public class EtiquetaController {
     ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @RequestBody EtiquetaDTO etiquetaDTO){
         return ResponseEntity.ok(etiquetaService.crearInteres(idUsuario,etiquetaDTO));
     }
-    
 }
