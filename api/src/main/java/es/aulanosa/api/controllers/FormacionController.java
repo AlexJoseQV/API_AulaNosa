@@ -34,6 +34,11 @@ public class FormacionController {
         return formacionService.listarFormaciones();
     }
 
+    /**
+     * endpoint para obtener una formacion por su id
+     * @param idFormacion id de busqueda de la formacion
+     * @return formacionDTOSalida encontrdda en la bd por ese id
+     */
     @GetMapping("/api/{idFormacion}/formaciones")
     FormacionDTOSalida obtenerFormacion(@PathVariable int idFormacion) {
 
