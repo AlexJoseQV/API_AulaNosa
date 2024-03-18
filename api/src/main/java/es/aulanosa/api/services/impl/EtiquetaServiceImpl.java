@@ -58,7 +58,7 @@ public class EtiquetaServiceImpl implements EtiquetaService {
      * Método para crear intereses
      * @param id identificador del usuario
      * @param etiqueta identificador de la etiqueta
-     * @return
+     * @return Objeto genérico
      */
     @Override
     public GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiqueta) {
