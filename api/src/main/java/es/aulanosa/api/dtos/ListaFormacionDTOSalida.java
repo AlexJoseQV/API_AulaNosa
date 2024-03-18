@@ -3,16 +3,16 @@ package es.aulanosa.api.dtos;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class ListaFormacionDTOSailda {
+public class ListaFormacionDTOSalida {
 
     List<FormacionDTO> listaFormaciones;
     private Timestamp tiempo;
     private List<String> errores;
 
-    public ListaFormacionDTOSailda() {
+    public ListaFormacionDTOSalida() {
     }
 
-    public ListaFormacionDTOSailda(List<FormacionDTO> listaFormaciones, Timestamp tiempo, List<String> errores) {
+    public ListaFormacionDTOSalida(List<FormacionDTO> listaFormaciones, Timestamp tiempo, List<String> errores) {
         this.listaFormaciones = listaFormaciones;
         this.tiempo = tiempo;
         this.errores = errores;
