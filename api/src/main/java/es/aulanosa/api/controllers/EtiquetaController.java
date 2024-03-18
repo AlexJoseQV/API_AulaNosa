@@ -3,10 +3,7 @@ package es.aulanosa.api.controllers;
 import es.aulanosa.api.services.EtiquetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador con los Endpoints relacionados con las etiquetas
@@ -35,5 +32,11 @@ public class EtiquetaController {
     @GetMapping("/api/usuarios/{id}/intereses")
     ResponseEntity<?> listarInteresesUsuario(@PathVariable int id){
         return ResponseEntity.ok(etiquetaService.listarInteresesUsuario(id));
+    }
+
+    @PostMapping("/api/usuarios/{idUsuario}/intereses")
+    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario){
+
+        return ResponseEntity.ok()
     }
 }
