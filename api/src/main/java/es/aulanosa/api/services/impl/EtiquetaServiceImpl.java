@@ -1,5 +1,6 @@
 package es.aulanosa.api.services.impl;
 
+import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
 import es.aulanosa.api.repositories.EtiquetaRepository;
@@ -50,5 +51,21 @@ public class EtiquetaServiceImpl implements EtiquetaService {
         }
 
         return new ListaEtiquetaDTOSalida(new ArrayList<>(),errores,new Timestamp(System.currentTimeMillis()));
+    }
+
+    /**
+     * Método que permite eliminar las etiquetas de un usuario
+     * @param id identificador del usuario
+     * @return Objeto de la clase GenericoDTOSalida con la información general
+     */
+    @Override
+    public GenericoDTOSalida eliminarInteresesUsuario(int id) {
+        List<String> errores = new ArrayList<>();
+        try {
+            etiquetaRepository.deleteById(id);
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+        return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
     }
 }
