@@ -1,6 +1,7 @@
 package es.aulanosa.api;
 
 import es.aulanosa.api.dtos.AccesoDTO;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.models.Usuario;
 import es.aulanosa.api.repositories.UsuarioRepository;
@@ -28,17 +29,18 @@ public class UsuarioServiceTests {
      */
     @Test
     public void testComprobarAccesoCorrecto() {
+
         Usuario usuario = crearUsuario();
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
 
-        AccesoDTO accesoDTO = new AccesoDTO("juan@example.com", "Prueba1234!");
+        AccesoDTO accesoDTO = new AccesoDTO("juan@example2.com", "Prueba1234!");
 
         UsuarioDTOSalida usuarioDTOSalida = usuarioService.comprobarAcceso(accesoDTO);
 
         // Validación de que no haya errores
         assertThat(usuarioDTOSalida.getErrores()).isEmpty();
 
-        usuarioRepository.delete(usuario);
+        usuarioRepository.delete(usuarioGuardado);
     }
 
     /**
@@ -49,15 +51,15 @@ public class UsuarioServiceTests {
         Usuario usuario = crearUsuario();
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
 
-        AccesoDTO accesoDTO = new AccesoDTO("Mateo", "incorrecto");
+        AccesoDTO accesoDTO = new AccesoDTO("juan@example2.com", "incorrecto");
 
         // Usa la instancia inyectada aquí también
         UsuarioDTOSalida usuarioDTOSalida = usuarioService.comprobarAcceso(accesoDTO);
 
         // Comprobación de error por acceso
-        AssertionsForClassTypes.assertThat(usuarioDTOSalida.getErrores().get(0)).isEqualTo("Error de acceso");
+        AssertionsForClassTypes.assertThat(usuarioDTOSalida.getErrores().get(0)).isEqualTo("Error de contrasena");
 
-        usuarioRepository.delete(usuario);
+        usuarioRepository.delete(usuarioGuardado);
     }
 
 
@@ -67,12 +69,12 @@ public class UsuarioServiceTests {
     public Usuario crearUsuario(){
 
         Usuario usuario = new Usuario();
-        usuario.setNombre("Mateo");
+        usuario.setNombre("Mateo2");
         usuario.setEstado("DESEMPLEADO");
         usuario.setContrasena("Prueba1234!");
-        usuario.setUsuario("Mateo");
+        usuario.setUsuario("Mateo2");
         usuario.setApellidos("Martínez");
-        usuario.setEmail("juan@example.com");
+        usuario.setEmail("juan@example2.com");
         return usuario;
     }
 }

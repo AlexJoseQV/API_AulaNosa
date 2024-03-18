@@ -39,4 +39,15 @@ public class OfertaController {
 
         return ResponseEntity.ok(ofertaService.devolverOferta(idOferta));
     }
+
+    /**
+     * Endpoint que permite obtener toda la información de los usuarios inscritos en una oferta indicada
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelve un listado con la información de los usuarios inscritos en dicha oferta
+     */
+    @GetMapping("/api/ofertas/{idOferta}/inscripciones")
+    ResponseEntity<?> devolverUsuariosInscritos(@PathVariable int idOferta) {
+
+        return ResponseEntity.ok(ofertaService.listarUsuariosOferta(idOferta));
+    }
 }

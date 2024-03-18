@@ -1,6 +1,7 @@
 package es.aulanosa.api;
 
 import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.models.Oferta;
 import es.aulanosa.api.repositories.OfertaRepository;
 import es.aulanosa.api.services.OfertaService;
@@ -35,7 +36,18 @@ public class OfertaServiceTests {
         ListaOfertaDTOSalida listaOfertaDTOSalida = ofertaService.listarOfertas();
         assertThat(listaOfertaDTOSalida.getErrores()).isEmpty(); // Se comprueba que no haya errores
 
-        ofertaRepository.delete(oferta);
+        ofertaRepository.delete(ofertaGuardada);
+    }
+
+    /**
+     * Caso de prueba para comprobar que funcione la devolución de la información de los usuarios inscritos en una oferta indicada
+     */
+    @Test
+    public void comprobarUsuariosDeOferta(){
+
+        ListaUsuarioDTOSalida listaUsuarioDTOSalida = ofertaService.listarUsuariosOferta(31);
+        // Validación de que no haya errores
+        assertThat(listaUsuarioDTOSalida.getErrores()).isEmpty();
     }
 
     /**
