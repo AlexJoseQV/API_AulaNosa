@@ -13,6 +13,12 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    /**
+     * endpoint para el update de los datos de un usuario
+     * @param usuarioDTO usuario a cambiar
+     * @return el usuario cambiado
+     */
     @PutMapping("/api/usuarios")
     public UsuarioDTOSalida updateUsuario ( @RequestBody UsuarioDTO usuarioDTO){
 

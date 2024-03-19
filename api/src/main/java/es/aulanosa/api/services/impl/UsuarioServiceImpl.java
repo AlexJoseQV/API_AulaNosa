@@ -56,6 +56,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
     }
 
+    /**
+     * update de los datos de un usuario
+     * @param usuarioDTO usuario a updatear
+     * @return el usario cambiado
+     */
     @Override
     public UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO) {
 
