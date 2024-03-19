@@ -1,12 +1,10 @@
 package es.aulanosa.api.controllers;
 
+import es.aulanosa.api.dtos.OfertaDTO;
 import es.aulanosa.api.services.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controlador con los Endpoints respecto a aspectos de las Ofertas
@@ -49,5 +47,15 @@ public class OfertaController {
     ResponseEntity<?> devolverUsuariosInscritos(@PathVariable int idOferta) {
 
         return ResponseEntity.ok(ofertaService.listarUsuariosOferta(idOferta));
+    }
+
+    /**
+     * Endpoint que permite crear una oferta
+     * @param ofertaDTO objeto de la clase OfertaDTO
+     * @return Código de respuesta 200
+     */
+    @PostMapping("/api/admin/ofertas")
+    ResponseEntity<?> crearOfertas(@RequestBody OfertaDTO ofertaDTO){
+        return ResponseEntity.ok(ofertaService.crearOferta(ofertaDTO));
     }
 }
