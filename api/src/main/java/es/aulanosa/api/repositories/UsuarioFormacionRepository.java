@@ -28,7 +28,7 @@ public interface UsuarioFormacionRepository extends JpaRepository<UsuarioFormaci
      */
     @Modifying
     @Transactional
-    @Query("INSERT INTO UsuarioFormacion(usuario_id,formacion_id,estado) VALUES(:idUsuario,:id,:estado) ")
+    @Query("INSERT INTO UsuarioFormacion(usuario_id,formacionId,estado) VALUES(:idUsuario,:id,:estado) ")
     void insertar(@Param("idUsuario") int idUsuario,@Param("id")int id,String estado);
 
 }
