@@ -27,5 +27,10 @@ public interface OfertaService {
      */
     OfertaDTOSalida devolverOferta(int idOferta);
 
+    /**
+     * Se define un método empleado para obtener las inscripciones asociadas a una Oferta
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelven las inscripciones asociadas a una Oferta
+     */
     ListaUsuarioDTOSalida obtenerInscripciones(int idOferta);
 }
