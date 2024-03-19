@@ -1,7 +1,12 @@
 package es.aulanosa.api.controllers;
 
+
 import es.aulanosa.api.dtos.FormacionDTOSalida;
 import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
+
+import es.aulanosa.api.dtos.*;
+import es.aulanosa.api.repositories.FormacionRepository;
+
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +44,18 @@ public class FormacionController {
     FormacionDTOSalida obtenerFormacion(@PathVariable int idFormacion) {
 
         return formacionService.obtenerFormacion(idFormacion);
+    }
+
+    /**
+     * endpoint para obtener los usuarios incritos en una formacion
+     * @param idFormacion id de la formacion
+     * @return lista de usuarios inscritos
+     */
+    @GetMapping("/api/formaciones/{idFormacion}/inscripciones")
+    ListaUsuarioDTOSalida listarUsuariosIncritos(@PathVariable int idFormacion){
+
+        return formacionService.obtenerUsuariosFormacion(idFormacion);
+
     }
 
 
