@@ -2,6 +2,7 @@ package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.AccesoDTO;
 import es.aulanosa.api.dtos.UsuarioDTO;
+import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,17 @@ public class UsuarioController {
     ResponseEntity<?> obtenerUsuario(@PathVariable int idUsuario) {
 
         return ResponseEntity.ok(usuarioService.devolverUsuario(idUsuario));
+    }
+
+    /**
+     * Endpoint que permite devolver la información de un usuario a partir de un identificadro indicado
+     * @param nombreUsuario Nombre del usuario
+     * @return Se devuelve la información del usuario indicado
+     */
+    @GetMapping("/api/usuarios/{nombreUsuario}")
+    ResponseEntity<?> obtenerUsuario(@PathVariable String nombreUsuario){
+
+        return ResponseEntity.ok(usuarioService.encontrarUsuario(nombreUsuario));
     }
 
     /**

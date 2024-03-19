@@ -82,6 +82,23 @@ public class UsuarioServiceImpl implements UsuarioService {
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
     }
 
+    public UsuarioDTOSalida encontrarUsuario(String nombreUsuario){
+        List<String> errores = new ArrayList<>();
+        UsuarioDTO usuarioDTO = null;
+
+        try{
+            Optional<Usuario> usuarioOpt = usuarioRepository.findByUsuario(nombreUsuario);
+            if(usuarioOpt.isPresent()){
+                usuarioDTO = UsuarioMapper.convertirADTO(usuarioOpt.get());
+            }else{
+                errores.add("Error el usuario no existe");
+            }
+        }catch (Exception e){
+            errores.add("Error en la base de datos");
+        }
+        return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
+    }
+
     /**
      * Método que permite registrar un usuario a partir de la información indicada
      * @param usuarioDTO Información del usuario a registrar

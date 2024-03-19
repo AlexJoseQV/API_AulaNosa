@@ -23,6 +23,8 @@ public interface UsuarioService {
      */
     UsuarioDTOSalida devolverUsuario(int idUsuario);
 
+    UsuarioDTOSalida encontrarUsuario(String nombreUsuario);
+
     /**
      * Se define un método que permite registrar un usuario a partir de la información indicada
      * @param usuarioDTO Información del usuario a registrar
