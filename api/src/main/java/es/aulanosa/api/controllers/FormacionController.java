@@ -9,9 +9,8 @@ import es.aulanosa.api.repositories.FormacionRepository;
 
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -58,6 +57,15 @@ public class FormacionController {
 
     }
 
-
+    /**
+     * Endpoint para inscribir un usuario en una formación
+     * @param id identificador de la formación
+     * @param usuarioDTO Objeto de la clase UsuarioDTO
+     * @return Código de respuesta 200
+     */
+    @PostMapping("/api/formaciones/{idFormacion}/inscripciones")
+    ResponseEntity<?> inscribirUsuario(@PathVariable int id, @RequestBody UsuarioDTO usuarioDTO){
+        return ResponseEntity.ok(formacionService.insribirUsuario(id,usuarioDTO,"INSCRITO"));
+    }
 
 }
