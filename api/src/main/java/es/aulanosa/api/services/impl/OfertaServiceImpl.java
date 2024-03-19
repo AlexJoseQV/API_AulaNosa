@@ -115,7 +115,6 @@ public class OfertaServiceImpl implements OfertaService {
         try{
             ofertaRepository.save(OfertaMapper.convertirAModel(ofertaDTO));
         }catch (Exception e) {
-            e.printStackTrace();
             errores.add("Hubo un error");
 
         }
