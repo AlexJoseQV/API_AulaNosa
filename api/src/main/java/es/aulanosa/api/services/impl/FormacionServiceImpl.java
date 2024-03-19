@@ -110,7 +110,7 @@ public class FormacionServiceImpl implements FormacionService {
             }
 
 
-            return new ListaUsuarioDTOSalida(usuarios, new Timestamp(System.currentTimeMillis()), errores);
+            return new ListaUsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarios);
 
 
         }catch (Exception e){
@@ -118,7 +118,7 @@ public class FormacionServiceImpl implements FormacionService {
         }
 
 
-        return new ListaUsuarioDTOSalida(usuarios, new Timestamp(System.currentTimeMillis()), errores);
+        return new ListaUsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()),usuarios );
     }
 
 
