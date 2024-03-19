@@ -16,5 +16,11 @@ public interface UsuarioService {
      */
     UsuarioDTOSalida comprobarAcceso(AccesoDTO accesoDTO);
 
+    /**
+     * definicion de un metodo para el update de un usuario
+     * @param usuarioDTO usuario a cambiar
+     * @return usuario con los datos cambiados
+     */
+
     UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO);
 }
