@@ -9,10 +9,9 @@ import es.aulanosa.api.repositories.FormacionRepository;
 
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -55,6 +54,18 @@ public class FormacionController {
     ListaUsuarioDTOSalida listarUsuariosIncritos(@PathVariable int idFormacion){
 
         return formacionService.obtenerUsuariosFormacion(idFormacion);
+
+    }
+
+    /**
+     * endpoint para crear una formacion
+     * @param formacionDTO formacion a guardar en BD
+     * @return devuelve la informacion de la formnacion introducida
+     */
+    @PostMapping("/api/admin/formaciones")
+    FormacionDTOSalida listarUsuariosIncritos( @RequestBody FormacionDTO formacionDTO){
+
+      return formacionService.crearFormacion(formacionDTO);
 
     }
 

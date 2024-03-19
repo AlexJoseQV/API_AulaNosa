@@ -121,5 +121,41 @@ public class FormacionServiceImpl implements FormacionService {
         return new ListaUsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()),usuarios );
     }
 
+    /**
+     * metodo para la creacion de una formacion en bd
+     * @param formacionDTO formacion a introducir en la bd
+     * @return devuelve la informacion de la formacion introducida en bd
+     */
+    @Override
+    public FormacionDTOSalida crearFormacion(FormacionDTO formacionDTO) {
+
+        List<String> errores = new ArrayList<>();
+        Formacion formacion = new Formacion();
+
+
+        try {
+
+            formacionDTO.setFecha(new Timestamp(System.currentTimeMillis()));
+            formacionRepository.save(FormacionMapper.convertirAModel(formacionDTO));
+            Optional<Formacion> formacionRec = formacionRepository.findByTitulo(formacionDTO.getTitulo());
+
+            if (formacionRec.isPresent()){
+
+                formacion = formacionRec.get();
+            }
+
+
+
+            return new FormacionDTOSalida(FormacionMapper.convertiraDTO(formacion), new Timestamp(System.currentTimeMillis()), errores);
+
+
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+
+
+        return new FormacionDTOSalida(FormacionMapper.convertiraDTO(formacion), new Timestamp(System.currentTimeMillis()), errores);
+    }
+
 
 }
