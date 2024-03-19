@@ -1,7 +1,6 @@
 package es.aulanosa.api;
 
 import es.aulanosa.api.dtos.AccesoDTO;
-import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.models.Usuario;
 import es.aulanosa.api.repositories.UsuarioRepository;

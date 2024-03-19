@@ -11,5 +11,10 @@ import java.util.List;
  * @author MARTINCARBALLO
  */
 public interface UsuarioOfertaRepository extends JpaRepository<UsuarioOferta, Integer> {
+    /**
+     * Se define un método para obtener todas las ofertas por un identificador
+     * @param ofertaId Identificador de la oferta
+     * @return Se devuelve la información de las ofertas en un listado
+     */
     List<UsuarioOferta> findAllByOfertaId(int ofertaId);
 }

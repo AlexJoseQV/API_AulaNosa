@@ -1,10 +1,13 @@
 package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.AccesoDTO;
+import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * Controlador con los Endpoints respecto a aspectos de los Usuarios
@@ -23,7 +26,7 @@ public class UsuarioController {
      * @return Se devuelve la información correspondiente al usuario si el inicio es correcto
      */
     @PostMapping("/api/login")
-    ResponseEntity<?> iniciarSesion(@RequestBody AccesoDTO acceso) {
+    ResponseEntity<?> iniciarSesion(@Valid @RequestBody AccesoDTO acceso) {
 
         return ResponseEntity.ok(usuarioService.comprobarAcceso(acceso));
     }
@@ -37,6 +40,17 @@ public class UsuarioController {
     ResponseEntity<?> obtenerUsuario(@PathVariable int idUsuario) {
 
         return ResponseEntity.ok(usuarioService.devolverUsuario(idUsuario));
+    }
+
+    /**
+     * Endpoint que permite registrar la información correspondiente a un usuario
+     * @param usuarioDTO Información del usuario a registrar
+     * @return Se devuelve la información posterior al registro
+     */
+    @PostMapping("/api/admin/usuarios")
+    ResponseEntity<?> registrarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+
+        return ResponseEntity.ok(usuarioService.crearUsuario(usuarioDTO));
     }
 
 }

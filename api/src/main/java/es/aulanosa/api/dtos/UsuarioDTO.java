@@ -1,6 +1,8 @@
 package es.aulanosa.api.dtos;
 
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -10,13 +12,27 @@ import java.util.List;
  */
 public class UsuarioDTO {
     private int id; // Identificador del usuario
+    @NotNull(message = "El usuario no puede ser nulo")
+    @Size(max = 64, message = "El usuario no puede superar los 64 caracteres")
     private String usuario; // Nombre de usuario
+    @NotNull(message = "El contrasena no puede ser nulo")
+    @Size(max = 64, message = "La contrasena no puede superar los 64 caracteres")
     private String contrasena; // Contrasena asociada al usuario
+    @NotNull(message = "El nombre no puede ser nulo")
+    @Size(max = 64, message = "El nombre no puede superar los 64 caracteres")
     private String nombre; // Nombre real del usuario
+    @NotNull(message = "Los apellidos no puede ser nulo")
+    @Size(max = 100, message = "Los apellidos no puede superar los 100 caracteres")
     private String apellidos; // Apellidos del usuario
+    @NotNull(message = "El email no puede ser nulo")
+    @Size(max = 64, message = "El email no puede superar los 100 caracteres")
     private String email; // Email del usuario
+    @NotNull(message = "El telefono no puede ser nulo")
+    @Size(max = 64, message = "El telefono no puede superar los 64 caracteres")
     private String telefono; // Teléfono de contacto del usuario
     private Timestamp actualizacion; // Momento de actualización
+    @NotNull(message = "El estado no puede ser nulo")
+    @Size(max = 64, message = "El estado no puede superar los 64 caracteres")
     private String estado; // Estado del usuario
     private List<Byte> imagen; // Array de bytes que representan la foto de perfil
 
@@ -32,6 +48,15 @@ public class UsuarioDTO {
         this.email = email;
         this.telefono = telefono;
         this.actualizacion = actualizacion;
+        this.estado = estado;
+        this.imagen = imagen;
+    }
+
+    public UsuarioDTO(String nombre, String apellidos, String email, String telefono, String estado, List<Byte> imagen) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
         this.estado = estado;
         this.imagen = imagen;
     }

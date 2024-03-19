@@ -1,13 +1,10 @@
 package es.aulanosa.api.services.impl;
 
 import es.aulanosa.api.dtos.AccesoDTO;
-import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Usuario;
-import es.aulanosa.api.models.UsuarioOferta;
-import es.aulanosa.api.repositories.UsuarioOfertaRepository;
 import es.aulanosa.api.repositories.UsuarioRepository;
 import es.aulanosa.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,5 +80,34 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
+    }
+
+    /**
+     * Método que permite registrar un usuario a partir de la información indicada
+     * @param usuarioDTO Información del usuario a registrar
+     * @return Se devuelve la información correspondiente al usuario posteriormente al registro
+     */
+    @Override
+    public UsuarioDTOSalida crearUsuario(UsuarioDTO usuarioDTO){
+
+        List<String> errores = new ArrayList<>(); // Mensajes de errores
+        Usuario usuarioDevolver = null;
+
+        try {
+            // Validación de la existencia previa de si el usuario ya está registrado y del email seleccionado
+            Optional<Usuario> usuarioOptEmail = usuarioRepository.findByEmail(usuarioDTO.getEmail());
+            Optional<Usuario> usuarioOptUsuario = usuarioRepository.findByEmail(usuarioDTO.getEmail());
+            if(usuarioOptEmail.isPresent()) errores.add("Error el usuario ya existe");
+            if(usuarioOptUsuario.isPresent()) errores.add("Error el email ya está en uso");
+
+            if(errores.isEmpty()){
+                usuarioDTO.setActualizacion(new Timestamp(System.currentTimeMillis()));
+                usuarioDevolver = usuarioRepository.save(UsuarioMapper.convertirAModel(usuarioDTO));
+            }
+        }catch (Exception e){
+            errores.add("Error con la base de datos");
+        }
+
+        return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDevolver != null ? UsuarioMapper.convertirADTO(usuarioDevolver) : new UsuarioDTO());
     }
 }

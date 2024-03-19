@@ -1,7 +1,7 @@
 package es.aulanosa.api.services;
 
 import es.aulanosa.api.dtos.AccesoDTO;
-import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
+import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 
 /**
@@ -22,4 +22,11 @@ public interface UsuarioService {
      * @return Información del usuario a devolver
      */
     UsuarioDTOSalida devolverUsuario(int idUsuario);
+
+    /**
+     * Se define un método que permite registrar un usuario a partir de la información indicada
+     * @param usuarioDTO Información del usuario a registrar
+     * @return Se devuelve la información correspondiente al usuario posteriormente al registro
+     */
+    UsuarioDTOSalida crearUsuario(UsuarioDTO usuarioDTO);
 }

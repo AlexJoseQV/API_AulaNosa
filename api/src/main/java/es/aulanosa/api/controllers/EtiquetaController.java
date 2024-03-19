@@ -4,6 +4,7 @@ import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.services.EtiquetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @CrossOrigin
+@Validated
 public class EtiquetaController {
     @Autowired
     private EtiquetaService etiquetaService;

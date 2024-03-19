@@ -11,6 +11,17 @@ import java.util.Optional;
  * @author RubénC
  */
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    /**
+     * Se define un método para buscar un usuario por su email
+     * @param email Email del usuario a buscar
+     * @return Se devuelve la información del usuario buscado
+     */
     Optional<Usuario> findByEmail(String email);
 
+    /**
+     * Se define un método para buscar un usuario por su nombre identificador
+     * @param usuario Nombre identificador del usuario
+     * @return Se devuelve la información del usuario buscado
+     */
+    Optional<Usuario> findByUsuario(String usuario);
 }
