@@ -13,7 +13,7 @@ public class UsuarioFormacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int usuario_id;
-    @Column(name = "formacion_id")
+
     private int formacionId;
     private String estado;
 
@@ -42,7 +42,7 @@ public class UsuarioFormacion {
     public void setUsuario_id(int usuario_id) {
         this.usuario_id = usuario_id;
     }
-
+    @Column(name = "formacion_id")
     public int getFormacionId() {
         return formacionId;
     }

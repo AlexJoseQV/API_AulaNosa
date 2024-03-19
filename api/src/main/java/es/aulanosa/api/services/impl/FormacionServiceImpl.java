@@ -83,24 +83,25 @@ public class FormacionServiceImpl implements FormacionService {
     }
 
     @Override
-    public ListaUsuarioDTOSalida obtenerUsuariosOferta(int formacionId) {
+    public ListaUsuarioDTOSalida obtenerUsuariosFormacion(int formacionId) {
 
         List<String> errores = new ArrayList<>();
         ListaUsuarioDTOSalida listaUsuarioDTOSalida = new ListaUsuarioDTOSalida();
         List<UsuarioDTO> usuarios = new ArrayList<>();
-        UsuarioFormacion usuarioFormacion = new UsuarioFormacion();
+
         try {
 
-            Optional<UsuarioFormacion> usuarioFormacionRec = usuarioFormacionRepository.findByFormacionId(formacionId);
-            if (usuarioFormacionRec.isPresent()){
-                usuarioFormacion =  usuarioFormacionRec.get();
-            }
+            List<UsuarioFormacion> usuarioFormacionRec =usuarioFormacionRepository.findAllByFormacionId(formacionId);
 
-            Optional<Usuario> user = usuarioRepository.findById(usuarioFormacion.getUsuario_id());
+            for (int i =0 ; i <usuarioFormacionRec.size(); i++){
 
-            if (user.isPresent()){
+               if (usuarioFormacionRec.get(i).getEstado().equals("INSCRITO")){
 
-                usuarios.add(UsuarioMapper.convertirADTO(user.get()));
+                   Usuario user = usuarioRepository.getById(usuarioFormacionRec.get(i).getUsuario_id());
+
+                   usuarios.add(UsuarioMapper.convertirADTO(user));
+               }
+
             }
 
 

@@ -46,7 +46,7 @@ public class FormacionController {
     @GetMapping("/api/formaciones/{idFormacion}/inscripciones")
     ListaUsuarioDTOSalida listarUsuariosIncritos(@PathVariable int idFormacion){
 
-        return formacionService.obtenerUsuariosOferta(idFormacion);
+        return formacionService.obtenerUsuariosFormacion(idFormacion);
 
     }
 

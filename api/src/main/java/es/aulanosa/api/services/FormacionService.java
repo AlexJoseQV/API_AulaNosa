@@ -11,7 +11,7 @@ public interface FormacionService {
 
     public ListaFormacionDTOSalida listarFormaciones() ;
     public FormacionDTOSalida obtenerFormacion(int idFormacion);
-    public ListaUsuarioDTOSalida obtenerUsuariosOferta(int idFormacion);
+    public ListaUsuarioDTOSalida obtenerUsuariosFormacion(int idFormacion);
 
 
 }

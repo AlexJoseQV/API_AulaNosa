@@ -17,7 +17,7 @@ import java.util.Optional;
  */
 public interface UsuarioFormacionRepository extends JpaRepository<UsuarioFormacion, Integer> {
 
-    Optional<UsuarioFormacion> findByFormacionId(int formacionId);
+    List<UsuarioFormacion> findAllByFormacionId(int formacionId);
 
 
 }
