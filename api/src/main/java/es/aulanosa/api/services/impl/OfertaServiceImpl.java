@@ -34,7 +34,7 @@ public class OfertaServiceImpl implements OfertaService {
     private UsuarioOfertaRepository usuarioOfertaRepository;
 
     /**
-     * Método empleado para obtener todas las ofertas disponibles
+     * Método empleado para obtener todas las ofertas disponibles que se encuentran en estado 'ABIERTA' ordenados por fecha más reciente
      * @return Listado con la información de las ofertas
      */
     @Override
@@ -43,7 +43,7 @@ public class OfertaServiceImpl implements OfertaService {
         List<OfertaDTO> ofertasDTO = new ArrayList<>();
 
         try {
-            ofertasDTO = OfertaMapper.convertirListaADTO(ofertaRepository.findAll()); // Se obtiene el listado con toda la información de las ofertas
+            ofertasDTO = OfertaMapper.convertirListaADTO(ofertaRepository.findByEstadoOrderByFechaDesc("ABIERTA")); // Se obtiene el listado con toda la información de las ofertas
 
         }catch (Exception e){
             errores.add("Error con la base de datos");
