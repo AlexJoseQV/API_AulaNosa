@@ -1,8 +1,6 @@
 package es.aulanosa.api;
 
-import es.aulanosa.api.models.Oferta;
 import es.aulanosa.api.models.UsuarioOferta;
-import es.aulanosa.api.repositories.OfertaRepository;
 import es.aulanosa.api.repositories.UsuarioOfertaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,7 +83,7 @@ class UsuarioOfertaRepositoryTests {
 		UsuarioOferta uo = new UsuarioOferta();
 		uo.setId(1);
 		uo.setOferta_id(1);
-		uo.setUsuario_id(1);
+		uo.setUsuarioID(1);
 		uo.setEstado("INSCRITO");
 
 		return uo;

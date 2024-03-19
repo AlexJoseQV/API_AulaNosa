@@ -39,4 +39,16 @@ public class OfertaController {
 
         return ResponseEntity.ok(ofertaService.devolverOferta(idOferta));
     }
+
+    /**
+     * Endpoint que permite obtener todas las inscripciones asociadas a una oferta concreta
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelve las inscripciones asociadas a una oferta concreta
+     */
+
+    @GetMapping("/api/ofertas/{idOferta}/inscripciones")
+    ResponseEntity<?> inscripcionesOferta(@PathVariable int idOferta) {
+
+        return ResponseEntity.ok(ofertaService.obtenerInscripciones(idOferta));
+    }
 }

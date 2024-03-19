@@ -1,7 +1,11 @@
 package es.aulanosa.api.services;
 
 import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.OfertaDTOSalida;
+import es.aulanosa.api.dtos.UsuarioDTOSalida;
+
+import java.util.ArrayList;
 
 /**
  * Interface para establecer los métodos para la comunicación y lógica entre los controladores de Ofertas con la base de datos
@@ -22,4 +26,6 @@ public interface OfertaService {
      * @return Se devuelve la información de la oferta indicada
      */
     OfertaDTOSalida devolverOferta(int idOferta);
+
+    ListaUsuarioDTOSalida obtenerInscripciones(int idOferta);
 }
