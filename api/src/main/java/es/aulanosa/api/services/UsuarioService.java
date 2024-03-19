@@ -2,6 +2,7 @@ package es.aulanosa.api.services;
 
 import es.aulanosa.api.dtos.AccesoDTO;
 import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
+import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 
 /**
@@ -22,4 +23,12 @@ public interface UsuarioService {
      * @return Información del usuario a devolver
      */
     UsuarioDTOSalida devolverUsuario(int idUsuario);
+
+    /**
+     * definicion de un metodo para el update de un usuario
+     * @param usuarioDTO usuario a cambiar
+     * @return usuario con los datos cambiados
+     */
+
+    UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO);
 }

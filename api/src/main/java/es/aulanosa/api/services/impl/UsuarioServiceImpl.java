@@ -84,4 +84,39 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDTO != null ? usuarioDTO : new UsuarioDTO());
     }
+
+    /**
+     * update de los datos de un usuario
+     * @param usuarioDTO usuario a updatear
+     * @return el usario cambiado
+     */
+    @Override
+    public UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO) {
+
+        List<String> errores = new ArrayList<>();
+        Optional <Usuario> usuarioRecuperado = usuarioRepository.findById(usuarioDTO.getId());
+        Usuario usuario= new Usuario();
+        if (usuarioRecuperado.isPresent()){
+            usuario = usuarioRecuperado.get();
+        }
+
+        try{
+            usuario.setUsuario(usuarioDTO.getUsuario());
+            usuario.setNombre(usuarioDTO.getNombre());
+            usuario.setApellidos(usuarioDTO.getApellidos());
+            usuario.setContrasena(usuarioDTO.getContrasena());
+            usuario.setEmail(usuarioDTO.getEmail());
+            usuario.setEstado(usuarioDTO.getEstado());
+            usuario.setTelefono(usuarioDTO.getTelefono());
+            usuario.setActualizacion(new Timestamp(System.currentTimeMillis()));
+
+            usuarioRepository.save(usuario);
+
+        }catch (Exception e){
+            e.printStackTrace();
+            errores.add("Error con la base de datos");
+        }
+
+        return new UsuarioDTOSalida(errores,new Timestamp(System.currentTimeMillis()),UsuarioMapper.convertirADTO(usuario));
+    }
 }

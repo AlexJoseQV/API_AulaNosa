@@ -1,6 +1,8 @@
 package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.AccesoDTO;
+import es.aulanosa.api.dtos.UsuarioDTO;
+import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +39,18 @@ public class UsuarioController {
     ResponseEntity<?> obtenerUsuario(@PathVariable int idUsuario) {
 
         return ResponseEntity.ok(usuarioService.devolverUsuario(idUsuario));
+    }
+
+    /**
+     * endpoint para el update de los datos de un usuario
+     * @param usuarioDTO usuario a cambiar
+     * @return el usuario cambiado
+     */
+    @PutMapping("/api/usuarios")
+    public UsuarioDTOSalida updateUsuario (@RequestBody UsuarioDTO usuarioDTO){
+
+        UsuarioDTOSalida usuarioDTOSalida= usuarioService.updateUsuario(usuarioDTO);
+        return usuarioDTOSalida;
     }
 
 }
