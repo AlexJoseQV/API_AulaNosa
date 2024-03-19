@@ -25,12 +25,5 @@ public interface OfertaRepository extends JpaRepository<Oferta, Integer> {
      * @return Se devuelve un listado con la información de las ofertas que se encuentran en el estado indicado ordenadas por las más recientes
      */
     List<Oferta> findByEstadoOrderByFechaDesc(String estado);
-    /**
-     * Este método permite crear una oferta
-     * @param ofertaDTO objeto de la clase Oferta
-     */
-    @Modifying
-    @Transactional
-    @Query("INSERT INTO Oferta(titulo,descripcion,requisitos,vacantes,estado,imagen,fecha) VALUES(:ofertaDTO)")
-    void insertar(@RequestBody OfertaDTO ofertaDTO);
+
 }

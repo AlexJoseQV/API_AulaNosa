@@ -113,7 +113,7 @@ public class OfertaServiceImpl implements OfertaService {
     public OfertaDTOSalida crearOferta(OfertaDTO ofertaDTO) {
         List<String> errores = new ArrayList<>();
         try{
-            ofertaRepository.insertar(ofertaDTO);
+            ofertaRepository.save(OfertaMapper.convertirAModel(ofertaDTO));
         }catch (Exception e) {
             e.printStackTrace();
             errores.add("Hubo un error");
