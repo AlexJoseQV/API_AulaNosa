@@ -124,15 +124,15 @@ public class FormacionServiceImpl implements FormacionService {
     /**
      * Este método permite inscribir un usuario en una formación
      * @param id id de la formación
-     * @param usuarioDTO objeto de la clase UsuarioDTO
+     * @param idUsuario id del Usuario
      * @param estado estadod de la inscripción
      * @return objeto de la clase GenericoDTOSalida con la información general
      */
     @Override
-    public GenericoDTOSalida insribirUsuario(int id, UsuarioDTO usuarioDTO,String estado) {
+    public GenericoDTOSalida insribirUsuario(int id, int idUsuario,String estado) {
         List<String> errores = new ArrayList<>();
         try{
-            usuarioFormacionRepository.insertar(usuarioDTO.getId(), id,estado);
+            usuarioFormacionRepository.insertar(idUsuario, id,estado);
         }catch (Exception e) {
             errores.add("Hubo un error");
 

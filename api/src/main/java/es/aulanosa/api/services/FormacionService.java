@@ -13,10 +13,10 @@ public interface FormacionService {
     /**
      * Método para inscribir un usuario en una formación
      * @param id identificador de una formación
-     * @param usuarioDTO objeto de la clase usuarioDTO
+     * @param idUsuario objeto de la clase usuarioDTO
      * @param estado estado de la inscripción
      * @return objeto de la clase GenericoDTOSalida
      */
-    GenericoDTOSalida insribirUsuario(int id, UsuarioDTO usuarioDTO,String estado);
+    GenericoDTOSalida insribirUsuario(int id, int idUsuario,String estado);
 
 }
