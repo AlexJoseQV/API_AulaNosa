@@ -103,4 +103,21 @@ public class OfertaServiceImpl implements OfertaService {
 
         return new ListaUsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuariosDTO);
     }
+
+    /**
+     * Este método permite crear una oferta
+     * @param ofertaDTO objeto de la clase OfertaDTO
+     * @return objeto de la clase OfertaDTOSalida
+     */
+    @Override
+    public OfertaDTOSalida crearOferta(OfertaDTO ofertaDTO) {
+        List<String> errores = new ArrayList<>();
+        try{
+            ofertaRepository.save(OfertaMapper.convertirAModel(ofertaDTO));
+        }catch (Exception e) {
+            errores.add("Hubo un error");
+
+        }
+        return new OfertaDTOSalida(errores,new Timestamp(System.currentTimeMillis()),ofertaDTO);
+    }
 }

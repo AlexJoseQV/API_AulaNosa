@@ -2,6 +2,7 @@ package es.aulanosa.api.services;
 
 import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
 import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
+import es.aulanosa.api.dtos.OfertaDTO;
 import es.aulanosa.api.dtos.OfertaDTOSalida;
 
 /**
@@ -25,4 +26,11 @@ public interface OfertaService {
     OfertaDTOSalida devolverOferta(int idOferta);
 
     ListaUsuarioDTOSalida listarUsuariosOferta(int idOferta);
+
+    /**
+     * Este método permite crear una oferta
+     * @param ofertaDTO objeto de la clase OfertaDTO
+     * @return objeto de la clase OfertaDTOSalida
+     */
+    OfertaDTOSalida crearOferta(OfertaDTO ofertaDTO);
 }
