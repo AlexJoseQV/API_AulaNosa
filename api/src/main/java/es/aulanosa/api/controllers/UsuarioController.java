@@ -3,11 +3,12 @@ package es.aulanosa.api.controllers;
 import es.aulanosa.api.dtos.AccesoDTO;
 import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 
 /**
  * Controlador con los Endpoints respecto a aspectos de los Usuarios

@@ -1,7 +1,8 @@
 package es.aulanosa.api.dtos;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * Clase DTO para manejar información correspondiente al acceso de un Usuario
