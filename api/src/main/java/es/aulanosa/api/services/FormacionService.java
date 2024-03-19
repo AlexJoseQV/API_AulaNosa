@@ -1,15 +1,23 @@
 package es.aulanosa.api.services;
 
+
 import es.aulanosa.api.dtos.*;
+import es.aulanosa.api.dtos.FormacionDTO;
+import es.aulanosa.api.dtos.FormacionDTOSalida;
+import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
+
 
 /**
  * interfaz para los metodos que usara FormacionService
  */
 public interface FormacionService {
 
+
      ListaFormacionDTOSalida listarFormaciones() ;
      FormacionDTOSalida obtenerFormacion(int idFormacion);
      ListaUsuarioDTOSalida obtenerUsuariosFormacion(int idFormacion);
+
     /**
      * Método para inscribir un usuario en una formación
      * @param id identificador de una formación
@@ -18,5 +26,8 @@ public interface FormacionService {
      * @return objeto de la clase GenericoDTOSalida
      */
     GenericoDTOSalida insribirUsuario(int id, int idUsuario,String estado);
+    public FormacionDTOSalida crearFormacion(FormacionDTO formacionDTO);
+
+
 
 }

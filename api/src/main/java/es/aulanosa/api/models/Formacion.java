@@ -38,6 +38,7 @@ public class Formacion {
         this.inicio = inicio;
         this.fin = fin;
         this.coste = coste;
+        this.fecha =fecha;
         this.estado = estado;
         this.imagen = imagen;
     }
