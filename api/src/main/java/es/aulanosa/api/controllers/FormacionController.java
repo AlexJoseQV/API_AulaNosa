@@ -43,6 +43,11 @@ public class FormacionController {
         return formacionService.obtenerFormacion(idFormacion);
     }
 
+    /**
+     * endpoint para obtener los usuarios incritos en una formacion
+     * @param idFormacion id de la formacion
+     * @return lista de usuarios inscritos
+     */
     @GetMapping("/api/formaciones/{idFormacion}/inscripciones")
     ListaUsuarioDTOSalida listarUsuariosIncritos(@PathVariable int idFormacion){
 

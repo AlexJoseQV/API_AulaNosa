@@ -82,6 +82,11 @@ public class FormacionServiceImpl implements FormacionService {
 
     }
 
+    /**
+     * metodo para la busqueda de usuarios incritos en una formacion
+     * @param formacionId id de la formacion
+     * @return lista de usuarios incritos
+     */
     @Override
     public ListaUsuarioDTOSalida obtenerUsuariosFormacion(int formacionId) {
 
