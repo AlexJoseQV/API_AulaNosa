@@ -63,12 +63,12 @@ public class FormacionController {
     /**
      * Endpoint para inscribir un usuario en una formación
      * @param idFormacion identificador de la formación
-     * @param usuarioId id del usuario
+     * @param inscripcionUsuarioDTO Información con el identificador del usuario para la inscripción
      * @return Código de respuesta 200
      */
     @PostMapping("/api/formaciones/{idFormacion}/inscripciones")
-    ResponseEntity<?> inscribirUsuario(@PathVariable int idFormacion, @Valid @NotNull @RequestBody int usuarioId){
-        return ResponseEntity.ok(formacionService.insribirUsuario(idFormacion,usuarioId,"INSCRITO"));
+    ResponseEntity<?> inscribirUsuario(@PathVariable int idFormacion, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
+        return ResponseEntity.ok(formacionService.insribirUsuario(idFormacion,inscripcionUsuarioDTO.getUsuarioId(),"INSCRITO"));
     }
 
     /**
