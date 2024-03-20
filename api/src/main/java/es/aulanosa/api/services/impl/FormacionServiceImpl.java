@@ -177,6 +177,23 @@ public class FormacionServiceImpl implements FormacionService {
 
     }
 
+    /**
+     * Este método permite quitar un usuario de una formación
+     * @param id identificador del usuario
+     * @param formacionId identificador de la formación
+     * @return Objeto de la clase GenericoDTOSalida con al información general de un error
+     */
+    @Override
+    public GenericoDTOSalida eliminarUsuarioFormacion(int id, int formacionId) {
+        List<String> errores = new ArrayList<>();
+        try {
+            usuarioFormacionRepository.deleteById(id,formacionId);
+        } catch (Exception e) {
+            errores.add("Hubo un error");
+
+        }
+        return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
+    }
 
 
 }

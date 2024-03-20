@@ -84,6 +84,16 @@ public class FormacionController {
 
     }
 
+    /**
+     * Endpoint que permite quitar un usuario de una formación
+     * @param id identificador del usuario
+     * @param formacionId identificador de la formación
+     * @return Código de respuesta 200 con la información general por si hubo un error
+     */
+    @DeleteMapping("/api/{id}/eliminarUsuarioFormacion")
+    ResponseEntity<?> eliminarUsuarioFormacion(@PathVariable int id, @RequestBody int formacionId){
+        return ResponseEntity.ok(formacionService.eliminarUsuarioFormacion(id,formacionId));
+    }
 
 
 
