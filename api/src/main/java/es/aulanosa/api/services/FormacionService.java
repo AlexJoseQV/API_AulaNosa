@@ -30,11 +30,11 @@ public interface FormacionService {
 
     /**
      * Este método permite quitar a un usuario de una formación
-     * @param id identificador del usuario
+     * @param idUsuario identificador del usuario
      * @param formacionId identificador de la formación
      * @return Objeto de la clase GenericoDTOSalida con la información general de un error
      */
-    GenericoDTOSalida eliminarUsuarioFormacion(int id, int formacionId);
+    GenericoDTOSalida eliminarUsuarioFormacion(int idUsuario, int formacionId);
 
 
 }

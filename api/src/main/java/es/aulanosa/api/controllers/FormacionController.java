@@ -8,6 +8,7 @@ import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.repositories.FormacionRepository;
 
 import es.aulanosa.api.services.FormacionService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,13 +87,14 @@ public class FormacionController {
 
     /**
      * Endpoint que permite quitar un usuario de una formación
-     * @param id identificador del usuario
+     * @param idUsuario identificador del usuario
      * @param formacionId identificador de la formación
      * @return Código de respuesta 200 con la información general por si hubo un error
      */
-    @DeleteMapping("/api/{id}/eliminarUsuarioFormacion")
-    ResponseEntity<?> eliminarUsuarioFormacion(@PathVariable int id, @RequestBody int formacionId){
-        return ResponseEntity.ok(formacionService.eliminarUsuarioFormacion(id,formacionId));
+    @Transactional
+    @DeleteMapping("/api/{idUsuario}/eliminarUsuarioFormacion")
+    ResponseEntity<?> eliminarUsuarioFormacion(@PathVariable int idUsuario, @RequestBody int formacionId){
+        return ResponseEntity.ok(formacionService.eliminarUsuarioFormacion(idUsuario,formacionId));
     }
 
 
