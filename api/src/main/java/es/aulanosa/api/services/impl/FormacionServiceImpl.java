@@ -69,28 +69,30 @@ public class FormacionServiceImpl implements FormacionService {
                 FormacionUsuarioDTO formacionUsuarioDTO= new FormacionUsuarioDTO();
                 formacionUsuarioDTO.setFormacionDTO(FormacionMapper.convertiraDTO(f));
                 formacionUsuarioDTO.setInteresado(false);
+                formacionUsuarioDTO.setInscrito(false);
 
-                if (usuarioFormacion.getEstado().equals("INSCRITO")){
-                  formacionUsuarioDTO.setInscrito(true);
-                }
-                else {
-                    formacionUsuarioDTO.setInscrito(false);
-                }
+                if (usuarioFormacion!=null){
+                    if (usuarioFormacion.getEstado().equals("INSCRITO")){
+                        formacionUsuarioDTO.setInscrito(true);
+                    }
 
-                List<FormacionEtiqueta> formacionesEtiqueta = formacionEtiquetaRepository.findAllByFormacionId(f.getId());
-                List<UsuarioEtiqueta> etiquetasUsuario =  usuarioEtiquetaRepository.findAllByUsuarioId(idUsuario);
 
-                for (FormacionEtiqueta fe : formacionesEtiqueta ) {
+                    List<FormacionEtiqueta> formacionesEtiqueta = formacionEtiquetaRepository.findAllByFormacionId(f.getId());
+                    List<UsuarioEtiqueta> etiquetasUsuario =  usuarioEtiquetaRepository.findAllByUsuarioId(idUsuario);
 
-                    for (UsuarioEtiqueta ue: etiquetasUsuario ) {
-                        if (ue.getEtiquetaId()==fe.getEtiquetaId()){
-                            formacionUsuarioDTO.setInteresado(true);
-                            break;
+                    for (FormacionEtiqueta fe : formacionesEtiqueta ) {
+
+                        for (UsuarioEtiqueta ue: etiquetasUsuario ) {
+                            if (ue.getEtiquetaId()==fe.getEtiquetaId()){
+                                formacionUsuarioDTO.setInteresado(true);
+                                break;
+                            }
+
                         }
 
                     }
-
                 }
+
 
                 formacionUsuarioDTOS.add(formacionUsuarioDTO);
 
