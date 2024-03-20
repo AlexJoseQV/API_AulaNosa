@@ -1,7 +1,12 @@
 package es.aulanosa.api.mappers;
 
+import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.UsuarioDTO;
+import es.aulanosa.api.models.Etiqueta;
 import es.aulanosa.api.models.Usuario;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clase empleada para el mapeo de objetos correspondientes a la información de un usuario
@@ -27,5 +32,18 @@ public class UsuarioMapper {
     public static UsuarioDTO convertirADTO(Usuario usuario) {
 
         return new UsuarioDTO(usuario.getId(), usuario.getUsuario(), "", usuario.getNombre(), usuario.getApellidos(), usuario.getEmail(), usuario.getTelefono(), usuario.getActualizacion(), usuario.getEstado(), usuario.getImagen());
+    }
+    /**
+     * Este método permite convertir una lista de usuarios a una lista de usuariosDTO
+     * @param usuarioList lista de objetos usuario
+     * @return lista de objetos usuarioDTO
+     */
+    public static List<UsuarioDTO> convertirALista(List<Usuario> usuarioList){
+        List<UsuarioDTO> usuarios = new ArrayList<>();
+        for (Usuario usuario:usuarioList) {
+            usuarios.add(convertirADTO(usuario));
+        }
+
+        return usuarios;
     }
 }
