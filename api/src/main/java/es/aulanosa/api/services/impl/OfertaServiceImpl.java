@@ -122,4 +122,24 @@ public class OfertaServiceImpl implements OfertaService {
         }
         return new OfertaDTOSalida(errores,new Timestamp(System.currentTimeMillis()), oferta != null ? OfertaMapper.convertirADTO(oferta) : new OfertaDTO());
     }
+
+    /**
+     * Este método permite inscribir un usuario en una oferta
+     * @param idUsuario objeto de la clase usuarioDTO
+     * @param idOferta identificador de una oferta
+     * @param estado estado de la oferta
+     * @return Objeto de la clase GenericoDTOSalida con la información general
+     */
+    @Override
+    public GenericoDTOSalida insribirUsuario(int idUsuario, int idOferta, String estado) {
+        List<String> errores = new ArrayList<>();
+        try {
+            usuarioOfertaRepository.insertar(idUsuario, idOferta, estado);
+        } catch (Exception e) {
+            errores.add("Hubo un error");
+
+        }
+        return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
+    }
+
 }

@@ -1,9 +1,6 @@
 package es.aulanosa.api.controllers;
 
-import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
-import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
-import es.aulanosa.api.dtos.OfertaDTO;
-import es.aulanosa.api.dtos.OfertaDTOSalida;
+import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.services.OfertaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +58,16 @@ public class OfertaController {
     @PostMapping("/api/admin/ofertas")
     OfertaDTOSalida crearOfertas(@RequestBody @Valid OfertaDTO ofertaDTO){
         return ofertaService.crearOferta(ofertaDTO);
+    }
+
+    /**
+     * Endpoint para inscribir un usuario en una oferta
+     * @param idOferta identificador de la oferta
+     * @param inscripcionUsuarioDTO Objeto con el identificador del usuario para la inscripción
+     * @return Código de respuesta 200
+     */
+    @PostMapping("/api/formaciones/{idOferta}/inscripciones")
+    GenericoDTOSalida inscribirUsuario(@PathVariable int idOferta, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
+        return ofertaService.insribirUsuario(inscripcionUsuarioDTO.getUsuarioId(),idOferta,"INSCRITO");
     }
 }

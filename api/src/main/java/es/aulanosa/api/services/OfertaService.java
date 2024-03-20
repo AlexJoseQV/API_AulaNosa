@@ -1,9 +1,6 @@
 package es.aulanosa.api.services;
 
-import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
-import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
-import es.aulanosa.api.dtos.OfertaDTO;
-import es.aulanosa.api.dtos.OfertaDTOSalida;
+import es.aulanosa.api.dtos.*;
 
 /**
  * Interface para establecer los métodos para la comunicación y lógica entre los controladores de Ofertas con la base de datos
@@ -33,4 +30,12 @@ public interface OfertaService {
      * @return objeto de la clase OfertaDTOSalida
      */
     OfertaDTOSalida crearOferta(OfertaDTO ofertaDTO);
+    /**
+     * Método para inscribir un usuario en una oferta
+     * @param idUsuario objeto de la clase usuarioDTO
+     * @param idOferta identificador de una oferta
+     * @param estado estado de la oferta
+     * @return objeto de la clase GenericoDTOSalida
+     */
+    GenericoDTOSalida insribirUsuario(int idUsuario,int idOferta,String estado);
 }
