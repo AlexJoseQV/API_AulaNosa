@@ -78,7 +78,7 @@ public class FormacionController {
      * @return devuelve la informacion de la formnacion introducida
      */
     @PostMapping("/api/admin/formaciones")
-    FormacionDTOSalida crearFormacion( @RequestBody FormacionDTO formacionDTO){
+    FormacionDTOSalida crearFormacion( @RequestBody @Valid FormacionDTO formacionDTO){
 
       return formacionService.crearFormacion(formacionDTO);
 

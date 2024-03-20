@@ -28,7 +28,6 @@ public class UsuarioDTO {
     @NotNull(message = "El email no puede ser nulo")
     @Size(max = 100, message = "El email no puede superar los 100 caracteres")
     private String email; // Email del usuario
-    @NotNull(message = "El telefono no puede ser nulo")
     @Size(max = 64, message = "El telefono no puede superar los 64 caracteres")
     private String telefono; // Teléfono de contacto del usuario
     private Timestamp actualizacion; // Momento de actualización

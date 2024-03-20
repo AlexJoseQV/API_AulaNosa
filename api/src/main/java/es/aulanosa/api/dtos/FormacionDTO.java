@@ -15,16 +15,14 @@ public class FormacionDTO {
     @Size(max = 100, message = "El titulo no puede superar los 100 caracteres")
     private String titulo;
     @NotNull(message = "La descripcion no puede ser nulo")
-    @Size(max = 100, message = "La descripcion no puede superar los 500 caracteres")
+    @Size(max = 500, message = "La descripcion no puede superar los 500 caracteres")
     private String descripcion;
     @NotNull(message = "Los requisitos no puede ser nulo")
-    @Size(max = 100, message = "Los requisitos no puede superar los 500 caracteres")
     private List<String> requisitos;
     @NotNull(message = "El inicio no puede ser nulo")
     private Date inicio;
     @NotNull(message = "El fin no puede ser nulo")
     private Date fin ;
-    @NotNull(message = "El coste no puede ser nulo")
     private Integer coste;
     @NotNull(message = "El estado no puede ser nulo")
     private String estado;
