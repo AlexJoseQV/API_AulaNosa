@@ -112,13 +112,14 @@ public class OfertaServiceImpl implements OfertaService {
     @Override
     public OfertaDTOSalida crearOferta(OfertaDTO ofertaDTO) {
         List<String> errores = new ArrayList<>();
+        Oferta oferta = null;
         ofertaDTO.setFecha(new Timestamp(System.currentTimeMillis()));
         try{
-            ofertaRepository.save(OfertaMapper.convertirAModel(ofertaDTO));
+            oferta = ofertaRepository.save(OfertaMapper.convertirAModel(ofertaDTO));
         }catch (Exception e) {
-            errores.add("Hubo un error");
+            errores.add("Error con la base de datos");
 
         }
-        return new OfertaDTOSalida(errores,new Timestamp(System.currentTimeMillis()),ofertaDTO);
+        return new OfertaDTOSalida(errores,new Timestamp(System.currentTimeMillis()), oferta != null ? OfertaMapper.convertirADTO(oferta) : new OfertaDTO());
     }
 }

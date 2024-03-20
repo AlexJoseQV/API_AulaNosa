@@ -22,8 +22,13 @@ public class OfertaMapper {
 
         // Mapeo del Array de requisitos a String
         StringBuilder requisitos = new StringBuilder();
-        for(int i = 0; i<ofertaDTO.getRequisitos().size(); i++){
-            requisitos.append(ofertaDTO.getRequisitos()).append("$$");
+        if (ofertaDTO.getRequisitos() != null) {
+            for (String requisito : ofertaDTO.getRequisitos()) {
+                if (!requisitos.isEmpty()) {
+                    requisitos.append("$$");
+                }
+                requisitos.append(requisito);
+            }
         }
 
 

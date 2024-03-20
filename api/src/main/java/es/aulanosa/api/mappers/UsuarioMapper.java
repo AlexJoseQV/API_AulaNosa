@@ -21,7 +21,7 @@ public class UsuarioMapper {
      */
     public static Usuario convertirAModel(UsuarioDTO usuarioDTO) {
 
-        return new Usuario(usuarioDTO.getUsuario(), usuarioDTO.getContrasena(), usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getEmail(), usuarioDTO.getTelefono(), usuarioDTO.getEstado(), usuarioDTO.getImagen());
+        return new Usuario(usuarioDTO.getUsuario(), usuarioDTO.getContrasena(), usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getEmail(), usuarioDTO.getTelefono(), usuarioDTO.getActualizacion(), usuarioDTO.getEstado(), usuarioDTO.getImagen());
     }
 
     /**

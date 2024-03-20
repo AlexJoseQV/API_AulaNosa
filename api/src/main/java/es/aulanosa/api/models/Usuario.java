@@ -41,13 +41,14 @@ public class Usuario {
         this.imagen = imagen;
     }
 
-    public Usuario(String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, String estado, List<Byte> imagen) {
+    public Usuario(String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, Timestamp actualizacion, String estado, List<Byte> imagen) {
         this.usuario = usuario;
         this.contrasena = contrasena;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
+        this.actualizacion = actualizacion;
         this.estado = estado;
         this.imagen = imagen;
     }
