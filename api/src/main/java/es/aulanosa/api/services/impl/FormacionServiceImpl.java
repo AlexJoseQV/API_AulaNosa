@@ -155,6 +155,7 @@ public class FormacionServiceImpl implements FormacionService {
         try {
 
             formacionDTO.setFecha(new Timestamp(System.currentTimeMillis()));
+            FormacionMapper.convertirAModel(formacionDTO);
             formacionRepository.save(FormacionMapper.convertirAModel(formacionDTO));
             Optional<Formacion> formacionRec = formacionRepository.findByTitulo(formacionDTO.getTitulo());
 

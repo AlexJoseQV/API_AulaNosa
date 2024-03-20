@@ -13,18 +13,22 @@ public class FormacionMapper {
 
     public static Formacion convertirAModel(FormacionDTO formacionDTO){
 
-        String requisitos= "";
+        StringBuilder requisitos = new StringBuilder();
         for (String s : formacionDTO.getRequisitos() ) {
-            requisitos+=s+"$$";
+            requisitos.append(s).append("$$");
         }
 
-        return  new Formacion(formacionDTO.getId(), formacionDTO.getTitulo(), formacionDTO.getDescripcion(), requisitos, formacionDTO.getInicio(), formacionDTO.getFin(), formacionDTO.getFecha() , formacionDTO.getCoste() , formacionDTO.getEstado() , formacionDTO.getImagen());
+        return  new Formacion(formacionDTO.getId(), formacionDTO.getTitulo(), formacionDTO.getDescripcion(), requisitos.toString(), formacionDTO.getInicio(), formacionDTO.getFin(), formacionDTO.getFecha() , formacionDTO.getCoste() , formacionDTO.getEstado() , formacionDTO.getImagen());
     }
 
     public static FormacionDTO convertiraDTO (Formacion formacion){
 
 
-       List<String> requisitos = List.of(formacion.getRequisitos().split("\\$\\$"));
+        List<String> requisitos = new ArrayList<>();
+
+        if (formacion.getRequisitos() != null && !formacion.getRequisitos().isEmpty()) {
+            requisitos = List.of(formacion.getRequisitos().split("\\$\\$"));
+        }
 
        return new FormacionDTO(formacion.getId(), formacion.getTitulo(), formacion.getDescripcion(), requisitos, formacion.getInicio() , formacion.getFin() , formacion.getCoste() , formacion.getEstado() , formacion.getImagen() , formacion.getFecha());
     }

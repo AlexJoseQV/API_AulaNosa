@@ -39,8 +39,9 @@ public class OfertaMapper {
 
         // Mapeo de los requisitos de String a Array
         List<String> requisitos = new ArrayList<>();
-        String[] requisitosDivididos = oferta.getRequisitos().split("\\$\\$");
-        Collections.addAll(requisitos, requisitosDivididos);
+        if (oferta.getRequisitos() != null && !oferta.getRequisitos().isEmpty()) {
+            Collections.addAll(requisitos, oferta.getRequisitos().split("\\$\\$"));
+        }
 
         return new OfertaDTO(oferta.getId(), oferta.getVacantes(), oferta.getTitulo(), oferta.getEstado(), oferta.getDescripcion(), oferta.getFecha(), requisitos, oferta.getImagen());
     }
@@ -53,12 +54,10 @@ public class OfertaMapper {
     public static List<OfertaDTO> convertirListaADTO(List<Oferta> ofertas){
         List<OfertaDTO> ofertasDTO = new ArrayList<>();
         for (Oferta oferta : ofertas) {
-
-            // Mapeo de los requisitos de String a Array
             List<String> requisitos = new ArrayList<>();
-            String[] requisitosDivididos = oferta.getRequisitos().split("\\$\\$");
-            Collections.addAll(requisitos, requisitosDivididos);
-
+            if (oferta.getRequisitos() != null && !oferta.getRequisitos().isEmpty()) {
+                Collections.addAll(requisitos, oferta.getRequisitos().split("\\$\\$"));
+            }
             ofertasDTO.add(new OfertaDTO(oferta.getId(), oferta.getVacantes(), oferta.getTitulo(), oferta.getEstado(), oferta.getDescripcion(), oferta.getFecha(), requisitos, oferta.getImagen()));
         }
 
