@@ -9,7 +9,7 @@ public class UsuarioEtiqueta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private int usuario_id; //identificador de usuario//
+    private int usuarioId; //identificador de usuario//
 
     private int etiqueta_id; //identificador de etiqueta//
 
@@ -17,13 +17,12 @@ public class UsuarioEtiqueta {
     /**
      * Constructor completo
      * @param id identificador
-     * @param usuario_id identificador del usuario
+     * @param usuarioId identificador del usuario
      * @param etiqueta_id identificador de la etiqueta
      */
-
-    public UsuarioEtiqueta(int id, int usuario_id, int etiqueta_id) {
+    public UsuarioEtiqueta(int id, int usuarioId, int etiqueta_id) {
         this.id = id;
-        this.usuario_id = usuario_id;
+        this.usuarioId = usuarioId;
         this.etiqueta_id = etiqueta_id;
     }
 
@@ -40,13 +39,13 @@ public class UsuarioEtiqueta {
     public void setId(int id) {
         this.id = id;
     }
-
-    public int getUsuario_id() {
-        return usuario_id;
+@Column(name = "usuario_id")
+    public int getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public int getEtiqueta_id() {
@@ -57,14 +56,11 @@ public class UsuarioEtiqueta {
         this.etiqueta_id = etiqueta_id;
     }
 
-    /**
-     * Método toString
-     * @return cadena con los identificadores de usuario y etiquetas
-     */
     @Override
     public String toString() {
         return "UsuarioEtiqueta{" +
-                "usuario_id=" + usuario_id +
+                "id=" + id +
+                ", usuarioId=" + usuarioId +
                 ", etiqueta_id=" + etiqueta_id +
                 '}';
     }

@@ -83,6 +83,14 @@ public class FormacionController {
 
     }
 
+    @GetMapping("/api/formaciones/{idUsuario}/usuarios")
+    ListaFormacionUsuarioDTOSalida listarFormacionesUsuarios(@PathVariable int idUsuario){
+
+        return formacionService.listarFormacionesUsuario(idUsuario);
+
+    }
+
+
 
 
 

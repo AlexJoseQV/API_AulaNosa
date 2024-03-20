@@ -27,6 +27,7 @@ public interface FormacionService {
      */
     GenericoDTOSalida insribirUsuario(int id, int idUsuario,String estado);
     public FormacionDTOSalida crearFormacion(FormacionDTO formacionDTO);
+     ListaFormacionUsuarioDTOSalida listarFormacionesUsuario(int idUsuario);
 
 
 

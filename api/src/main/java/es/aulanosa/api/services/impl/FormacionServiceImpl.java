@@ -4,17 +4,10 @@ package es.aulanosa.api.services.impl;
  */
 
 import es.aulanosa.api.dtos.*;
-import es.aulanosa.api.mappers.EtiquetaMapper;
 import es.aulanosa.api.mappers.FormacionMapper;
 import es.aulanosa.api.mappers.UsuarioMapper;
-import es.aulanosa.api.models.Formacion;
-import es.aulanosa.api.models.Usuario;
-import es.aulanosa.api.models.UsuarioEtiqueta;
-import es.aulanosa.api.models.UsuarioFormacion;
-import es.aulanosa.api.repositories.FormacionRepository;
-import es.aulanosa.api.repositories.UsuarioEtiquetaRepository;
-import es.aulanosa.api.repositories.UsuarioFormacionRepository;
-import es.aulanosa.api.repositories.UsuarioRepository;
+import es.aulanosa.api.models.*;
+import es.aulanosa.api.repositories.*;
 import es.aulanosa.api.services.FormacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,6 +26,10 @@ public class FormacionServiceImpl implements FormacionService {
     private UsuarioFormacionRepository usuarioFormacionRepository;
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private UsuarioEtiquetaRepository usuarioEtiquetaRepository;
+    @Autowired
+    private FormacionEtiquetaRepository formacionEtiquetaRepository ;
     @Override
     public ListaFormacionDTOSalida listarFormaciones() {
 
@@ -53,6 +50,62 @@ public class FormacionServiceImpl implements FormacionService {
 
         return new ListaFormacionDTOSalida(FormacionMapper.convertiraLista(formaciones), new Timestamp(System.currentTimeMillis()) , errores);
     }
+
+    public ListaFormacionUsuarioDTOSalida listarFormacionesUsuario(int idUsuario){
+
+        List<String> errores = new ArrayList<>();
+        List<Formacion> formaciones = new ArrayList<>();
+        List<FormacionUsuarioDTO> formacionUsuarioDTOS = new ArrayList<>();
+
+
+        try {
+
+            formaciones = formacionRepository.findAll();
+
+
+            for (Formacion f: formaciones ) {
+
+                UsuarioFormacion usuarioFormacion = usuarioFormacionRepository.consultarFormacion(idUsuario,f.getId());
+                FormacionUsuarioDTO formacionUsuarioDTO= new FormacionUsuarioDTO();
+                formacionUsuarioDTO.setFormacionDTO(FormacionMapper.convertiraDTO(f));
+                formacionUsuarioDTO.setInteresado(false);
+
+                if (usuarioFormacion.getEstado().equals("INSCRITO")){
+                  formacionUsuarioDTO.setInscrito(true);
+                }
+                else {
+                    formacionUsuarioDTO.setInscrito(false);
+                }
+
+                List<FormacionEtiqueta> formacionesEtiqueta = formacionEtiquetaRepository.findAllbyFormacionId(f.getId());
+                List<UsuarioEtiqueta> etiquetasUsuario =  usuarioEtiquetaRepository.findAllbyUsuarioId(idUsuario);
+
+                for (FormacionEtiqueta fe : formacionesEtiqueta ) {
+
+                    for (UsuarioEtiqueta ue: etiquetasUsuario ) {
+                        if (ue.getEtiqueta_id()==fe.getEtiqueta_id()){
+                            formacionUsuarioDTO.setInteresado(true);
+                            break;
+                        }
+
+                    }
+
+                }
+
+                formacionUsuarioDTOS.add(formacionUsuarioDTO);
+
+            }
+
+            return new ListaFormacionUsuarioDTOSalida(formacionUsuarioDTOS,errores,new Timestamp(System.currentTimeMillis()));
+
+
+        }catch (Exception e){
+            errores.add("Hubo un error");
+        }
+
+        return new ListaFormacionUsuarioDTOSalida(formacionUsuarioDTOS,errores,new Timestamp(System.currentTimeMillis()));
+    }
+
 
     @Override
     public FormacionDTOSalida obtenerFormacion(int idFormacion) {
