@@ -28,6 +28,6 @@ public class NovedadesController {
     @GetMapping("api/novedades")
     NovedadDTO listarNovedades(){
 
-        return (new NovedadDTO(ofertasService.listarOfertas(), formacionService.listarFormaciones()));
+        return new NovedadDTO(ofertasService.listarOfertas(), formacionService.listarFormaciones());
     }
 }

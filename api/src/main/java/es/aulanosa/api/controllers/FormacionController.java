@@ -68,8 +68,8 @@ public class FormacionController {
      * @return Código de respuesta 200
      */
     @PostMapping("/api/formaciones/{idFormacion}/inscripciones")
-    ResponseEntity<?> inscribirUsuario(@PathVariable int idFormacion, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
-        return ResponseEntity.ok(formacionService.insribirUsuario(idFormacion,inscripcionUsuarioDTO.getUsuarioId(),"INSCRITO"));
+    GenericoDTOSalida inscribirUsuario(@PathVariable int idFormacion, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
+        return formacionService.insribirUsuario(idFormacion,inscripcionUsuarioDTO.getUsuarioId(),"INSCRITO");
     }
 
     /**

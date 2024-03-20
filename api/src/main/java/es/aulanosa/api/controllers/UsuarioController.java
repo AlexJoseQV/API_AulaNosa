@@ -1,6 +1,7 @@
 package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.AccesoDTO;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.UsuarioDTO;
 import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.services.UsuarioService;
@@ -26,9 +27,9 @@ public class UsuarioController {
      * @return Se devuelve la información correspondiente al usuario si el inicio es correcto
      */
     @PostMapping("/api/login")
-    ResponseEntity<?> iniciarSesion(@RequestBody @Valid AccesoDTO acceso) {
+    UsuarioDTOSalida iniciarSesion(@RequestBody @Valid AccesoDTO acceso) {
 
-        return ResponseEntity.ok(usuarioService.comprobarAcceso(acceso));
+        return usuarioService.comprobarAcceso(acceso);
     }
 
     /**
@@ -37,9 +38,9 @@ public class UsuarioController {
      * @return Se devuelve la información del usuario indicado
      */
     @GetMapping("/api/usuarios/{idUsuario}")
-    ResponseEntity<?> obtenerUsuario(@PathVariable int idUsuario) {
+    UsuarioDTOSalida obtenerUsuario(@PathVariable int idUsuario) {
 
-        return ResponseEntity.ok(usuarioService.devolverUsuario(idUsuario));
+        return usuarioService.devolverUsuario(idUsuario);
     }
 
     /**
@@ -60,9 +61,9 @@ public class UsuarioController {
      * @return Se devuelve la información posterior al registro
      */
     @PostMapping("/api/admin/usuarios")
-    ResponseEntity<?> registrarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+    UsuarioDTOSalida registrarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
 
-        return ResponseEntity.ok(usuarioService.crearUsuario(usuarioDTO));
+        return usuarioService.crearUsuario(usuarioDTO);
     }
 
     /**
@@ -70,7 +71,7 @@ public class UsuarioController {
      * @return Código de respuesta 200 con la lista de usuarios
      */
     @GetMapping("/api/admin/usuarios/listar")
-    ResponseEntity<?> listarUsuarios(){
-        return ResponseEntity.ok(usuarioService.listarUsuarios());
+    ListaUsuarioDTOSalida listarUsuarios(){
+        return usuarioService.listarUsuarios();
     }
 }

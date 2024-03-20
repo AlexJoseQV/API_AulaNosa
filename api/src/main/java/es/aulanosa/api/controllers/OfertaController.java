@@ -1,6 +1,9 @@
 package es.aulanosa.api.controllers;
 
+import es.aulanosa.api.dtos.ListaOfertaDTOSalida;
+import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
 import es.aulanosa.api.dtos.OfertaDTO;
+import es.aulanosa.api.dtos.OfertaDTOSalida;
 import es.aulanosa.api.services.OfertaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +26,9 @@ public class OfertaController {
      * @return Se devuelve un listado con la información de todas las ofertas
      */
     @GetMapping("/api/ofertas")
-    ResponseEntity<?> obtenerOfertas() {
+    ListaOfertaDTOSalida obtenerOfertas() {
 
-        return ResponseEntity.ok(ofertaService.listarOfertas());
+        return ofertaService.listarOfertas();
     }
 
     /**
@@ -34,9 +37,9 @@ public class OfertaController {
      * @return Se devuelve la información de la oferta indicada por el identificador
      */
     @GetMapping("/api/ofertas/{idOferta}")
-    ResponseEntity<?> devolverOferta(@PathVariable int idOferta) {
+    OfertaDTOSalida devolverOferta(@PathVariable int idOferta) {
 
-        return ResponseEntity.ok(ofertaService.devolverOferta(idOferta));
+        return ofertaService.devolverOferta(idOferta);
     }
 
     /**
@@ -45,9 +48,9 @@ public class OfertaController {
      * @return Se devuelve un listado con la información de los usuarios inscritos en dicha oferta
      */
     @GetMapping("/api/ofertas/{idOferta}/inscripciones")
-    ResponseEntity<?> devolverUsuariosInscritos(@PathVariable int idOferta) {
+    ListaUsuarioDTOSalida devolverUsuariosInscritos(@PathVariable int idOferta) {
 
-        return ResponseEntity.ok(ofertaService.listarUsuariosOferta(idOferta));
+        return ofertaService.listarUsuariosOferta(idOferta);
     }
 
     /**
@@ -56,7 +59,7 @@ public class OfertaController {
      * @return Código de respuesta 200
      */
     @PostMapping("/api/admin/ofertas")
-    ResponseEntity<?> crearOfertas(@RequestBody @Valid OfertaDTO ofertaDTO){
-        return ResponseEntity.ok(ofertaService.crearOferta(ofertaDTO));
+    OfertaDTOSalida crearOfertas(@RequestBody @Valid OfertaDTO ofertaDTO){
+        return ofertaService.crearOferta(ofertaDTO);
     }
 }
