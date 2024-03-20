@@ -121,12 +121,41 @@ public class OfertaServiceImpl implements OfertaService {
         return new OfertaDTOSalida(errores,new Timestamp(System.currentTimeMillis()),ofertaDTO);
     }
 
+    /**
+     * Este método permite comprobar en que ofertas esta interesado e inscrito
+     * @param idUsuario objeto de la clase OfertaDTO
+     * @return objeto de la clase OfertaDTOSalida
+     */
     @Override
-    public ListaOfertaComprobarDTO comprobarUsuario(int idUsuario) {
+    public ListaUsuarioOfertaDTOSalida comprobarUsuario(int idUsuario) {
 
-        // CARGAR LAS OFERTAS-USUARIO
+        List<String> errores = new ArrayList<>();
+        List<Oferta> ofertas = new ArrayList<>();
+        List<UsuarioOfertaDTO> uo = new ArrayList<>();
 
-        // COMPROBAR EN QUE OFERTAS USUARIO ESTA INTERESADO NUESTRO USUARIO
-        return null;
+        Optional<Usuario> user = usuarioRepository.findById(idUsuario);
+
+        try {
+
+            ofertas = ofertaRepository.findAll();
+
+            for (Oferta oferta : ofertas) {
+
+                UsuarioOferta usuarioOferta = usuarioOfertaRepository.consultarOferta(idUsuario, oferta.getId());
+                UsuarioOfertaDTO usuarioOfertaDTO = new UsuarioOfertaDTO();
+                usuarioOfertaDTO.setOferta(oferta);
+                usuarioOfertaDTO.setInteresado(false);
+
+//                if (oferta.getRequisitos() == user.ge) {
+//
+//                }
+
+            }
+
+        }catch (Exception ex) {
+            errores.add("Hubo un error en la comprobacion");
+        }
+
+        return new ListaUsuarioOfertaDTOSalida(uo, errores, new Timestamp(System.currentTimeMillis()));
     }
 }
