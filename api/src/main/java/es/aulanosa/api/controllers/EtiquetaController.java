@@ -1,6 +1,8 @@
 package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.EtiquetaDTO;
+import es.aulanosa.api.dtos.GenericoDTOSalida;
+import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.services.EtiquetaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +24,8 @@ public class EtiquetaController {
      * @return Código de respuesta 200 con la lista de etiquetas
      */
     @GetMapping("api/etiquetas")
-    ResponseEntity<?> listarEtiquetas(){
-        return ResponseEntity.ok(etiquetaService.listarEtiquetas());
+    ListaEtiquetaDTOSalida listarEtiquetas(){
+        return etiquetaService.listarEtiquetas();
     }
 
     /**
@@ -32,8 +34,8 @@ public class EtiquetaController {
      * @return Código de respuesta 200 con la lista de etiquetas filtrada por el identificador del usuario
      */
     @GetMapping("/api/usuarios/{id}/intereses")
-    ResponseEntity<?> listarInteresesUsuario(@PathVariable int id){
-        return ResponseEntity.ok(etiquetaService.listarInteresesUsuario(id));
+    ListaEtiquetaDTOSalida listarInteresesUsuario(@PathVariable int id){
+        return etiquetaService.listarInteresesUsuario(id);
     }
 
     /**
@@ -42,8 +44,8 @@ public class EtiquetaController {
      * @return Código de respuesta 200 con el objeto de la clase GenericoSalidaDTO
      */
     @DeleteMapping("/api/usuarios/{id}/intereses")
-    ResponseEntity<?> eliminarInteresesUsuario(@PathVariable int id){
-        return ResponseEntity.ok(etiquetaService.eliminarInteresesUsuario(id));
+    GenericoDTOSalida eliminarInteresesUsuario(@PathVariable int id){
+        return etiquetaService.eliminarInteresesUsuario(id);
     }
 
     /**
@@ -53,7 +55,7 @@ public class EtiquetaController {
      * @return Código de respuesta 200 con la información general
      */
     @PostMapping("/api/usuarios/{idUsuario}/intereses")
-    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @Valid @RequestBody EtiquetaDTO etiquetaDTO){
-        return ResponseEntity.ok(etiquetaService.crearInteres(idUsuario,etiquetaDTO));
+    GenericoDTOSalida insertarIntereses(@PathVariable int idUsuario, @Valid @RequestBody EtiquetaDTO etiquetaDTO){
+        return etiquetaService.crearInteres(idUsuario,etiquetaDTO);
     }
 }
