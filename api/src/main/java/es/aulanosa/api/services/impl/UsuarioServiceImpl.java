@@ -1,9 +1,6 @@
 package es.aulanosa.api.services.impl;
 
-import es.aulanosa.api.dtos.AccesoDTO;
-import es.aulanosa.api.dtos.ListaUsuarioDTOSalida;
-import es.aulanosa.api.dtos.UsuarioDTO;
-import es.aulanosa.api.dtos.UsuarioDTOSalida;
+import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Usuario;
 import es.aulanosa.api.models.UsuarioOferta;
@@ -147,6 +144,23 @@ public class UsuarioServiceImpl implements UsuarioService {
         }
 
         return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDevolver != null ? UsuarioMapper.convertirADTO(usuarioDevolver) : new UsuarioDTO());
+    }
+
+    /**
+     * Este método permite listar todos los usuarios
+     * @return Objeto de la clase ListaUsuarioDTOSalida con la lista de errores, la hora en la que ocurrió el error y la lista de usuarios
+     */
+    @Override
+    public ListaUsuarioDTOSalida listarUsuarios() {
+        List<String> errores = new ArrayList<>();
+        List<UsuarioDTO> usuarios = new ArrayList<>();
+        try{
+            usuarios = UsuarioMapper.convertirALista(usuarioRepository.findAll());
+        }catch (Exception e) {
+            errores.add("Hubo un error");
+
+        }
+        return new ListaUsuarioDTOSalida(errores,new Timestamp(System.currentTimeMillis()),usuarios);
     }
 
 }
