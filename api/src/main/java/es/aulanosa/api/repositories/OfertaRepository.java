@@ -26,4 +26,13 @@ public interface OfertaRepository extends JpaRepository<Oferta, Integer> {
      */
     List<Oferta> findByEstadoOrderByFechaDesc(String estado);
 
+    /**
+     * Este método permite eliminar la relacion de una oferta y un usuario.
+     * @param idUsuario identificador del usuario
+     * @param idOferta identificador del usuario
+     */
+    @Modifying(clearAutomatically=true, flushAutomatically=true)
+    @Query("DELETE FROM UsuarioEtiqueta WHERE usuario_id = :id")
+    void deleteById(@Param("id")int id);
+
 }

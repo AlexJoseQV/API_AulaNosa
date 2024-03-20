@@ -120,4 +120,13 @@ public class OfertaServiceImpl implements OfertaService {
         }
         return new OfertaDTOSalida(errores,new Timestamp(System.currentTimeMillis()),ofertaDTO);
     }
+
+    @Override
+    public ListaOfertaComprobarDTO comprobarUsuario(int idUsuario) {
+
+        // CARGAR LAS OFERTAS-USUARIO
+
+        // COMPROBAR EN QUE OFERTAS USUARIO ESTA INTERESADO NUESTRO USUARIO
+        return null;
+    }
 }

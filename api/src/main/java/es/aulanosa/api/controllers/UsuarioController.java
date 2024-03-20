@@ -66,4 +66,9 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.crearUsuario(usuarioDTO));
     }
 
+    @PutMapping("/api/{idUsuario}/eliminarUsuarioOferta")
+    public void eliminarUsuario () {
+
+
+    }
 }

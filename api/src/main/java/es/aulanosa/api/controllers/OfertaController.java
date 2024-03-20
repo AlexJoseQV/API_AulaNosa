@@ -58,4 +58,9 @@ public class OfertaController {
     ResponseEntity<?> crearOfertas(@RequestBody OfertaDTO ofertaDTO){
         return ResponseEntity.ok(ofertaService.crearOferta(ofertaDTO));
     }
+
+    @GetMapping("/api/ofertas/{idUsuario}/comprobar")
+    ResponseEntity<?> comprobarUsuario(@RequestBody int idUsuario){
+        return ResponseEntity.ok(ofertaService.comprobarUsuario(idUsuario));
+    }
 }
