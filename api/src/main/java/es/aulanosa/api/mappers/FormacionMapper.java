@@ -18,7 +18,7 @@ public class FormacionMapper {
             requisitos.append(s).append("$$");
         }
 
-        return  new Formacion(formacionDTO.getId(), formacionDTO.getTitulo(), formacionDTO.getDescripcion(), requisitos.toString(), formacionDTO.getInicio(), formacionDTO.getFin(), formacionDTO.getFecha() , formacionDTO.getCoste() , formacionDTO.getEstado() , formacionDTO.getImagen());
+        return  new Formacion(formacionDTO.getTitulo(), formacionDTO.getDescripcion(), requisitos.toString(), formacionDTO.getInicio(), formacionDTO.getFin(), formacionDTO.getFecha() , formacionDTO.getCoste() , formacionDTO.getEstado() , formacionDTO.getImagen());
     }
 
     public static FormacionDTO convertiraDTO (Formacion formacion){

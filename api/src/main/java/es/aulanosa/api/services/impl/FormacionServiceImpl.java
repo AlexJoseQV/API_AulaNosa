@@ -170,6 +170,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 
         }catch (Exception e){
+            e.printStackTrace();
             errores.add("Error con la base de datos");
         }
 

@@ -43,6 +43,18 @@ public class Formacion {
         this.imagen = imagen;
     }
 
+    public Formacion(String titulo, String descripcion, String requisitos, Date inicio, Date fin, Timestamp fecha, int coste, String estado, ArrayList<Byte> imagen) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.requisitos = requisitos;
+        this.inicio = inicio;
+        this.fin = fin;
+        this.coste = coste;
+        this.fecha =fecha;
+        this.estado = estado;
+        this.imagen = imagen;
+    }
+
     public int getId() {
         return id;
     }
