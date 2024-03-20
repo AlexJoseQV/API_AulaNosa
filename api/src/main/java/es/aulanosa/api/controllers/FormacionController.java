@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * controller con los endpoints realcionados con las Formaciones
  */
 @RestController
+@CrossOrigin
 public class FormacionController {
 
     @Autowired

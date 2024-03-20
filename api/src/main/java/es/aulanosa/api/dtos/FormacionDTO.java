@@ -1,5 +1,8 @@
 package es.aulanosa.api.dtos;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -7,13 +10,23 @@ import java.util.List;
 
 public class FormacionDTO {
 
-    private  int id ;
+    private  Integer id ;
+    @NotNull(message = "El titulo no puede ser nulo")
+    @Size(max = 100, message = "El titulo no puede superar los 100 caracteres")
     private String titulo;
+    @NotNull(message = "La descripcion no puede ser nulo")
+    @Size(max = 100, message = "La descripcion no puede superar los 500 caracteres")
     private String descripcion;
+    @NotNull(message = "Los requisitos no puede ser nulo")
+    @Size(max = 100, message = "Los requisitos no puede superar los 500 caracteres")
     private List<String> requisitos;
+    @NotNull(message = "El inicio no puede ser nulo")
     private Date inicio;
+    @NotNull(message = "El fin no puede ser nulo")
     private Date fin ;
-    private int coste;
+    @NotNull(message = "El coste no puede ser nulo")
+    private Integer coste;
+    @NotNull(message = "El estado no puede ser nulo")
     private String estado;
     private ArrayList<Byte> imagen;
     private Timestamp fecha;
@@ -21,7 +34,7 @@ public class FormacionDTO {
     public FormacionDTO() {
     }
 
-    public FormacionDTO(int id, String titulo, String descripcion, List<String> requisitos, Date inicio, Date fin, int coste, String estado, ArrayList<Byte> imagen, Timestamp fecha) {
+    public FormacionDTO(Integer id, String titulo, String descripcion, List<String> requisitos, Date inicio, Date fin, Integer coste, String estado, ArrayList<Byte> imagen, Timestamp fecha) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -34,11 +47,22 @@ public class FormacionDTO {
         this.fecha = fecha;
     }
 
-    public int getId() {
+    public FormacionDTO(String titulo, String descripcion, List<String> requisitos, Date inicio, Date fin, Integer coste, String estado, ArrayList<Byte> imagen) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.requisitos = requisitos;
+        this.inicio = inicio;
+        this.fin = fin;
+        this.coste = coste;
+        this.estado = estado;
+        this.imagen = imagen;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,11 +106,11 @@ public class FormacionDTO {
         this.fin = fin;
     }
 
-    public int getCoste() {
+    public Integer getCoste() {
         return coste;
     }
 
-    public void setCoste(int coste) {
+    public void setCoste(Integer coste) {
         this.coste = coste;
     }
 

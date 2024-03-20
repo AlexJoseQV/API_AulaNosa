@@ -7,20 +7,20 @@ import jakarta.validation.constraints.NotNull;
  */
 public class InscripcionUsuarioDTO {
     @NotNull(message = "El usuarioId no puede ser nulo")
-    private int usuarioId; // Identificador del usuario
+    private Integer usuarioId; // Identificador del usuario
 
     public InscripcionUsuarioDTO() {
     }
 
-    public InscripcionUsuarioDTO(int usuarioId) {
+    public InscripcionUsuarioDTO(Integer usuarioId) {
         this.usuarioId = usuarioId;
     }
 
-    public int getUsuarioId() {
+    public Integer getUsuarioId() {
         return usuarioId;
     }
 
-    public void setUsuarioId(int usuarioId) {
+    public void setUsuarioId(Integer usuarioId) {
         this.usuarioId = usuarioId;
     }
 
