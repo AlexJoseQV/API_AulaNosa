@@ -31,4 +31,13 @@ public interface UsuarioFormacionRepository extends JpaRepository<UsuarioFormaci
     @Query("INSERT INTO UsuarioFormacion(usuario_id,formacionId,estado) VALUES(:idUsuario,:id,:estado) ")
     void insertar(@Param("idUsuario") int idUsuario,@Param("id")int id,String estado);
 
+    /**
+     * Este método permite eliminar un usuario de una formación
+     * @param id identificador del usuario
+     * @param formacionId identificador de la formación
+     */
+    @Modifying(clearAutomatically=true, flushAutomatically=true)
+    @Query("DELETE FROM UsuarioFormacion WHERE usuario_id = :id AND formacionId = :formacionId")
+    void deleteById(@Param("id")int id,@Param("formacionId") int formacionId);
+
 }
