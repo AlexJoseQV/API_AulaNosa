@@ -25,7 +25,7 @@ public class NovedadesController {
      * Endpoint que permite listar las novedades
      * @return Código de respuesta 200 con la lista de novedades
      */
-    @GetMapping("api/novedades")
+    @GetMapping("/api/novedades")
     NovedadDTO listarNovedades(){
 
         return new NovedadDTO(ofertasService.listarOfertas(), formacionService.listarFormaciones());

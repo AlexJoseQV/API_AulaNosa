@@ -23,7 +23,7 @@ public class EtiquetaController {
      * Endpoint que permite listar las etiquetas
      * @return Código de respuesta 200 con la lista de etiquetas
      */
-    @GetMapping("api/etiquetas")
+    @GetMapping("/api/etiquetas")
     ListaEtiquetaDTOSalida listarEtiquetas(){
         return etiquetaService.listarEtiquetas();
     }
