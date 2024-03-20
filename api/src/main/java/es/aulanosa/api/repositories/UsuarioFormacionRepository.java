@@ -37,7 +37,7 @@ public interface UsuarioFormacionRepository extends JpaRepository<UsuarioFormaci
      * @param formacionId identificador de la formación
      */
     @Modifying(clearAutomatically=true, flushAutomatically=true)
-    @Query("DELETE FROM UsuarioFormacion WHERE usuario_id = :id AND formacionId = :formacionId")
+    @Query("DELETE FROM UsuarioFormacion WHERE usuarioId = :id AND formacionId = :formacionId")
     void deleteById(@Param("id")int id,@Param("formacionId") int formacionId);
 
 
