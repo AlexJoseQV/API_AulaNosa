@@ -77,13 +77,13 @@ public class FormacionServiceImpl implements FormacionService {
                     formacionUsuarioDTO.setInscrito(false);
                 }
 
-                List<FormacionEtiqueta> formacionesEtiqueta = formacionEtiquetaRepository.findAllbyFormacionId(f.getId());
-                List<UsuarioEtiqueta> etiquetasUsuario =  usuarioEtiquetaRepository.findAllbyUsuarioId(idUsuario);
+                List<FormacionEtiqueta> formacionesEtiqueta = formacionEtiquetaRepository.findAllByFormacionId(f.getId());
+                List<UsuarioEtiqueta> etiquetasUsuario =  usuarioEtiquetaRepository.findAllByUsuarioId(idUsuario);
 
                 for (FormacionEtiqueta fe : formacionesEtiqueta ) {
 
                     for (UsuarioEtiqueta ue: etiquetasUsuario ) {
-                        if (ue.getEtiqueta_id()==fe.getEtiqueta_id()){
+                        if (ue.getEtiquetaId()==fe.getEtiquetaId()){
                             formacionUsuarioDTO.setInteresado(true);
                             break;
                         }
@@ -155,7 +155,7 @@ public class FormacionServiceImpl implements FormacionService {
 
                if (usuarioFormacionRec.get(i).getEstado().equals("INSCRITO")){
 
-                   Usuario user = usuarioRepository.getById(usuarioFormacionRec.get(i).getUsuario_id());
+                   Usuario user = usuarioRepository.getById(usuarioFormacionRec.get(i).getUsuarioId());
 
                    usuarios.add(UsuarioMapper.convertirADTO(user));
                }

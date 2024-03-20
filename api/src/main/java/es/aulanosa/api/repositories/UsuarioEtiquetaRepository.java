@@ -16,5 +16,5 @@ import java.util.List;
 public interface UsuarioEtiquetaRepository extends JpaRepository<UsuarioEtiqueta, Integer> {
 
 
-     List<UsuarioEtiqueta> findAllbyUsuarioId(int usuarioId) ;
+     List<UsuarioEtiqueta> findAllByUsuarioId(int usuarioId) ;
 }

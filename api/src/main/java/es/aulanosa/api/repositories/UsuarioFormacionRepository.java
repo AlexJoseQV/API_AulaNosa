@@ -28,11 +28,11 @@ public interface UsuarioFormacionRepository extends JpaRepository<UsuarioFormaci
      */
     @Modifying
     @Transactional
-    @Query("INSERT INTO UsuarioFormacion(usuario_id,formacionId,estado) VALUES(:idUsuario,:id,:estado) ")
+    @Query("INSERT INTO UsuarioFormacion(usuarioId,formacionId,estado) VALUES(:idUsuario,:id,:estado) ")
     void insertar(@Param("idUsuario") int idUsuario,@Param("id")int id,String estado);
 
 
-    @Query("Select * from inscripciones_formaciones where ( usuario_id = :idUsuario AND formacion_id = :idFormacion) ")
+    @Query("from UsuarioFormacion where ( usuarioId = :idUsuario AND formacionId = :idFormacion) ")
     UsuarioFormacion consultarFormacion(@Param("idUsuario") int idUsuario,@Param("idFormacion")int idFormacion);
 
 

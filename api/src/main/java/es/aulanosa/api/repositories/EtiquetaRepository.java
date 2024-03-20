@@ -26,8 +26,8 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
      */
     @Query("SELECT e\n" +
             "FROM UsuarioEtiqueta ue INNER JOIN Usuario u\n" +
-            "on ue.usuario_id = u.id INNER JOIN Etiqueta e\n" +
-            "on ue.etiqueta_id = e.id\n" +
+            "on ue.usuarioId = u.id INNER JOIN Etiqueta e\n" +
+            "on ue.etiquetaId = e.id\n" +
             "WHERE u.id = :id")
     List<Etiqueta>findById(@Param("id")int id);
 
@@ -36,7 +36,7 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
      * @param id identificador del usuario
      */
     @Modifying(clearAutomatically=true, flushAutomatically=true)
-    @Query("DELETE FROM UsuarioEtiqueta WHERE usuario_id = :id")
+    @Query("DELETE FROM UsuarioEtiqueta WHERE usuarioId = :id")
     void deleteById(@Param("id")int id);
 
     /**
@@ -46,7 +46,7 @@ public interface EtiquetaRepository extends JpaRepository<Etiqueta, Integer> {
      */
     @Modifying
     @Transactional
-    @Query("INSERT INTO UsuarioEtiqueta(usuario_id,etiqueta_id) VALUES(:id,:idEtiqueta) ")
+    @Query("INSERT INTO UsuarioEtiqueta(usuarioId,etiquetaId) VALUES(:id,:idEtiqueta) ")
     void insertar(@Param("id")int id, @Param("idEtiqueta") int idEtiqueta);
 
 }

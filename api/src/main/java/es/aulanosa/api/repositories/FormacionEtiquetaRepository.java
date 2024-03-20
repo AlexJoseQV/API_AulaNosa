@@ -16,5 +16,5 @@ import java.util.List;
 public interface FormacionEtiquetaRepository extends JpaRepository< FormacionEtiqueta, Integer> {
 
 
-   public List<FormacionEtiqueta> findAllbyFormacionId(int formacionId) ;
+   public List<FormacionEtiqueta> findAllByFormacionId(int formacionId) ;
 }

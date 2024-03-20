@@ -16,9 +16,10 @@ public class OfertaEtiqueta {
     @Id
     private int id; //identificador de ofertasEtiquetas//
 
-    private int etiqueta_id; //identificador de etiqueta//
-
-    private int oferta_id; //identificador de oferta//
+    @Column(name = "etiqueta_id")
+    private int etiquetaId; //identificador de etiqueta//
+    @Column(name = "oferta_id")
+    private int ofertaId; //identificador de oferta//
 
     /**
      * constructor completo
@@ -26,10 +27,10 @@ public class OfertaEtiqueta {
      * @Param oferta_id es el identificador de las ofertas
      */
 
-    public OfertaEtiqueta(int id, int etiqueta_id, int oferta_id) {
+    public OfertaEtiqueta(int id, int etiquetaId, int ofertaId) {
         this.id = id;
-        this.etiqueta_id = etiqueta_id;
-        this.oferta_id = oferta_id;
+        this.etiquetaId = etiquetaId;
+        this.ofertaId = ofertaId;
     }
 
     /**
@@ -47,20 +48,20 @@ public class OfertaEtiqueta {
         this.id = id;
     }
 
-    public int getEtiqueta_id() {
-        return etiqueta_id;
+    public int getEtiquetaId() {
+        return etiquetaId;
     }
 
-    public void setEtiqueta_id(int etiqueta_id) {
-        this.etiqueta_id = etiqueta_id;
+    public void setEtiquetaId(int etiquetaId) {
+        this.etiquetaId = etiquetaId;
     }
 
-    public int getOferta_id() {
-        return oferta_id;
+    public int getOfertaId() {
+        return ofertaId;
     }
 
-    public void setOferta_id(int oferta_id) {
-        this.oferta_id = oferta_id;
+    public void setOfertaId(int ofertaId) {
+        this.ofertaId = ofertaId;
     }
 
     /**
@@ -71,8 +72,9 @@ public class OfertaEtiqueta {
     @Override
     public String toString() {
         return "OfertaEtiqueta{" +
-                "etiqueta_id=" + etiqueta_id +
-                ", oferta_id=" + oferta_id +
+                "id=" + id +
+                ", etiquetaId=" + etiquetaId +
+                ", ofertaId=" + ofertaId +
                 '}';
     }
 }
