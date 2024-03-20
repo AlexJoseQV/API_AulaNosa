@@ -30,7 +30,7 @@ public interface UsuarioService {
      * @return usuario con los datos cambiados
      */
 
-    UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO);
+    UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO, int idUsuario);
 
     /**
      * Se define un método que permite registrar un usuario a partir de la información indicada

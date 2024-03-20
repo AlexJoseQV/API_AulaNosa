@@ -88,10 +88,10 @@ public class UsuarioServiceImpl implements UsuarioService {
      * @return el usario cambiado
      */
     @Override
-    public UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO) {
+    public UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO, int idUsuario) {
 
         List<String> errores = new ArrayList<>();
-        Optional <Usuario> usuarioRecuperado = usuarioRepository.findById(usuarioDTO.getId());
+        Optional <Usuario> usuarioRecuperado = usuarioRepository.findById(idUsuario);
         Usuario usuario= new Usuario();
         if (usuarioRecuperado.isPresent()){
             usuario = usuarioRecuperado.get();

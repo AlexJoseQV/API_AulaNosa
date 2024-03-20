@@ -48,10 +48,10 @@ public class UsuarioController {
      * @param usuarioDTO usuario a cambiar
      * @return el usuario cambiado
      */
-    @PutMapping("/api/usuarios")
-    public UsuarioDTOSalida updateUsuario (@RequestBody @Valid UsuarioDTO usuarioDTO){
+    @PutMapping("/api/usuarios/{idUsuario}")
+    public UsuarioDTOSalida updateUsuario (@RequestBody @Valid UsuarioDTO usuarioDTO, @PathVariable int idUsuario){
 
-        return usuarioService.updateUsuario(usuarioDTO);
+        return usuarioService.updateUsuario(usuarioDTO, idUsuario);
     }
 
 
