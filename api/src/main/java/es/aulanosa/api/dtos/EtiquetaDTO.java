@@ -1,9 +1,13 @@
 package es.aulanosa.api.dtos;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * Esta clase representa una etiqueta
  * @author MATHIAS
  */
 public class EtiquetaDTO {
+    @NotNull(message = "El id no puede ser nulo")
     private int id;
     private String nombre;
 

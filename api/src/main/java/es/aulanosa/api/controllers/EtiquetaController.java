@@ -52,7 +52,7 @@ public class EtiquetaController {
      * @return Código de respuesta 200 con la información general
      */
     @PostMapping("/api/usuarios/{idUsuario}/intereses")
-    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @RequestBody EtiquetaDTO etiquetaDTO){
+    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @Va @RequestBody EtiquetaDTO etiquetaDTO){
         return ResponseEntity.ok(etiquetaService.crearInteres(idUsuario,etiquetaDTO));
     }
 }
