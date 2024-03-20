@@ -2,6 +2,7 @@ package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.OfertaDTO;
 import es.aulanosa.api.services.OfertaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +56,7 @@ public class OfertaController {
      * @return Código de respuesta 200
      */
     @PostMapping("/api/admin/ofertas")
-    ResponseEntity<?> crearOfertas(@RequestBody OfertaDTO ofertaDTO){
+    ResponseEntity<?> crearOfertas(@RequestBody @Valid OfertaDTO ofertaDTO){
         return ResponseEntity.ok(ofertaService.crearOferta(ofertaDTO));
     }
 }

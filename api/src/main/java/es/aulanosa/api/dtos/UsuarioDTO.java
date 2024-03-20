@@ -1,6 +1,9 @@
 package es.aulanosa.api.dtos;
 
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -9,21 +12,35 @@ import java.util.List;
  * @author ALEXJOSE
  */
 public class UsuarioDTO {
-    private int id; // Identificador del usuario
+    private Integer id; // Identificador del usuario
+    @NotNull(message = "El usuario no puede ser nulo")
+    @Size(max = 64, message = "El usuario no puede superar los 64 caracteres")
     private String usuario; // Nombre de usuario
+    @NotNull(message = "La contrasena no puede ser nulo")
+    @Size(max = 64, message = "La contrasena no puede superar los 64 caracteres")
     private String contrasena; // Contrasena asociada al usuario
+    @NotNull(message = "El nombre no puede ser nulo")
+    @Size(max = 64, message = "El nombre no puede superar los 64 caracteres")
     private String nombre; // Nombre real del usuario
+    @NotNull(message = "Los apellidos no puede ser nulo")
+    @Size(max = 100, message = "Los apellidos no puede superar los 100 caracteres")
     private String apellidos; // Apellidos del usuario
+    @NotNull(message = "El email no puede ser nulo")
+    @Size(max = 100, message = "El email no puede superar los 100 caracteres")
     private String email; // Email del usuario
+    @NotNull(message = "El telefono no puede ser nulo")
+    @Size(max = 64, message = "El telefono no puede superar los 64 caracteres")
     private String telefono; // Teléfono de contacto del usuario
     private Timestamp actualizacion; // Momento de actualización
+    @NotNull(message = "El estado no puede ser nulo")
+    @Size(max = 100, message = "El estado no puede superar los 100 caracteres")
     private String estado; // Estado del usuario
     private List<Byte> imagen; // Array de bytes que representan la foto de perfil
 
     public UsuarioDTO() {
     }
 
-    public UsuarioDTO(int id, String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, Timestamp actualizacion, String estado, List<Byte> imagen) {
+    public UsuarioDTO(Integer id, String usuario, String contrasena, String nombre, String apellidos, String email, String telefono, Timestamp actualizacion, String estado, List<Byte> imagen) {
         this.id = id;
         this.usuario = usuario;
         this.contrasena = contrasena;
@@ -36,7 +53,7 @@ public class UsuarioDTO {
         this.imagen = imagen;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -80,7 +97,7 @@ public class UsuarioDTO {
         this.imagen = imagen;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

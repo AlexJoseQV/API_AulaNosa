@@ -1,5 +1,8 @@
 package es.aulanosa.api.dtos;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +13,20 @@ import java.util.List;
  */
 public class OfertaDTO {
 
-    private int id; // Identificador de la oferta
-
-    private int vacantes; // Número de vacantes disponibles
-
+    private Integer id; // Identificador de la oferta
+    @NotNull(message = "Las vacantes no puede ser nulo")
+    private Integer vacantes; // Número de vacantes disponibles
+    @NotNull(message = "El titulo no puede ser nulo")
+    @Size(max = 100, message = "El titulo no puede superar los 100 caracteres")
     private String titulo; // Título de la oferta
-
+    @NotNull(message = "El estado no puede ser nulo")
+    @Size(max = 100, message = "El estado no puede superar los 100 caracteres")
     private String estado; // Estado actual de la oferta
-
+    @NotNull(message = "La descripcion no puede ser nulo")
+    @Size(max = 100, message = "La descripcion no puede superar los 500 caracteres")
     private String descripcion; // Descripción detallada de la oferta
-
     private Timestamp fecha; // Momento de la oferta
-
+    @NotNull(message = "Los requisitos no puede ser nulo")
     private List<String> requisitos; // Requisitos necesarios para validar la oferta
 
     private ArrayList<Byte> imagen; // Imagen de la oferta
@@ -29,7 +34,7 @@ public class OfertaDTO {
     public OfertaDTO() {
     }
 
-    public OfertaDTO(int id, int vacantes, String titulo, String estado, String descripcion, Timestamp fecha, List<String> requisitos, ArrayList<Byte> imagen) {
+    public OfertaDTO(Integer id, Integer vacantes, String titulo, String estado, String descripcion, Timestamp fecha, List<String> requisitos, ArrayList<Byte> imagen) {
         this.id = id;
         this.vacantes = vacantes;
         this.titulo = titulo;
@@ -40,21 +45,20 @@ public class OfertaDTO {
         this.imagen = imagen;
     }
 
-    public OfertaDTO(int vacantes, String titulo, String estado, String descripcion, Timestamp fecha, List<String> requisitos, ArrayList<Byte> imagen) {
+    public OfertaDTO(Integer vacantes, String titulo, String estado, String descripcion, List<String> requisitos, ArrayList<Byte> imagen) {
         this.vacantes = vacantes;
         this.titulo = titulo;
         this.estado = estado;
         this.descripcion = descripcion;
-        this.fecha = fecha;
         this.requisitos = requisitos;
         this.imagen = imagen;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getVacantes() {
+    public Integer getVacantes() {
         return vacantes;
     }
 
@@ -82,11 +86,11 @@ public class OfertaDTO {
         return imagen;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setVacantes(int vacantes) {
+    public void setVacantes(Integer vacantes) {
         this.vacantes = vacantes;
     }
 
