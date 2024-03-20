@@ -66,7 +66,7 @@ public class OfertaController {
      * @param inscripcionUsuarioDTO Objeto con el identificador del usuario para la inscripción
      * @return Código de respuesta 200
      */
-    @PostMapping("/api/formaciones/{idOferta}/inscripciones")
+    @PostMapping("/api/ofertas/{idOferta}/inscripciones")
     GenericoDTOSalida inscribirUsuario(@PathVariable int idOferta, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
         return ofertaService.insribirUsuario(inscripcionUsuarioDTO.getUsuarioId(),idOferta,"INSCRITO");
     }
