@@ -119,4 +119,34 @@ public class UsuarioServiceImpl implements UsuarioService {
 
         return new UsuarioDTOSalida(errores,new Timestamp(System.currentTimeMillis()),UsuarioMapper.convertirADTO(usuario));
     }
+
+    /**
+     * Método que permite registrar un usuario a partir de la información indicada
+     * @param usuarioDTO Información del usuario a registrar
+     * @return Se devuelve la información correspondiente al usuario posteriormente al registro
+     */
+    @Override
+    public UsuarioDTOSalida crearUsuario(UsuarioDTO usuarioDTO){
+
+        List<String> errores = new ArrayList<>(); // Mensajes de errores
+        Usuario usuarioDevolver = null;
+
+        try {
+            // Validación de la existencia previa de si el usuario ya está registrado y del email seleccionado
+            Optional<Usuario> usuarioOptEmail = usuarioRepository.findByEmail(usuarioDTO.getEmail());
+            Optional<Usuario> usuarioOptUsuario = usuarioRepository.findByEmail(usuarioDTO.getEmail());
+            if(usuarioOptEmail.isPresent()) errores.add("Error el usuario ya existe");
+            if(usuarioOptUsuario.isPresent()) errores.add("Error el email ya está en uso");
+
+            if(errores.isEmpty()){
+                usuarioDTO.setActualizacion(new Timestamp(System.currentTimeMillis()));
+                usuarioDevolver = usuarioRepository.save(UsuarioMapper.convertirAModel(usuarioDTO));
+            }
+        }catch (Exception e){
+            errores.add("Error con la base de datos");
+        }
+
+        return new UsuarioDTOSalida(errores, new Timestamp(System.currentTimeMillis()), usuarioDevolver != null ? UsuarioMapper.convertirADTO(usuarioDevolver) : new UsuarioDTO());
+    }
+
 }

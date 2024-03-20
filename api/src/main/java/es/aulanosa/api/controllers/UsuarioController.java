@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Controlador con los Endpoints respecto a aspectos de los Usuarios
  * @author ALEXJOSE
@@ -51,6 +53,18 @@ public class UsuarioController {
 
         UsuarioDTOSalida usuarioDTOSalida= usuarioService.updateUsuario(usuarioDTO);
         return usuarioDTOSalida;
+    }
+
+
+    /**
+     * Endpoint que permite registrar la información correspondiente a un usuario
+     * @param usuarioDTO Información del usuario a registrar
+     * @return Se devuelve la información posterior al registro
+     */
+    @PostMapping("/api/admin/usuarios")
+    ResponseEntity<?> registrarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
+
+        return ResponseEntity.ok(usuarioService.crearUsuario(usuarioDTO));
     }
 
 }

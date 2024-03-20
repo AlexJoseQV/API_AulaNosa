@@ -31,4 +31,11 @@ public interface UsuarioService {
      */
 
     UsuarioDTOSalida updateUsuario(UsuarioDTO usuarioDTO);
+
+    /**
+     * Se define un método que permite registrar un usuario a partir de la información indicada
+     * @param usuarioDTO Información del usuario a registrar
+     * @return Se devuelve la información correspondiente al usuario posteriormente al registro
+     */
+    UsuarioDTOSalida crearUsuario(UsuarioDTO usuarioDTO);
 }
