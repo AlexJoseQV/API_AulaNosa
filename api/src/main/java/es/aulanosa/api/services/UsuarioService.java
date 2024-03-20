@@ -38,4 +38,10 @@ public interface UsuarioService {
      * @return Se devuelve la información correspondiente al usuario posteriormente al registro
      */
     UsuarioDTOSalida crearUsuario(UsuarioDTO usuarioDTO);
+
+    /**
+     * Este método permite listar todos los usuarios
+     * @return Objeto de la clase ListaUsuariosDTOSalida con la información de los posibles errores, la hora y la lista de usuarios
+     */
+    ListaUsuarioDTOSalida listarUsuarios();
 }

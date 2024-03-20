@@ -66,4 +66,12 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.crearUsuario(usuarioDTO));
     }
 
+    /**
+     * Endpoint que permite listar todos los usuarios
+     * @return Código de respuesta 200 con la lista de usuarios
+     */
+    @GetMapping("/api/admin/usuarios/listar")
+    ResponseEntity<?> listarUsuarios(){
+        return ResponseEntity.ok(usuarioService.listarUsuarios());
+    }
 }
