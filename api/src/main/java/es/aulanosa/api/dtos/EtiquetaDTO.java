@@ -1,6 +1,6 @@
 package es.aulanosa.api.dtos;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * Esta clase representa una etiqueta

@@ -2,6 +2,7 @@ package es.aulanosa.api.controllers;
 
 import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.services.EtiquetaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -52,7 +53,7 @@ public class EtiquetaController {
      * @return Código de respuesta 200 con la información general
      */
     @PostMapping("/api/usuarios/{idUsuario}/intereses")
-    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @Va @RequestBody EtiquetaDTO etiquetaDTO){
+    ResponseEntity<?> insertarIntereses(@PathVariable int idUsuario, @Valid @RequestBody EtiquetaDTO etiquetaDTO){
         return ResponseEntity.ok(etiquetaService.crearInteres(idUsuario,etiquetaDTO));
     }
 }

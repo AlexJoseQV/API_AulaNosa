@@ -8,6 +8,8 @@ import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.repositories.FormacionRepository;
 
 import es.aulanosa.api.services.FormacionService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;
@@ -65,7 +67,7 @@ public class FormacionController {
      * @return Código de respuesta 200
      */
     @PostMapping("/api/formaciones/{idFormacion}/inscripciones")
-    ResponseEntity<?> inscribirUsuario(@PathVariable int idFormacion, @RequestBody int usuarioId){
+    ResponseEntity<?> inscribirUsuario(@PathVariable int idFormacion, @Valid @NotNull @RequestBody int usuarioId){
         return ResponseEntity.ok(formacionService.insribirUsuario(idFormacion,usuarioId,"INSCRITO"));
     }
 
