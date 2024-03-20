@@ -46,7 +46,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 
         }catch (Exception e){
-            errores.add("Hubo un error");
+            errores.add("Error con la base de datos");
         }
 
 
@@ -71,7 +71,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 
         }catch (Exception e){
-            errores.add("Hubo un error");
+            errores.add("Error con la base de datos");
         }
 
 
@@ -114,7 +114,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 
         }catch (Exception e){
-            errores.add("Hubo un error");
+            errores.add("Error con la base de datos");
         }
 
 
@@ -169,7 +169,7 @@ public class FormacionServiceImpl implements FormacionService {
 
 
         }catch (Exception e){
-            errores.add("Hubo un error");
+            errores.add("Error con la base de datos");
         }
 
 
