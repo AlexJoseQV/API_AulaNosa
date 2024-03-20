@@ -12,7 +12,7 @@ public class UsuarioFormacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int usuario_id;
+    private int usuarioId;
 
     private int formacionId;
     private String estado;
@@ -20,9 +20,9 @@ public class UsuarioFormacion {
     public UsuarioFormacion() {
     }
 
-    public UsuarioFormacion(int id, int usuario_id, int formacionId, String estado) {
+    public UsuarioFormacion(int id, int usuarioId, int formacionId, String estado) {
         this.id = id;
-        this.usuario_id = usuario_id;
+        this.usuarioId = usuarioId;
         this.formacionId = formacionId;
         this.estado = estado;
     }
@@ -35,13 +35,15 @@ public class UsuarioFormacion {
         this.id = id;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    @Column(name = "usuario_id")
+    public int getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
+
     @Column(name = "formacion_id")
     public int getFormacionId() {
         return formacionId;
@@ -63,7 +65,7 @@ public class UsuarioFormacion {
     public String toString() {
         return "UsuarioFormacion{" +
                 "id=" + id +
-                ", usuario_id=" + usuario_id +
+                ", usuarioId=" + usuarioId +
                 ", formacionId=" + formacionId +
                 ", estado='" + estado + '\'' +
                 '}';

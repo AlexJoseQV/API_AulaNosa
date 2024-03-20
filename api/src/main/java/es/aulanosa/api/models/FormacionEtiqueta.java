@@ -13,15 +13,16 @@ public class FormacionEtiqueta {
     private int id ;
    @Column(name = "formacion_id")
     private int formacionId;
-    private int etiqueta_id;
+    @Column(name = "etiqueta_id")
+    private int etiquetaId;
 
     public FormacionEtiqueta() {
     }
 
-    public FormacionEtiqueta(int id, int formacionId, int etiqueta_id) {
+    public FormacionEtiqueta(int id, int formacionId, int etiquetaId) {
         this.id = id;
         this.formacionId = formacionId;
-        this.etiqueta_id = etiqueta_id;
+        this.etiquetaId = etiquetaId;
     }
 
     public int getId() {
@@ -40,12 +41,12 @@ public class FormacionEtiqueta {
         this.formacionId = formacionId;
     }
 
-    public int getEtiqueta_id() {
-        return etiqueta_id;
+    public int getEtiquetaId() {
+        return etiquetaId;
     }
 
-    public void setEtiqueta_id(int etiqueta_id) {
-        this.etiqueta_id = etiqueta_id;
+    public void setEtiquetaId(int etiquetaId) {
+        this.etiquetaId = etiquetaId;
     }
 
     @Override
@@ -53,7 +54,7 @@ public class FormacionEtiqueta {
         return "FormacionEtiqueta{" +
                 "id=" + id +
                 ", formacionId=" + formacionId +
-                ", etiqueta_id=" + etiqueta_id +
+                ", etiquetaId=" + etiquetaId +
                 '}';
     }
 }

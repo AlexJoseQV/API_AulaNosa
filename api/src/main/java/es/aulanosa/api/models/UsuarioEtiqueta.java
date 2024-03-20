@@ -9,22 +9,21 @@ public class UsuarioEtiqueta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private int id;
-    private int usuario_id; //identificador de usuario//
+    private int usuarioId; //identificador de usuario//
 
-    private int etiqueta_id; //identificador de etiqueta//
+    private int etiquetaId; //identificador de etiqueta//
 
 
     /**
      * Constructor completo
      * @param id identificador
-     * @param usuario_id identificador del usuario
-     * @param etiqueta_id identificador de la etiqueta
+     * @param usuarioId identificador del usuario
+     * @param etiquetaId identificador de la etiqueta
      */
-
-    public UsuarioEtiqueta(int id, int usuario_id, int etiqueta_id) {
+    public UsuarioEtiqueta(int id, int usuarioId, int etiquetaId) {
         this.id = id;
-        this.usuario_id = usuario_id;
-        this.etiqueta_id = etiqueta_id;
+        this.usuarioId = usuarioId;
+        this.etiquetaId = etiquetaId;
     }
 
     /**
@@ -41,31 +40,32 @@ public class UsuarioEtiqueta {
         this.id = id;
     }
 
-    public int getUsuario_id() {
-        return usuario_id;
+    @Column(name = "usuario_id")
+    public int getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuarioId(int usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
-    public int getEtiqueta_id() {
-        return etiqueta_id;
+
+
+    @Column(name = "etiqueta_id")
+    public int getEtiquetaId() {
+        return etiquetaId;
     }
 
-    public void setEtiqueta_id(int etiqueta_id) {
-        this.etiqueta_id = etiqueta_id;
+    public void setEtiquetaId(int etiquetaId) {
+        this.etiquetaId = etiquetaId;
     }
 
-    /**
-     * Método toString
-     * @return cadena con los identificadores de usuario y etiquetas
-     */
     @Override
     public String toString() {
         return "UsuarioEtiqueta{" +
-                "usuario_id=" + usuario_id +
-                ", etiqueta_id=" + etiqueta_id +
+                "id=" + id +
+                ", usuarioId=" + usuarioId +
+                ", etiquetaId=" + etiquetaId +
                 '}';
     }
 }

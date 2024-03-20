@@ -97,6 +97,11 @@ public class FormacionController {
         return ResponseEntity.ok(formacionService.eliminarUsuarioFormacion(idUsuario,formacionId));
     }
 
+    @GetMapping("/api/formaciones/{idUsuario}/usuarios")
+    ListaFormacionUsuarioDTOSalida listarFormacionesUsuarios(@PathVariable int idUsuario){
 
+        return formacionService.listarFormacionesUsuario(idUsuario);
+
+    }
 
 }

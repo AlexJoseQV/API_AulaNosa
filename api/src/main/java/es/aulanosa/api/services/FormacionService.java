@@ -26,7 +26,11 @@ public interface FormacionService {
      * @return objeto de la clase GenericoDTOSalida
      */
     GenericoDTOSalida insribirUsuario(int id, int idUsuario,String estado);
+
     FormacionDTOSalida crearFormacion(FormacionDTO formacionDTO);
+    
+     ListaFormacionUsuarioDTOSalida listarFormacionesUsuario(int idUsuario);
+
 
     /**
      * Este método permite quitar a un usuario de una formación
