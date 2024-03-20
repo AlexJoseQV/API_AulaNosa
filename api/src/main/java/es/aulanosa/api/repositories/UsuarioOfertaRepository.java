@@ -15,6 +15,6 @@ import java.util.List;
 public interface UsuarioOfertaRepository extends JpaRepository<UsuarioOferta, Integer> {
     List<UsuarioOferta> findAllByOfertaId(int ofertaId);
 
-    @Query("Select * from inscripciones_ofertas where (usuario_id = :idUsuario AND oferta_id = :idOferta)")
+    @Query("from inscripciones_ofertas where (usuarioID = :idUsuario AND ofertaID = :idOferta)")
     UsuarioOferta consultarOferta(@Param("idUsuario") int idUsuario, @Param("idOferta")int idOferta);
 }
