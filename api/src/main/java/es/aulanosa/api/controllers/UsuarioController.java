@@ -26,7 +26,7 @@ public class UsuarioController {
      * @return Se devuelve la información correspondiente al usuario si el inicio es correcto
      */
     @PostMapping("/api/login")
-    ResponseEntity<?> iniciarSesion(@RequestBody AccesoDTO acceso) {
+    ResponseEntity<?> iniciarSesion(@RequestBody @Valid AccesoDTO acceso) {
 
         return ResponseEntity.ok(usuarioService.comprobarAcceso(acceso));
     }

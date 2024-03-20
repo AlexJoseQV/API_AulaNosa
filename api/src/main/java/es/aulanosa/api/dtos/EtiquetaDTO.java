@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
  */
 public class EtiquetaDTO {
     @NotNull(message = "El id no puede ser nulo")
-    private int id;
+    private Integer id;
     private String nombre;
 
     /**
@@ -22,16 +22,16 @@ public class EtiquetaDTO {
      * @param id identificador de la etiqueta
      * @param nombre nombre de la etiqueta
      */
-    public EtiquetaDTO(int id, String nombre) {
+    public EtiquetaDTO(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
