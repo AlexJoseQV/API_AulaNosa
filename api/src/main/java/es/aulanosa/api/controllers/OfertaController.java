@@ -78,7 +78,7 @@ public class OfertaController {
      * @return Se devuelve un indicador con respecto al estado de la operación realizada
      */
     @DeleteMapping("/api/usuarios/{idUsuario}/oferta/{idOferta}")
-    GenericoDTOSalida eliminarInteresesUsuario(@PathVariable int idUsuario, @PathVariable int idOferta){
+    GenericoDTOSalida eliminarOfertaUsuario(@PathVariable int idUsuario, @PathVariable int idOferta){
         return ofertaService.eliminarOfertaDeUsuario(idUsuario, idOferta);
     }
 }
