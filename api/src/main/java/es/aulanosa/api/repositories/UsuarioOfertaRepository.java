@@ -1,5 +1,6 @@
 package es.aulanosa.api.repositories;
 
+import es.aulanosa.api.models.UsuarioEtiqueta;
 import es.aulanosa.api.models.UsuarioOferta;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Interfaz para el respositorio de UsuarioOferta
@@ -26,4 +28,12 @@ public interface UsuarioOfertaRepository extends JpaRepository<UsuarioOferta, In
     @Transactional
     @Query("INSERT INTO UsuarioOferta(usuarioId,ofertaId,estado) VALUES(:idUsuario,:idOferta,:estado) ")
     void insertar(@Param("idUsuario") int idUsuario, @Param("idOferta")int idOferta, @Param("estado") String estado);
+
+    /**
+     * Se define un método para buscar una relación de un usuario y una oferta
+     * @param usuarioId Identificador del usuario
+     * @param ofertaId Identificador de la oferta
+     * @return Se devuelve la instancia opcional de la relación entre la oferta y el usuario
+     */
+    Optional<UsuarioOferta> findByUsuarioIdAndOfertaId(int usuarioId, int ofertaId);
 }

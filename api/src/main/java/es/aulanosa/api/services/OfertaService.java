@@ -38,4 +38,12 @@ public interface OfertaService {
      * @return objeto de la clase GenericoDTOSalida
      */
     GenericoDTOSalida insribirUsuario(int idUsuario,int idOferta,String estado);
+
+    /**
+     * Se define un método permite eliminar la relación correspondiente de un usuario con una oferta
+     * @param idUsuario Identificador del usuario
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelve un indicador que muestra el estado correspondiente de la operación
+     */
+    GenericoDTOSalida eliminarOfertaDeUsuario(int idUsuario, int idOferta);
 }

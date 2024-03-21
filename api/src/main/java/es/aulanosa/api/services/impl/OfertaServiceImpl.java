@@ -5,6 +5,7 @@ import es.aulanosa.api.mappers.OfertaMapper;
 import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Oferta;
 import es.aulanosa.api.models.Usuario;
+import es.aulanosa.api.models.UsuarioEtiqueta;
 import es.aulanosa.api.models.UsuarioOferta;
 import es.aulanosa.api.repositories.OfertaRepository;
 import es.aulanosa.api.repositories.UsuarioOfertaRepository;
@@ -139,6 +140,33 @@ public class OfertaServiceImpl implements OfertaService {
             errores.add("Hubo un error");
 
         }
+        return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
+    }
+
+    /**
+     * Este método permite eliminar la relación correspondiente de un usuario con una oferta
+     * @param idUsuario Identificador del usuario
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelve un indicador que muestra el estado correspondiente de la operación
+     */
+    @Override
+    public GenericoDTOSalida eliminarOfertaDeUsuario(int idUsuario, int idOferta){
+        List<String> errores = new ArrayList<>();
+        try {
+            // Se intenta obtener la instancia
+            Optional<UsuarioOferta> usuarioOfertaOpcional = usuarioOfertaRepository.findByUsuarioIdAndOfertaId(idUsuario, idOferta);
+
+            if (usuarioOfertaOpcional.isPresent()) {
+                // La instancia existe, entonces eliminarla
+                UsuarioOferta usuarioOferta = usuarioOfertaOpcional.get();
+                usuarioOfertaRepository.delete(usuarioOferta);
+            }else{
+                errores.add("Error no existe la oferta indicada para ese usuario");
+            }
+        }catch (Exception e){
+            errores.add("Error con la base de datos");
+        }
+
         return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
     }
 

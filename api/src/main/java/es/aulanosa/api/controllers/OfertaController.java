@@ -70,4 +70,15 @@ public class OfertaController {
     GenericoDTOSalida inscribirUsuario(@PathVariable int idOferta, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
         return ofertaService.insribirUsuario(inscripcionUsuarioDTO.getUsuarioId(),idOferta,"INSCRITO");
     }
+
+    /**
+     * Endpoint para eliminar una relación entre un usuario con respecto a una oferta
+     * @param idUsuario Identificador del usuario
+     * @param idOferta Identificador de la oferta
+     * @return Se devuelve un indicador con respecto al estado de la operación realizada
+     */
+    @DeleteMapping("/api/usuarios/{idUsuario}/oferta/{idOferta}")
+    GenericoDTOSalida eliminarInteresesUsuario(@PathVariable int idUsuario, @PathVariable int idOferta){
+        return ofertaService.eliminarOfertaDeUsuario(idUsuario, idOferta);
+    }
 }
