@@ -58,4 +58,15 @@ public class EtiquetaController {
     GenericoDTOSalida insertarIntereses(@PathVariable int idUsuario, @Valid @RequestBody EtiquetaDTO etiquetaDTO){
         return etiquetaService.crearInteres(idUsuario,etiquetaDTO);
     }
+
+    /**
+     * Endpoint que permite eliminar una relación entre un usuario con respecto a una etiqueta
+     * @param idUsuario Identificador del usuario
+     * @param etiquetaDTO Información con el identificador de la etiqueta
+     * @return Se devuelve un indicador que muestra el resultado de la operación realizada
+     */
+    @DeleteMapping("/api/usuarios/{idUsuario}/etiqueta")
+    GenericoDTOSalida eliminarInteresesUsuario(@PathVariable int idUsuario, @Valid @RequestBody EtiquetaDTO etiquetaDTO){
+        return etiquetaService.eliminarEtiquetaDeUsuario(idUsuario, etiquetaDTO.getId());
+    }
 }

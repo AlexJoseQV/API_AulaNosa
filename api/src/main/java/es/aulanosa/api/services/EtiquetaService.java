@@ -36,4 +36,12 @@ public interface EtiquetaService {
      * @return Objeto GenericoDTOSalida con la información general
      */
     GenericoDTOSalida crearInteres(int id, EtiquetaDTO etiquetaDTO);
+
+    /**
+     * Se define un método empleado para eliminar la relación de una etiqueta con un usuario
+     * @param idUsuario Identificador del usuario
+     * @param idEtiqueta Identificador de la etiqueta
+     * @return Se devuelve un indicador para mostrar si la operación se realizó correctamente
+     */
+    GenericoDTOSalida eliminarEtiquetaDeUsuario(int idUsuario, int idEtiqueta);
 }

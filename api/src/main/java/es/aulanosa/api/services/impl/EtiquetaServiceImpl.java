@@ -4,7 +4,10 @@ import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
+import es.aulanosa.api.models.Usuario;
+import es.aulanosa.api.models.UsuarioEtiqueta;
 import es.aulanosa.api.repositories.EtiquetaRepository;
+import es.aulanosa.api.repositories.UsuarioEtiquetaRepository;
 import es.aulanosa.api.services.EtiquetaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Esta clase contiene métodos para las etiquetas
@@ -21,6 +25,9 @@ import java.util.List;
 public class EtiquetaServiceImpl implements EtiquetaService {
     @Autowired
     private EtiquetaRepository etiquetaRepository;
+
+    @Autowired
+    private UsuarioEtiquetaRepository usuarioEtiquetaRepository;
 
     /**
      * Este método permite listar las etiquetas
@@ -93,5 +100,32 @@ public class EtiquetaServiceImpl implements EtiquetaService {
 
         return new GenericoDTOSalida(errores,new Timestamp(System.currentTimeMillis()));
 
+    }
+
+    /**
+     * Método empleado para eliminar la relación de una etiqueta con un usuario
+     * @param idUsuario Identificador del usuario
+     * @param idEtiqueta Identificador de la etiqueta
+     * @return Se devuelve un indicador para mostrar si la operación se realizó correctamente
+     */
+    @Override
+    public GenericoDTOSalida eliminarEtiquetaDeUsuario(int idUsuario, int idEtiqueta){
+        List<String> errores = new ArrayList<>();
+        try {
+            // Se intenta obtener la instancia
+            Optional<UsuarioEtiqueta> usuarioEtiquetaOpcional = usuarioEtiquetaRepository.findByUsuarioIdAndEtiquetaId(idUsuario, idEtiqueta);
+
+            if (usuarioEtiquetaOpcional.isPresent()) {
+                // La instancia existe, entonces eliminarla
+                UsuarioEtiqueta usuarioEtiqueta = usuarioEtiquetaOpcional.get();
+                usuarioEtiquetaRepository.delete(usuarioEtiqueta);
+            }else{
+                errores.add("Error no existe la etiqueta indicada para ese usuario");
+            }
+        }catch (Exception e){
+            errores.add("Error con la base de datos");
+        }
+
+        return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
     }
 }
