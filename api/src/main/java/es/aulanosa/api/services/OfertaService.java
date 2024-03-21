@@ -38,4 +38,6 @@ public interface OfertaService {
      * @return objeto de la clase GenericoDTOSalida
      */
     GenericoDTOSalida insribirUsuario(int idUsuario,int idOferta,String estado);
+
+    ListaOfertaUsuarioDTOSalida listarOfertaUsuario(int idUsuario);
 }

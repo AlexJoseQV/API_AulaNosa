@@ -70,4 +70,11 @@ public class OfertaController {
     GenericoDTOSalida inscribirUsuario(@PathVariable int idOferta, @Valid @RequestBody InscripcionUsuarioDTO inscripcionUsuarioDTO){
         return ofertaService.insribirUsuario(inscripcionUsuarioDTO.getUsuarioId(),idOferta,"INSCRITO");
     }
+
+    @GetMapping("/api/ofertas/{idUsuario}/usuarios")
+    ListaOfertaUsuarioDTOSalida listarOfertaUsuarios(@PathVariable int idUsuario){
+
+        return ofertaService.listarOfertaUsuario(idUsuario);
+
+    }
 }

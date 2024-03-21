@@ -26,4 +26,7 @@ public interface UsuarioOfertaRepository extends JpaRepository<UsuarioOferta, In
     @Transactional
     @Query("INSERT INTO UsuarioOferta(usuarioId,ofertaId,estado) VALUES(:idUsuario,:idOferta,:estado) ")
     void insertar(@Param("idUsuario") int idUsuario, @Param("idOferta")int idOferta, @Param("estado") String estado);
+
+    @Query("from UsuarioOferta where ( usuarioId = :idUsuario AND ofertaId = :idOferta) ")
+    UsuarioOferta consultarOferta(@Param("idUsuario") int idUsuario, @Param("idOferta") int idOferta);
 }

@@ -250,6 +250,4 @@ public class FormacionServiceImpl implements FormacionService {
         }
         return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
     }
-
-
 }
