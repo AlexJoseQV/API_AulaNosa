@@ -3,13 +3,8 @@ package es.aulanosa.api.services.impl;
 import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.mappers.OfertaMapper;
 import es.aulanosa.api.mappers.UsuarioMapper;
-import es.aulanosa.api.models.Oferta;
-import es.aulanosa.api.models.Usuario;
-import es.aulanosa.api.models.UsuarioEtiqueta;
-import es.aulanosa.api.models.UsuarioOferta;
-import es.aulanosa.api.repositories.OfertaRepository;
-import es.aulanosa.api.repositories.UsuarioOfertaRepository;
-import es.aulanosa.api.repositories.UsuarioRepository;
+import es.aulanosa.api.models.*;
+import es.aulanosa.api.repositories.*;
 import es.aulanosa.api.services.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,6 +25,13 @@ public class OfertaServiceImpl implements OfertaService {
 
     @Autowired
     private UsuarioRepository usuarioRepository; // Instancia de la clase repositorio del usuario
+
+    @Autowired
+    private UsuarioEtiquetaRepository usuarioEtiquetaRepository;
+
+    @Autowired
+    private OfertaEtiquetaRepository ofertaEtiquetaRepository;
+
 
     @Autowired
     private UsuarioOfertaRepository usuarioOfertaRepository;
@@ -168,6 +170,56 @@ public class OfertaServiceImpl implements OfertaService {
         }
 
         return new GenericoDTOSalida(errores, new Timestamp(System.currentTimeMillis()));
+    }
+
+    @Override
+    public ListaOfertaUsuarioDTOSalida listarOfertaUsuario(int idUsuario) {
+
+        List<String> errores = new ArrayList<>();
+        List<Oferta> ofertas = new ArrayList<>();
+        List<OfertaUsuarioDTO> ofertasUsuarioDTO = new ArrayList<>();
+
+        try {
+
+            ofertas = ofertaRepository.findAll();
+
+            for(Oferta o : ofertas) {
+
+                UsuarioOferta usuarioOferta = usuarioOfertaRepository.consultarOferta(idUsuario, o.getId());
+                OfertaUsuarioDTO ofertaUsuarioDTO = new OfertaUsuarioDTO();
+                ofertaUsuarioDTO.setOferta(OfertaMapper.convertirADTO(o));
+                ofertaUsuarioDTO.setInscrito(false);
+                ofertaUsuarioDTO.setInteresado(false);
+
+                if (ofertaUsuarioDTO != null) {
+                    if (usuarioOferta.getEstado().equals("INSCRITO")) {
+                        ofertaUsuarioDTO.setInscrito(true);
+                    }
+
+                    List<OfertaEtiqueta> ofertasEtiqueta = ofertaEtiquetaRepository.findAllByOfertaId(o.getId());
+                    List<UsuarioEtiqueta> etiquetaUsuario = usuarioEtiquetaRepository.findAllByUsuarioId(idUsuario);
+
+                    for (OfertaEtiqueta oe : ofertasEtiqueta) {
+                        for(UsuarioEtiqueta ue : etiquetaUsuario) {
+                            if (ue.getEtiquetaId() == oe.getEtiquetaId()) {
+                                ofertaUsuarioDTO.setInteresado(true);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                ofertasUsuarioDTO.add(ofertaUsuarioDTO);
+            }
+
+            return new ListaOfertaUsuarioDTOSalida(ofertasUsuarioDTO,errores,new Timestamp(System.currentTimeMillis()));
+
+
+        }catch(Exception ex) {
+            errores.add("Error durante la ejecucion.");
+        }
+
+        return new ListaOfertaUsuarioDTOSalida(ofertasUsuarioDTO,errores,new Timestamp(System.currentTimeMillis()));
     }
 
 }

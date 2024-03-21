@@ -46,4 +46,6 @@ public interface OfertaService {
      * @return Se devuelve un indicador que muestra el estado correspondiente de la operación
      */
     GenericoDTOSalida eliminarOfertaDeUsuario(int idUsuario, int idOferta);
+
+    ListaOfertaUsuarioDTOSalida listarOfertaUsuario(int idUsuario);
 }

@@ -36,4 +36,8 @@ public interface UsuarioOfertaRepository extends JpaRepository<UsuarioOferta, In
      * @return Se devuelve la instancia opcional de la relación entre la oferta y el usuario
      */
     Optional<UsuarioOferta> findByUsuarioIdAndOfertaId(int usuarioId, int ofertaId);
+
+    @Query("from UsuarioOferta where ( usuarioId = :idUsuario AND ofertaId = :idOferta) ")
+    UsuarioOferta consultarOferta(@Param("idUsuario") int idUsuario, @Param("idOferta") int idOferta);
+
 }

@@ -81,4 +81,11 @@ public class OfertaController {
     GenericoDTOSalida eliminarOfertaUsuario(@PathVariable int idUsuario, @PathVariable int idOferta){
         return ofertaService.eliminarOfertaDeUsuario(idUsuario, idOferta);
     }
+
+    @GetMapping("/api/ofertas/{idUsuario}/usuarios")
+    ListaOfertaUsuarioDTOSalida listarOfertaUsuarios(@PathVariable int idUsuario){
+
+        return ofertaService.listarOfertaUsuario(idUsuario);
+
+    }
 }
