@@ -46,7 +46,7 @@ class UsuarioFormacionRepositoryTests {
 
 		Optional<UsuarioFormacion> encontrada = usuarioFormacionRepository.findById(uf.getId());
 		assertThat(encontrada).isNotEmpty();
-		assertThat(encontrada.get().getId()).isEqualTo(1);
+		assertThat(encontrada.get().getId()).isEqualTo(11);
 		usuarioFormacionRepository.delete(uf);
 	}
 
@@ -91,8 +91,8 @@ class UsuarioFormacionRepositoryTests {
 	public UsuarioFormacion crearUsuarioFormacion(){
 
 		UsuarioFormacion uf = new UsuarioFormacion();
-		uf.setFormacionId(1);
-		uf.setUsuarioId(1);
+		uf.setFormacionId(2);
+		uf.setUsuarioId(103);
 		uf.setEstado("INSCRITO");
 
 		return uf;

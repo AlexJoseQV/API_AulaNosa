@@ -85,7 +85,7 @@ class FormacionEtiquetaRepositoryTests {
      */
     public FormacionEtiqueta crearFormacionEtiqueta(){
         FormacionEtiqueta formacionEtiqueta = new FormacionEtiqueta();
-        formacionEtiqueta.setEtiquetaId(1);
+        formacionEtiqueta.setEtiquetaId(13);
         formacionEtiqueta.setFormacionId(1);
         return formacionEtiqueta;
     }
