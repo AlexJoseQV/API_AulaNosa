@@ -4,7 +4,6 @@ import es.aulanosa.api.dtos.EtiquetaDTO;
 import es.aulanosa.api.dtos.GenericoDTOSalida;
 import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.mappers.EtiquetaMapper;
-import es.aulanosa.api.models.Usuario;
 import es.aulanosa.api.models.UsuarioEtiqueta;
 import es.aulanosa.api.repositories.EtiquetaRepository;
 import es.aulanosa.api.repositories.UsuarioEtiquetaRepository;

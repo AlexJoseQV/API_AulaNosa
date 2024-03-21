@@ -1,11 +1,7 @@
 package es.aulanosa.api.repositories;
 
 import es.aulanosa.api.models.FormacionEtiqueta;
-import es.aulanosa.api.models.Oferta;
-import es.aulanosa.api.models.UsuarioFormacion;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 

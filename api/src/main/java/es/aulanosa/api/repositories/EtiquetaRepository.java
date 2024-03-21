@@ -2,7 +2,6 @@ package es.aulanosa.api.repositories;
 
 import es.aulanosa.api.models.Etiqueta;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.NamedQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

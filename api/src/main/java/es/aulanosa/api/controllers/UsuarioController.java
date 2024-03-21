@@ -7,7 +7,6 @@ import es.aulanosa.api.dtos.UsuarioDTOSalida;
 import es.aulanosa.api.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**

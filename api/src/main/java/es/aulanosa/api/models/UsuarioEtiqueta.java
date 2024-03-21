@@ -1,8 +1,6 @@
 package es.aulanosa.api.models;
 
 import jakarta.persistence.*;
-
-import java.sql.Timestamp;
 @Table(name = "usuarios_etiquetas")
 @Entity
 public class UsuarioEtiqueta {

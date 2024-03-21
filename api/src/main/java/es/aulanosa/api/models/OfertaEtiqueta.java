@@ -2,7 +2,6 @@ package es.aulanosa.api.models;
 
 import jakarta.persistence.*;
 
-import java.sql.Timestamp;
 
 /**
  * Clase empleada como entidad para mapear la información correspondiente de la tabla OfertaEtiqueta

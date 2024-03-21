@@ -1,8 +1,6 @@
 package es.aulanosa.api;
 
-import es.aulanosa.api.models.Etiqueta;
 import es.aulanosa.api.models.FormacionEtiqueta;
-import es.aulanosa.api.repositories.EtiquetaRepository;
 import es.aulanosa.api.repositories.FormacionEtiquetaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +42,7 @@ class FormacionEtiquetaRepositoryTests {
 
         Optional<FormacionEtiqueta> encontrado = formacionEtiquetaRepository.findById(fe.getId());
         assertThat(encontrado).isNotEmpty();
-        assertThat(encontrado.get().getFormacion_id()).isEqualTo(1);
+        assertThat(encontrado.get().getFormacionId()).isEqualTo(1);
         formacionEtiquetaRepository.delete(fe);
     }
 
@@ -58,10 +56,10 @@ class FormacionEtiquetaRepositoryTests {
         fe = formacionEtiquetaRepository.save(fe);
 
 
-        fe.setFormacion_id(2);
+        fe.setFormacionId(2);
         FormacionEtiqueta etiquetaActualizado = formacionEtiquetaRepository.save(fe);
 
-        assertThat(etiquetaActualizado.getFormacion_id()).isEqualTo(2);
+        assertThat(etiquetaActualizado.getFormacionId()).isEqualTo(2);
         formacionEtiquetaRepository.delete(fe);
     }
 
@@ -87,8 +85,8 @@ class FormacionEtiquetaRepositoryTests {
      */
     public FormacionEtiqueta crearFormacionEtiqueta(){
         FormacionEtiqueta formacionEtiqueta = new FormacionEtiqueta();
-        formacionEtiqueta.setEtiqueta_id(1);
-        formacionEtiqueta.setFormacion_id(1);
+        formacionEtiqueta.setEtiquetaId(1);
+        formacionEtiqueta.setFormacionId(1);
         return formacionEtiqueta;
     }
 }

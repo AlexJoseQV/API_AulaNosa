@@ -1,16 +1,12 @@
 package es.aulanosa.api;
 
 import es.aulanosa.api.models.Formacion;
-import es.aulanosa.api.models.Usuario;
 import es.aulanosa.api.repositories.FormacionRepository;
-import es.aulanosa.api.repositories.UsuarioRepository;
-import jakarta.persistence.criteria.From;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.sql.Date;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Optional;
 

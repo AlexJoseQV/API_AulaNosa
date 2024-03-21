@@ -5,12 +5,10 @@ import es.aulanosa.api.dtos.FormacionDTOSalida;
 import es.aulanosa.api.dtos.ListaFormacionDTOSalida;
 
 import es.aulanosa.api.dtos.*;
-import es.aulanosa.api.repositories.FormacionRepository;
 
 import es.aulanosa.api.services.FormacionService;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.ResponseEntity;

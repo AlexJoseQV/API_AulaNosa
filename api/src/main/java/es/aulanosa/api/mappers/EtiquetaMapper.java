@@ -1,7 +1,6 @@
 package es.aulanosa.api.mappers;
 
 import es.aulanosa.api.dtos.EtiquetaDTO;
-import es.aulanosa.api.dtos.ListaEtiquetaDTOSalida;
 import es.aulanosa.api.models.Etiqueta;
 
 import java.util.ArrayList;

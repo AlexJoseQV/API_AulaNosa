@@ -1,6 +1,5 @@
 package es.aulanosa.api.repositories;
 import es.aulanosa.api.models.OfertaEtiqueta;
-import es.aulanosa.api.models.UsuarioEtiqueta;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

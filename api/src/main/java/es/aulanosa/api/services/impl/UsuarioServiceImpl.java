@@ -3,8 +3,6 @@ package es.aulanosa.api.services.impl;
 import es.aulanosa.api.dtos.*;
 import es.aulanosa.api.mappers.UsuarioMapper;
 import es.aulanosa.api.models.Usuario;
-import es.aulanosa.api.models.UsuarioOferta;
-import es.aulanosa.api.repositories.UsuarioOfertaRepository;
 import es.aulanosa.api.repositories.UsuarioRepository;
 import es.aulanosa.api.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

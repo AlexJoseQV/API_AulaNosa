@@ -1,16 +1,11 @@
 package es.aulanosa.api;
 
-import es.aulanosa.api.models.Formacion;
 import es.aulanosa.api.models.UsuarioFormacion;
-import es.aulanosa.api.repositories.FormacionRepository;
-import es.aulanosa.api.repositories.UsuarioEtiquetaRepository;
 import es.aulanosa.api.repositories.UsuarioFormacionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -96,8 +91,8 @@ class UsuarioFormacionRepositoryTests {
 	public UsuarioFormacion crearUsuarioFormacion(){
 
 		UsuarioFormacion uf = new UsuarioFormacion();
-		uf.setFormacion_id(1);
-		uf.setUsuario_id(1);
+		uf.setFormacionId(1);
+		uf.setUsuarioId(1);
 		uf.setEstado("INSCRITO");
 
 		return uf;

@@ -1,8 +1,5 @@
 package es.aulanosa.api.repositories;
 
-import es.aulanosa.api.models.Etiqueta;
-import es.aulanosa.api.models.Usuario;
-import es.aulanosa.api.models.UsuarioEtiqueta;
 import es.aulanosa.api.models.UsuarioFormacion;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
